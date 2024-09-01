@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createInertiaApp } from "@inertiajs/svelte";
 
 export function render(page) {
