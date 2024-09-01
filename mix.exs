@@ -42,7 +42,6 @@ defmodule TwitchOverlays.MixProject do
       {:phoenix_live_view, "~> 1.0.0-rc.1", override: true},
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},
-      {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
       {:heroicons,
        github: "tailwindlabs/heroicons",
@@ -58,7 +57,8 @@ defmodule TwitchOverlays.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:inertia, "~> 0.10.0"}
     ]
   end
 
@@ -74,11 +74,16 @@ defmodule TwitchOverlays.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind twitch_overlays", "esbuild twitch_overlays"],
+      "assets.setup": ["tailwind.install --if-missing", "pnpm i --prefix assets"],
+      "assets.build": [
+        "tailwind twitch_overlays",
+        "cd assets && node build.js", 
+        "cd assets && node build.js --ssr"
+      ],
       "assets.deploy": [
         "tailwind twitch_overlays --minify",
-        "esbuild twitch_overlays --minify",
+        "cd assets && node build.js --deploy", 
+        "cd assets && node build.js --deploy --ssr",
         "phx.digest"
       ]
     ]

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "importHelpers": true,
+    "baseUrl": ".",
+    "paths": {
+      "$lib/*": [
+        "js/lib/*"
+      ]
+    }
+  },
+  "include": [
+    "js/**/*.ts",
+    "js/**/*.svelte"
+  ]
+}

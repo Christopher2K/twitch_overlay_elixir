@@ -22,7 +22,8 @@ config :twitch_overlays, TwitchOverlaysWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "oeQkco4Sb//hEPovU5wLhs3tQzJjWncNxDMFfjL0IPainrfjFGK/T+h+rAtukoxc",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:twitch_overlays, ~w(--sourcemap=inline --watch)]},
+    node: ["build.js", "--watch", cd: Path.expand("../assets", __DIR__)],
+    node: ["build.js", "--watch", "--ssr", cd: Path.expand("../assets", __DIR__)],
     tailwind: {Tailwind, :install_and_run, [:twitch_overlays, ~w(--watch)]}
   ]
 

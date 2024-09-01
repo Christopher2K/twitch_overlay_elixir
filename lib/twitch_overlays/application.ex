@@ -19,6 +19,8 @@ defmodule TwitchOverlays.Application do
       {Finch, name: TwitchOverlays.Finch},
       # Start a worker by calling: TwitchOverlays.Worker.start_link(arg)
       # {TwitchOverlays.Worker, arg},
+      # Inertia SSR
+      {Inertia.SSR, path: Path.join([Application.app_dir(:twitch_overlays), "priv"])},
       # Start to serve requests, typically the last entry
       TwitchOverlaysWeb.Endpoint
     ]

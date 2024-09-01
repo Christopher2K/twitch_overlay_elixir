@@ -31,16 +31,6 @@ config :twitch_overlays, TwitchOverlaysWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :twitch_overlays, TwitchOverlays.Mailer, adapter: Swoosh.Adapters.Local
 
-# Configure esbuild (the version is required)
-config :esbuild,
-  version: "0.17.11",
-  twitch_overlays: [
-    args:
-      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
-    cd: Path.expand("../assets", __DIR__),
-    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
-  ]
-
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "3.4.3",
@@ -48,7 +38,7 @@ config :tailwind,
     args: ~w(
       --config=tailwind.config.js
       --input=css/app.css
-      --output=../priv/static/assets/app.css
+      --output=../priv/static/assets/tailwind.css
     ),
     cd: Path.expand("../assets", __DIR__)
   ]
@@ -60,6 +50,13 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :inertia,
+  endpoint: TwitchOverlaysWeb.Endpoint,
+  static_paths: ["/assets/app.js"],
+  default_version: "1",
+  ssr: true,
+  raise_on_ssr_failture: config_env() != :prod
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
