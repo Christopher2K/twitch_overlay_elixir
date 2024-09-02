@@ -20,3 +20,13 @@
   font-weight: 600;
   font-style: normal;
 }
+
+@layer components {
+  .card {
+    border-radius: theme("borderRadius.lg");
+    box-shadow:
+      0 3px 6px rgba(0, 0, 0, 0.16),
+      0 3px 6px rgba(0, 0, 0, 0.23);
+    border: 2px solid white;
+  }
+}

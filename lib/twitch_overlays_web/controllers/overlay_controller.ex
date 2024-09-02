@@ -24,4 +24,10 @@ defmodule TwitchOverlaysWeb.OverlayController do
       conn
       |> put_layout(html: :overlay)
       |> render_inertia("overlay/brb")
+
+  def computer_overlay(conn, _),
+    do:
+      conn
+      |> put_layout(html: :overlay)
+      |> render_inertia("overlay/computer")
 end
