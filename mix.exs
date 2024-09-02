@@ -32,6 +32,7 @@ defmodule TwitchOverlays.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:argon2_elixir, "~> 4.0"},
       {:phoenix, "~> 1.7.14"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
@@ -54,7 +55,7 @@ defmodule TwitchOverlays.MixProject do
       {:finch, "~> 0.13"},
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
-      {:gettext, "~> 0.20"},
+      {:gettext, "~> 0.24"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
@@ -77,14 +78,17 @@ defmodule TwitchOverlays.MixProject do
       "assets.setup": ["tailwind.install --if-missing", "pnpm i --prefix assets"],
       "assets.build": [
         "tailwind twitch_overlays",
-        "cd assets && node build.js", 
+        "cd assets && node build.js",
         "cd assets && node build.js --ssr"
       ],
       "assets.deploy": [
         "tailwind twitch_overlays --minify",
-        "cd assets && node build.js --deploy", 
+        "cd assets && node build.js --deploy",
         "cd assets && node build.js --deploy --ssr",
         "phx.digest"
+      ],
+      "admin.create": [
+        "run lib/scripts/admin_create.exs"
       ]
     ]
   end

@@ -15,6 +15,10 @@ defmodule TwitchOverlaysWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :authenticated do
+    plug TwitchOverlaysWeb.Plugs.Authenticated
+  end
+
   scope "/", TwitchOverlaysWeb do
     pipe_through :browser
 
@@ -32,9 +36,15 @@ defmodule TwitchOverlaysWeb.Router do
   scope "/admin", TwitchOverlaysWeb do
     pipe_through :browser
 
-    get "/", AdminController, :index
     get "/login", AdminController, :login
+    post "/login", AdminController, :login_submission
     get "/logout", AdminController, :logout
+
+    scope "/" do
+      pipe_through :authenticated
+
+      get "/", AdminController, :index
+    end
   end
 
   # Other scopes may use custom stacks.
