@@ -14,6 +14,21 @@ module.exports = {
     extend: {
       colors: {
         brand: "#FD4F00",
+        placeholder: "#40ff00",
+        background: "#2D2D2D",
+        desktop: "#1E1E2E",
+        "desktop-light": "#CDD6F4",
+        accent: "#FAB387",
+        "video-background": "rgba(0, 0, 0, 0.7)",
+      },
+      fontSize: {
+        one: "4.8rem",
+        two: "4.5rem",
+        three: "4rem",
+        four: "3rem",
+        five: "2rem",
+        six: "1.8rem",
+        seven: "1.3rem",
       },
     },
   },

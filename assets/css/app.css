@@ -2,4 +2,21 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* This file is for your main application CSS */
+:root {
+  --font-euclid: "Euclid Circular A", monospace;
+  font-family: var(--font-euclid);
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+@font-face {
+  font-family: "Euclid Circular A";
+  src:
+    url("/fonts/EuclidCircularA-SemiBold.woff2") format("woff2"),
+    url("/fonts/EuclidCircularA-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
