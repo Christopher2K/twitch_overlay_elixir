@@ -29,6 +29,14 @@ defmodule TwitchOverlaysWeb.Router do
     get "/overlay/computer-guest", OverlayController, :computer_guest_overlay
   end
 
+  scope "/admin", TwitchOverlaysWeb do
+    pipe_through :browser
+
+    get "/", AdminController, :index
+    get "/login", AdminController, :login
+    get "/logout", AdminController, :logout
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", TwitchOverlaysWeb do
   #   pipe_through :api
