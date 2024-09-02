@@ -1,5 +1,5 @@
 <script lang="ts">
-  import TitleBanner from "$lib/components/title-banner.svelte";
+  // import TitleBanner from "$lib/components/title-banner.svelte";
 </script>
 
 <div class="bg-desktop flex h-full w-full flex-row items-start justify-start">

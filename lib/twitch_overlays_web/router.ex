@@ -18,13 +18,12 @@ defmodule TwitchOverlaysWeb.Router do
   scope "/", TwitchOverlaysWeb do
     pipe_through :browser
 
-    # get "/", PageController, :home
-
     get "/", OverlayController, :index
     get "/overlay/start", OverlayController, :start_overlay
     get "/overlay/end", OverlayController, :end_overlay
     get "/overlay/brb", OverlayController, :brb_overlay
     get "/overlay/computer", OverlayController, :computer_overlay
+    get "/overlay/talk", OverlayController, :talk_overlay
   end
 
   # Other scopes may use custom stacks.
