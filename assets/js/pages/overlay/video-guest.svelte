@@ -1,9 +1,11 @@
 <script lang="ts">
-  import AudioParticipant from "$lib/components/audio-participant.svelte";
+  import ParticipantView from "$lib/components/participant-view.svelte";
   import TitleBanner from "$lib/components/title-banner.svelte";
   import type { Participant } from "$lib/features/participants";
 
-  export let participants: Participant[] = [];
+  export let participants: Participant[] = [
+    { name: "LLCoolChris_", description: "Developeur web a Toronto" },
+  ];
 </script>
 
 <div
@@ -18,7 +20,7 @@
     <div class="relative h-full w-full flex-1">
       <div class="card bg-placeholder relative h-full w-full">
         <div class="absolute bottom-8 left-8 w-fit">
-          <AudioParticipant {participant} />
+          <ParticipantView {participant} />
         </div>
       </div>
     </div>
