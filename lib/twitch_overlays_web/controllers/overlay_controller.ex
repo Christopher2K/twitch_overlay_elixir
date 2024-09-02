@@ -42,4 +42,10 @@ defmodule TwitchOverlaysWeb.OverlayController do
       conn
       |> put_layout(html: :overlay)
       |> render_inertia("overlay/audio-guest")
+
+  def video_guest_overlay(conn, _),
+    do:
+      conn
+      |> put_layout(html: :overlay)
+      |> render_inertia("overlay/video-guest")
 end
