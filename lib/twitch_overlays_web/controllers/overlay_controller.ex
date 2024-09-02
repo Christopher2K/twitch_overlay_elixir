@@ -36,4 +36,10 @@ defmodule TwitchOverlaysWeb.OverlayController do
       conn
       |> put_layout(html: :overlay)
       |> render_inertia("overlay/talk")
+
+  def audio_guest_overlay(conn, _),
+    do:
+      conn
+      |> put_layout(html: :overlay)
+      |> render_inertia("overlay/audio-guest")
 end

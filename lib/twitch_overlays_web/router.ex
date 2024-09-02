@@ -24,6 +24,7 @@ defmodule TwitchOverlaysWeb.Router do
     get "/overlay/brb", OverlayController, :brb_overlay
     get "/overlay/computer", OverlayController, :computer_overlay
     get "/overlay/talk", OverlayController, :talk_overlay
+    get "/overlay/audio-guest", OverlayController, :audio_guest_overlay
   end
 
   # Other scopes may use custom stacks.
