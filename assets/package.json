@@ -11,10 +11,13 @@
     "class-variance-authority": "~0.7.0",
     "clsx": "~2.1.1",
     "lucide-svelte": "~0.438.0",
+    "phoenix": "~1.7.14",
     "svelte": "~4.2.19"
   },
   "devDependencies": {
     "@tailwindcss/forms": "~0.5.8",
+    "@tsconfig/svelte": "~5.0.4",
+    "@types/phoenix": "~1.6.5",
     "esbuild": "~0.23.1",
     "esbuild-svelte": "~0.8.1",
     "prettier": "~3.3.3",

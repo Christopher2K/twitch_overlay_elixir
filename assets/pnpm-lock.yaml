@@ -23,6 +23,9 @@ importers:
       lucide-svelte:
         specifier: ~0.438.0
         version: 0.438.0(svelte@4.2.19)
+      phoenix:
+        specifier: ~1.7.14
+        version: 1.7.14
       svelte:
         specifier: ~4.2.19
         version: 4.2.19
@@ -30,6 +33,12 @@ importers:
       '@tailwindcss/forms':
         specifier: ~0.5.8
         version: 0.5.8(tailwindcss@3.4.10)
+      '@tsconfig/svelte':
+        specifier: ~5.0.4
+        version: 5.0.4
+      '@types/phoenix':
+        specifier: ~1.6.5
+        version: 1.6.5
       esbuild:
         specifier: ~0.23.1
         version: 0.23.1
@@ -260,8 +269,14 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1 || >= 4.0.0-alpha.20'
 
+  '@tsconfig/svelte@5.0.4':
+    resolution: {integrity: sha512-BV9NplVgLmSi4mwKzD8BD/NQ8erOY/nUE/GpgWe2ckx+wIQF5RyRirn/QsSSCPeulVpc3RA/iJt6DpfTIZps0Q==}
+
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
+
+  '@types/phoenix@1.6.5':
+    resolution: {integrity: sha512-xegpDuR+z0UqG9fwHqNoy3rI7JDlvaPh2TY47Fl80oq6g+hXT+c/LEuE43X48clZ6lOfANl5WrPur9fYO1RJ/w==}
 
   acorn@8.12.1:
     resolution: {integrity: sha512-tcpGyI9zbizT9JbV6oYE477V6mTlXvvi0T0G3SNIYE2apm/G5huBa1+K89VGeovbg+jycCrfhl3ADxErOuO6Jg==}
@@ -641,6 +656,9 @@ packages:
 
   periscopic@3.1.0:
     resolution: {integrity: sha512-vKiQ8RRtkl9P+r/+oefh25C3fhybptkHKCZSPlcXiJux2tJF55GnEj3BVn4A5gKfq9NWWXXrxkHBwVPUfH0opw==}
+
+  phoenix@1.7.14:
+    resolution: {integrity: sha512-3tZ76PiH/2g+Kyzhz8+GIFYrnx3lRnwi/Qt3ZUH04xpMxXL7Guerd5aaxtpWal73X+H8iLAjo2c+AgRy2KYQcQ==}
 
   picocolors@1.0.1:
     resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
@@ -1072,7 +1090,11 @@ snapshots:
       mini-svg-data-uri: 1.4.4
       tailwindcss: 3.4.10
 
+  '@tsconfig/svelte@5.0.4': {}
+
   '@types/estree@1.0.5': {}
+
+  '@types/phoenix@1.6.5': {}
 
   acorn@8.12.1: {}
 
@@ -1437,6 +1459,8 @@ snapshots:
       '@types/estree': 1.0.5
       estree-walker: 3.0.3
       is-reference: 3.0.2
+
+  phoenix@1.7.14: {}
 
   picocolors@1.0.1: {}
 

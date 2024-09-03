@@ -1,8 +1,15 @@
 <script lang="ts">
   import TitleBanner from "$lib/components/title-banner.svelte";
   import type { GlobalMetadata } from "$lib/features/metadata";
+  import { useConfigurationUpdate } from "$lib/features/configuration/hooks/use-configuration-update";
 
   export let globalData: GlobalMetadata | null;
+
+  useConfigurationUpdate((data) => {
+    if (data.name === "global") {
+      globalData = data;
+    }
+  });
 </script>
 
 <div class="flex h-full w-full flex-row items-start justify-start bg-desktop">
