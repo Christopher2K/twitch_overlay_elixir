@@ -1,31 +1,44 @@
 <script lang="ts">
   import { PlusIcon, MinusIcon } from "lucide-svelte";
 
+  import type { Participant } from "$lib/features/participants";
   import Button from "$lib/components/button.svelte";
   import Field from "$lib/components/field.svelte";
   import Textinput from "$lib/components/textinput.svelte";
   import Form from "$lib/components/form.svelte";
 
-  let guestCounts: number = 1;
+  export let guests: Participant[] = [{ name: "", description: "" }];
 
   function addGuestField() {
-    guestCounts += 1;
+    guests = [...guests, { name: "", description: "" }];
   }
 
   function removeGuestField() {
-    if (guestCounts == 1) return;
-    guestCounts -= 1;
+    if (guests.length == 1) return;
+    guests = guests.slice(0, -1);
+  }
+
+  function handleSubmit(event: SubmitEvent) {
+    event.preventDefault();
+    console.log(guests);
   }
 </script>
 
 <section class="w-full">
   <h3 class="text-2xl">Guests configuration</h3>
-  <Form>
-    {#each Array(guestCounts) as _, i}
-      <div class="w-full">
+  <Form on:submit={handleSubmit}>
+    {#each guests as guest, i}
+      <div class="flex w-full flex-col gap-2">
         <h4 class="text-xl">Guest {i + 1}</h4>
         <Field label="Guest name" htmlFor={`guest-name-${i}`}>
-          <Textinput id={`guest-name-${i}`} />
+          <Textinput id={`guest-name-${i}`} bind:value={guest.name} />
+        </Field>
+
+        <Field label="Guest description" htmlFor={`guest-description-${i}`}>
+          <Textinput
+            id={`guest-description-${i}`}
+            bind:value={guest.description}
+          />
         </Field>
       </div>
     {/each}
