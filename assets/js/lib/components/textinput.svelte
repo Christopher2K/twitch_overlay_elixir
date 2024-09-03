@@ -1,6 +1,6 @@
 <script lang="ts">
   export let id: string;
-  export let type: string = "text";
+  export let type: "password" | "text" = "text";
   export let value: string = "";
 
   const classes =

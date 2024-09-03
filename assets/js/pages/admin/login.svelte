@@ -44,6 +44,6 @@
       />
     </Field>
 
-    <Button type="submit">Login</Button>
+    <Button type="submit" fullWidth>Login</Button>
   </form>
 </div>
