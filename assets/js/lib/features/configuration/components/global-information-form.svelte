@@ -24,7 +24,7 @@
 </script>
 
 <section class="w-full">
-  <h3 class="text-2xl">Globlal informations</h3>
+  <h3 class="text-2xl">Global informations</h3>
   <Form on:submit={handleSubmit}>
     <Field label="Banner" htmlFor="banner">
       <Textinput id="banner" bind:value={banner} />
