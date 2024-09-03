@@ -31,6 +31,7 @@ defmodule TwitchOverlaysWeb.Router do
     get "/overlay/audio-guest", OverlayController, :audio_guest_overlay
     get "/overlay/video-guest", OverlayController, :video_guest_overlay
     get "/overlay/computer-guest", OverlayController, :computer_guest_overlay
+    get "/overlay/alerts", OverlayController, :alerts_overlay
   end
 
   scope "/admin", TwitchOverlaysWeb do

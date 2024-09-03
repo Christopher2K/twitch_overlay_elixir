@@ -4,11 +4,12 @@ defmodule TwitchOverlaysWeb.OverlayController do
   alias TwitchOverlays.Configuration.Services, as: MetadataServices
 
   def index(conn, _),
-    do: conn |> assign(:has_video_bg, true) |> render(:index)
+    do: conn |> assign(:bg_class, "") |> render(:index)
 
   def start_overlay(conn, _),
     do:
       conn
+      |> assign(:bg_class, "bg-video-background")
       |> put_layout(html: :overlay)
       |> render_inertia("overlay/start")
 
@@ -109,4 +110,11 @@ defmodule TwitchOverlaysWeb.OverlayController do
     |> put_layout(html: :overlay)
     |> render_inertia("overlay/computer-guest")
   end
+
+  def alerts_overlay(conn, _),
+    do:
+      conn
+      |> assign(:bg_class, "")
+      |> put_layout(html: :overlay)
+      |> render_inertia("overlay/alerts")
 end
