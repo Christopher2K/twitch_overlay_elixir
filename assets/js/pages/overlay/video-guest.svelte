@@ -13,6 +13,10 @@
     if (data.name === "global") {
       globalData = data;
     }
+
+    if (data.name === "guests") {
+      guestData = data;
+    }
   });
 </script>
 
