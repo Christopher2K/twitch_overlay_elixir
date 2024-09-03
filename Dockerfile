@@ -21,8 +21,11 @@ ARG RUNNER_IMAGE="debian:${DEBIAN_VERSION}"
 FROM ${BUILDER_IMAGE} as builder
 
 # install build dependencies
-RUN apt-get update -y && apt-get install -y build-essential git \
+RUN apt-get update -y && apt-get install -y build-essential git curl \
     && apt-get clean && rm -f /var/lib/apt/lists/*_*
+
+# install nodejs for build stage
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && apt-get install -y nodejs
 
 # prepare build dir
 WORKDIR /app
@@ -36,7 +39,9 @@ ENV MIX_ENV="prod"
 
 # install mix dependencies
 COPY mix.exs mix.lock ./
+
 RUN mix deps.get --only $MIX_ENV
+
 RUN mkdir config
 
 # copy compile-time config files before we compile dependencies
@@ -50,6 +55,14 @@ COPY priv priv
 COPY lib lib
 
 COPY assets assets
+
+WORKDIR /app/assets
+
+RUN corepack enable
+
+RUN pnpm install
+
+WORKDIR /app
 
 # compile assets
 RUN mix assets.deploy
@@ -68,8 +81,10 @@ RUN mix release
 FROM ${RUNNER_IMAGE}
 
 RUN apt-get update -y && \
-    apt-get install -y libstdc++6 openssl libncurses5 locales ca-certificates \
+    apt-get install -y libstdc++6 openssl libncurses5 locales ca-certificates curl \
     && apt-get clean && rm -f /var/lib/apt/lists/*_*
+
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && apt-get install -y nodejs
 
 # Set the locale
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen

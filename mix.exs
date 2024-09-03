@@ -79,12 +79,13 @@ defmodule TwitchOverlays.MixProject do
       "assets.build": [
         "tailwind twitch_overlays",
         "cd assets && node build.js",
-        "cd assets && node build.js --ssr"
+        "cmd --cd assets node build.js",
+        "cmd --cd assets node build.js --ssr"
       ],
       "assets.deploy": [
         "tailwind twitch_overlays --minify",
-        "cd assets && node build.js --deploy",
-        "cd assets && node build.js --deploy --ssr",
+        "cmd --cd assets node build.js --deploy",
+        "cmd --cd assets node build.js --deploy --ssr",
         "phx.digest"
       ],
       "admin.create": [
