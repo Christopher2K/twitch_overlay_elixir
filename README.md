@@ -1,18 +1,10 @@
-# TwitchOverlays
+# Twtich Overlays
 
-To start your Phoenix server:
+As you may know, I'm a Twitch streamer (and a PARTNER 🔥) at [https://twitch.tv/LLCoolChris_](https://twitch.tv/LLCoolChris_).
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+I'm also a developer and, when I realized that I can DO cool stuff with clasic web tech for my stream overlays, I went crazy.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Not THAT crazy, but you know this is just a small project that I'm using daily so my stream can be cool to watch.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+Feel free to check the code, reuse, blablabla... I'm not going to give instruction or anything like that. Just leave the project as is.
 
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
