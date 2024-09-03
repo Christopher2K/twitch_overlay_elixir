@@ -1,11 +1,10 @@
 defmodule TwitchOverlaysWeb.OverlayController do
   use TwitchOverlaysWeb, :controller
 
+  alias TwitchOverlays.Configuration.Services, as: MetadataServices
+
   def index(conn, _),
-    do:
-      conn
-      |> assign(:has_video_bg, true)
-      |> render(:index)
+    do: conn |> assign(:has_video_bg, true) |> render(:index)
 
   def start_overlay(conn, _),
     do:
@@ -25,33 +24,89 @@ defmodule TwitchOverlaysWeb.OverlayController do
       |> put_layout(html: :overlay)
       |> render_inertia("overlay/brb")
 
-  def computer_overlay(conn, _),
-    do:
-      conn
-      |> put_layout(html: :overlay)
-      |> render_inertia("overlay/computer")
+  def computer_overlay(conn, _) do
+    global_data =
+      case MetadataServices.GetMetadata.call("global") do
+        {:ok, global} -> global
+        _ -> nil
+      end
 
-  def talk_overlay(conn, _),
-    do:
-      conn
-      |> put_layout(html: :overlay)
-      |> render_inertia("overlay/talk")
+    conn
+    |> assign_prop("globalData", global_data)
+    |> put_layout(html: :overlay)
+    |> render_inertia("overlay/computer")
+  end
 
-  def audio_guest_overlay(conn, _),
-    do:
-      conn
-      |> put_layout(html: :overlay)
-      |> render_inertia("overlay/audio-guest")
+  def talk_overlay(conn, _) do
+    global_data =
+      case MetadataServices.GetMetadata.call("global") do
+        {:ok, global} -> global
+        _ -> nil
+      end
 
-  def video_guest_overlay(conn, _),
-    do:
-      conn
-      |> put_layout(html: :overlay)
-      |> render_inertia("overlay/video-guest")
+    conn
+    |> assign_prop("globalData", global_data)
+    |> put_layout(html: :overlay)
+    |> render_inertia("overlay/talk")
+  end
 
-  def computer_guest_overlay(conn, _),
-    do:
-      conn
-      |> put_layout(html: :overlay)
-      |> render_inertia("overlay/computer-guest")
+  def audio_guest_overlay(conn, _) do
+    global_data =
+      case MetadataServices.GetMetadata.call("global") do
+        {:ok, global} -> global
+        _ -> nil
+      end
+
+    guest_data =
+      case MetadataServices.GetMetadata.call("guests") do
+        {:ok, guests} -> guests
+        _ -> nil
+      end
+
+    conn
+    |> assign_prop("globalData", global_data)
+    |> assign_prop("guestData", guest_data)
+    |> put_layout(html: :overlay)
+    |> render_inertia("overlay/audio-guest")
+  end
+
+  def video_guest_overlay(conn, _) do
+    global_data =
+      case MetadataServices.GetMetadata.call("global") do
+        {:ok, global} -> global
+        _ -> nil
+      end
+
+    guest_data =
+      case MetadataServices.GetMetadata.call("guests") do
+        {:ok, guests} -> guests
+        _ -> nil
+      end
+
+    conn
+    |> assign_prop("globalData", global_data)
+    |> assign_prop("guestData", guest_data)
+    |> put_layout(html: :overlay)
+    |> render_inertia("overlay/video-guest")
+  end
+
+  def computer_guest_overlay(conn, _) do
+    global_data =
+      case MetadataServices.GetMetadata.call("global") do
+        {:ok, global} -> global
+        _ -> nil
+      end
+
+    guest_data =
+      case MetadataServices.GetMetadata.call("guests") do
+        {:ok, guests} -> guests
+        _ -> nil
+      end
+
+    conn
+    |> assign_prop("globalData", global_data)
+    |> assign_prop("guestData", guest_data)
+    |> put_layout(html: :overlay)
+    |> render_inertia("overlay/computer-guest")
+  end
 end

@@ -1,11 +1,12 @@
 <script lang="ts">
   import ParticipantView from "$lib/components/participant-view.svelte";
   import TitleBanner from "$lib/components/title-banner.svelte";
-  import type { Participant } from "$lib/features/metadata";
+  import type { GlobalMetadata, GuestMetadata } from "$lib/features/metadata";
 
-  export let participants: Participant[] = [
-    { name: "LLCoolChris_", description: "Developeur web a Toronto" },
-  ];
+  export let globalData: GlobalMetadata | null;
+  export let guestData: GuestMetadata | null;
+
+  $: participants = guestData?.data.members ?? [];
 </script>
 
 <div
@@ -13,7 +14,13 @@
 >
   <div class="relative h-full w-full flex-1">
     <div class="card relative h-full w-full bg-placeholder"></div>
-    <TitleBanner position="left" title="Computer" banner="I'm working on it" />
+    {#if globalData}
+      <TitleBanner
+        position="left"
+        title={globalData.data.title}
+        banner={globalData.data.banner}
+      />
+    {/if}
   </div>
 
   {#each participants as participant}

@@ -1,18 +1,24 @@
 <script lang="ts">
   import TitleBanner from "$lib/components/title-banner.svelte";
   import ParticipantView from "$lib/components/participant-view.svelte";
-  import type { Participant } from "$lib/features/metadata";
+  import type { GlobalMetadata, GuestMetadata } from "$lib/features/metadata";
 
-  export let participants: Participant[] = [
-    { name: "NamelessW_", description: "" },
-  ];
+  export let globalData: GlobalMetadata | null;
+  export let guestData: GuestMetadata | null;
+  $: participants = guestData?.data.members ?? [];
 </script>
 
 <div class="flex h-full w-full flex-row items-start justify-start bg-desktop">
   <!-- Main Screen -->
   <div class="relative h-full w-full flex-1 pb-4 pl-4 pr-2 pt-4">
     <div class="card relative h-full w-full bg-placeholder"></div>
-    <TitleBanner position="right" title="Computer" banner="I'm working on it" />
+    {#if globalData}
+      <TitleBanner
+        position="right"
+        title={globalData.data.title}
+        banner={globalData.data.banner}
+      />
+    {/if}
   </div>
   <!-- Cameras -->
   <div class="flex h-full w-[493px] flex-col items-center justify-center">
