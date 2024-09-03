@@ -44,4 +44,25 @@ defmodule TwitchOverlaysWeb.AdminController do
       conn
       |> delete_session(:user_id)
       |> redirect(to: ~p"/admin/login")
+
+  def configuration_submission(conn, %{"global" => global_data}) do
+    case MetadataServices.UpdateMetadata.call("global", global_data) do
+      {:ok, _} ->
+        conn
+        |> put_flash(:success, "Global information updated")
+        |> redirect(to: ~p"/admin")
+
+      {:error, reason} when is_binary(reason) ->
+        conn
+        |> put_flash(:error, reason)
+        |> redirect(to: ~p"/admin")
+
+      {:error, reason} ->
+        Logger.error("GET /admin/login failed with reason: #{inspect(reason)}")
+
+        conn
+        |> put_flash(:error, "Something went wrong")
+        |> redirect(to: ~p"/admin")
+    end
+  end
 end

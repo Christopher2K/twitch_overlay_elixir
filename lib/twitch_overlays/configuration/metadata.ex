@@ -2,6 +2,8 @@ defmodule TwitchOverlays.Configuration.Metadata do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {Jason.Encoder, only: [:name, :data]}
+
   schema "metadata" do
     field :name, :string
     field :data, :map

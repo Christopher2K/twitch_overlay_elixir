@@ -16,7 +16,6 @@
 
   function handleSubmit() {
     flash = {};
-    console.log(formValues);
     router.post("/admin/login", formValues);
   }
 </script>

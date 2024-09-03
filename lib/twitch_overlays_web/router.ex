@@ -44,6 +44,7 @@ defmodule TwitchOverlaysWeb.Router do
       pipe_through :authenticated
 
       get "/", AdminController, :index
+      post "/", AdminController, :configuration_submission
     end
   end
 

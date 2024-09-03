@@ -5,7 +5,7 @@ defmodule TwitchOverlaysWeb.Plugs.Authenticated do
   def init(opts), do: opts
 
   def call(conn, _opts) do
-    case get_session(conn, :user_id) |> dbg do
+    case get_session(conn, :user_id) do
       nil ->
         conn
         |> put_flash(:error, "You must be logged in to access this page.")

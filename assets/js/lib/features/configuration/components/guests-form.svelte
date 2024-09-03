@@ -20,7 +20,6 @@
 
   function handleSubmit(event: SubmitEvent) {
     event.preventDefault();
-    console.log(guests);
   }
 </script>
 

@@ -1,15 +1,25 @@
 <script lang="ts">
+  import { router } from "@inertiajs/svelte";
+
   import Button from "$lib/components/button.svelte";
   import Field from "$lib/components/field.svelte";
   import Textinput from "$lib/components/textinput.svelte";
   import Form from "$lib/components/form.svelte";
+  import type { GlobalMetadata } from "$lib/features/metadata";
 
-  export let banner: string = "";
-  export let title: string = "";
+  export let initialData: GlobalMetadata["data"];
+
+  export let banner: string = initialData.banner;
+  export let title: string = initialData.title;
 
   function handleSubmit(event: SubmitEvent) {
     event.preventDefault();
-    console.log(banner, title);
+    router.post("/admin", {
+      global: {
+        banner,
+        title,
+      },
+    });
   }
 </script>
 

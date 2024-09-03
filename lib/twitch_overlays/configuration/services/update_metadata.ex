@@ -8,7 +8,7 @@ defmodule TwitchOverlays.Configuration.Services.UpdateMetadata do
 
       {:ok, metadata} ->
         metadata
-        |> MetadataRepo.update_metadata(data)
+        |> MetadataRepo.update_metadata(%{data: data})
     end
   end
 end
