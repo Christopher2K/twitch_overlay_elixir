@@ -1,7 +1,7 @@
 <script lang="ts">
   import ParticipantView from "$lib/components/participant-view.svelte";
   import TitleBanner from "$lib/components/title-banner.svelte";
-  import type { Participant } from "$lib/features/participants";
+  import type { Participant } from "$lib/features/metadata";
 
   export let participants: Participant[] = [
     { name: "LLCoolChris_", description: "Developeur web a Toronto" },
@@ -9,16 +9,16 @@
 </script>
 
 <div
-  class="bg-desktop flex h-full w-full flex-row items-start justify-start gap-4 p-4"
+  class="flex h-full w-full flex-row items-start justify-start gap-4 bg-desktop p-4"
 >
   <div class="relative h-full w-full flex-1">
-    <div class="card bg-placeholder relative h-full w-full"></div>
+    <div class="card relative h-full w-full bg-placeholder"></div>
     <TitleBanner position="left" title="Computer" banner="I'm working on it" />
   </div>
 
   {#each participants as participant}
     <div class="relative h-full w-full flex-1">
-      <div class="card bg-placeholder relative h-full w-full">
+      <div class="card relative h-full w-full bg-placeholder">
         <div class="absolute bottom-8 left-8 w-fit">
           <ParticipantView {participant} />
         </div>

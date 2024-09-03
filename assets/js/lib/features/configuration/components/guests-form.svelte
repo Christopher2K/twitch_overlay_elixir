@@ -1,13 +1,16 @@
 <script lang="ts">
+  import { router } from "@inertiajs/svelte";
   import { PlusIcon, MinusIcon } from "lucide-svelte";
 
-  import type { Participant } from "$lib/features/participants";
+  import type { GuestMetadata, Participant } from "$lib/features/metadata";
   import Button from "$lib/components/button.svelte";
   import Field from "$lib/components/field.svelte";
   import Textinput from "$lib/components/textinput.svelte";
   import Form from "$lib/components/form.svelte";
 
-  export let guests: Participant[] = [{ name: "", description: "" }];
+  export let initialData: GuestMetadata["data"];
+
+  let guests: Participant[] = [...initialData.members];
 
   function addGuestField() {
     guests = [...guests, { name: "", description: "" }];
@@ -20,6 +23,11 @@
 
   function handleSubmit(event: SubmitEvent) {
     event.preventDefault();
+    router.post("/admin", {
+      guests: {
+        members: guests,
+      },
+    });
   }
 </script>
 

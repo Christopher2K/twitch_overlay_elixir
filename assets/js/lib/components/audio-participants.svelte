@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Participant } from "$lib/features/participants";
+  import type { Participant } from "$lib/features/metadata";
   import ParticipantView from "$lib/components/participant-view.svelte";
 
   export let participants: Participant[] = [];

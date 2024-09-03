@@ -9,8 +9,8 @@
 
   export let initialData: GlobalMetadata["data"];
 
-  export let banner: string = initialData.banner;
-  export let title: string = initialData.title;
+  let banner: string = initialData.banner;
+  let title: string = initialData.title;
 
   function handleSubmit(event: SubmitEvent) {
     event.preventDefault();
