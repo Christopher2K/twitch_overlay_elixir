@@ -2,12 +2,16 @@ defmodule TwitchOverlaysWeb.AdminController do
   require Logger
   use TwitchOverlaysWeb, :controller
 
-  alias TwitchOverlays.Accounts.Services
+  alias TwitchOverlays.Accounts.Services, as: AccountsServices
+  alias TwitchOverlays.Configuration.Services, as: MetadataServices
 
-  def index(conn, _),
-    do:
+  def index(conn, _) do
+    with {:ok, metadata} <- MetadataServices.GetAllMetadata.call() do
       conn
+      |> assign_prop(:metadata, metadata)
       |> render_inertia("admin/index")
+    end
+  end
 
   def login(conn, _),
     do:
@@ -15,7 +19,7 @@ defmodule TwitchOverlaysWeb.AdminController do
       |> render_inertia("admin/login")
 
   def login_submission(conn, %{"username" => username, "password" => password}) do
-    case Services.LoginUser.call(username, password) do
+    case AccountsServices.LoginUser.call(username, password) do
       {:ok, user_id} ->
         conn
         |> put_session(:user_id, user_id)
