@@ -1,5 +1,7 @@
 import Config
 
+Dotenv.load!(".env")
+
 # config/runtime.exs is executed for all environments, including
 # during releases. It is executed after compilation and before the
 # system starts, so it is typically used to load production configuration
@@ -111,3 +113,10 @@ if config_env() == :prod do
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 end
+
+config :twitch_overlays, :integrations,
+  twitch: [
+    client_id: System.get_env("TWITCH_CLIENT_ID") || raise("Env:TWITCH_CLIENT_ID missing"),
+    client_secret:
+      System.get_env("TWITCH_CLIENT_SECRET") || raise("Env:TWITCH_CLIENT_SECRET missing")
+  ]

@@ -40,3 +40,5 @@ npm-debug.log
 *.db-*
 
 /priv/ssr.js
+
+.env
