@@ -81,3 +81,8 @@ config :phoenix_live_view,
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+config :twitch_overlays, :integrations,
+  twitch: [
+    redirect_uri: "http://localhost:4000/admin/integrations/twitch/callback"
+  ]

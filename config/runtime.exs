@@ -112,6 +112,12 @@ if config_env() == :prod do
   #     config :swoosh, :api_client, Swoosh.ApiClient.Hackney
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
+
+  config :twitch_overlays, :integrations,
+    twitch: [
+      redirect_uri:
+        System.get_env("TWITCH_REDIRECT_URI") || raise("Env:TWITCH_REDIRECT_URI missing")
+    ]
 end
 
 config :twitch_overlays, :integrations,

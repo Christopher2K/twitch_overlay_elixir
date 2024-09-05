@@ -46,6 +46,12 @@ defmodule TwitchOverlaysWeb.Router do
 
       get "/", AdminController, :index
       post "/", AdminController, :configuration_submission
+
+      scope "/integrations" do
+        get "/", IntegrationController, :index
+        get "/twitch", IntegrationController, :twitch_redirect
+        get "/twitch/callback", IntegrationController, :twitch_callback
+      end
     end
   end
 

@@ -11,8 +11,7 @@ defmodule TwitchOverlays.Application do
       TwitchOverlaysWeb.Telemetry,
       TwitchOverlays.Repo,
       {Ecto.Migrator,
-        repos: Application.fetch_env!(:twitch_overlays, :ecto_repos),
-        skip: skip_migrations?()},
+       repos: Application.fetch_env!(:twitch_overlays, :ecto_repos), skip: skip_migrations?()},
       {DNSCluster, query: Application.get_env(:twitch_overlays, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: TwitchOverlays.PubSub},
       # Start the Finch HTTP client for sending emails

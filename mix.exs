@@ -32,6 +32,7 @@ defmodule TwitchOverlays.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:req, "~> 0.5.6"},
       {:argon2_elixir, "~> 4.0"},
       {:phoenix, "~> 1.7.14"},
       {:phoenix_ecto, "~> 4.5"},
