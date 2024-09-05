@@ -18,7 +18,7 @@
     <SmileFaceIcon />
   </div>
   <div class="shrink-0">
-    <p class="text-seven">{header}</p>
-    <p class="text-six text-accent">{content}</p>
+    <p class="text-seven text-accent">{header}</p>
+    <p class="text-six">{content}</p>
   </div>
 </div>

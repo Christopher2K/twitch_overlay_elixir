@@ -11,6 +11,16 @@
     // TODO: parse data
     const parsedData = data as NotificationData;
 
+    // Play audio -- This only works in OBS
+    if (parsedData.sound) {
+      try {
+        const audio = new Audio(`/sounds/${parsedData.sound}.mp3`);
+        audio.volume = 1;
+        audio.load();
+        audio.play();
+      } catch (e) {}
+    }
+
     if (notifications.length == 3) {
       const [_first, ...rest] = notifications;
       notifications = [...rest, parsedData];
@@ -31,7 +41,7 @@
     {#each notifications as notification (notification.id)}
       <div animate:flip={{ duration: 500 }}>
         <Notification
-          header={notification.header + notification.id.slice(0, 5)}
+          header={notification.header}
           content={notification.content}
         />
       </div>

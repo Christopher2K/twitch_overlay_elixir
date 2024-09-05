@@ -55,6 +55,12 @@ defmodule TwitchOverlaysWeb.Router do
     end
   end
 
+  scope "/webhooks", TwitchOverlaysWeb do
+    pipe_through :api
+
+    post "/twitch-event", WebhookController, :twitch_event
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", TwitchOverlaysWeb do
   #   pipe_through :api
