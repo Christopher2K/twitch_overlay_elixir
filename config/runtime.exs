@@ -124,6 +124,8 @@ end
 
 config :twitch_overlays, :integrations,
   twitch: [
+    webhook_secret:
+      System.get_env("TWITCH_WEBHOOK_SECRET") || raise("Env:TWITCH_WEBHOOK_SECRET missing"),
     client_id: System.get_env("TWITCH_CLIENT_ID") || raise("Env:TWITCH_CLIENT_ID missing"),
     client_secret:
       System.get_env("TWITCH_CLIENT_SECRET") || raise("Env:TWITCH_CLIENT_SECRET missing")
