@@ -1,6 +1,8 @@
 import Config
 
-Dotenv.load!(".env")
+if config_env() == :dev do
+  Dotenv.load!(".env")
+end
 
 # config/runtime.exs is executed for all environments, including
 # during releases. It is executed after compilation and before the
