@@ -17,6 +17,7 @@ defmodule TwitchOverlays.Application do
       # Start the Finch HTTP client for sending emails
       {Finch, name: TwitchOverlays.Finch},
       # Start a worker by calling: TwitchOverlays.Worker.start_link(arg)
+      TwitchOverlays.Integration.Workers.TwitchAppTokenWorker,
       # {TwitchOverlays.Worker, arg},
       # Inertia SSR
       {Inertia.SSR, path: Path.join([Application.app_dir(:twitch_overlays), "priv"])},
