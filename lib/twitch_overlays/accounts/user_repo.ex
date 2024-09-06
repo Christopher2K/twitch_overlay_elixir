@@ -1,7 +1,5 @@
 defmodule TwitchOverlays.Accounts.UserRepo do
   import Ecto.Query, warn: false
-  alias Hex.API.User
-  alias Hex.API.User
   alias TwitchOverlays.Repo
 
   alias TwitchOverlays.Accounts.User

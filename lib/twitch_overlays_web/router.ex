@@ -51,6 +51,9 @@ defmodule TwitchOverlaysWeb.Router do
         get "/", IntegrationController, :index
         get "/twitch", IntegrationController, :twitch_redirect
         get "/twitch/callback", IntegrationController, :twitch_callback
+
+        post "/subscribe", IntegrationController, :subscribe_to_event
+        delete "/unsubscribe/:id", IntegrationController, :unsubscribe_to_event
       end
     end
   end

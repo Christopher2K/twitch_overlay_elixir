@@ -115,18 +115,19 @@ if config_env() == :prod do
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 
-  config :twitch_overlays, :integrations,
-    twitch: [
-      redirect_uri:
-        System.get_env("TWITCH_REDIRECT_URI") || raise("Env:TWITCH_REDIRECT_URI missing")
-    ]
+  config :twitch_overlays, :integrations, twitch: []
 end
 
 config :twitch_overlays, :integrations,
   twitch: [
     webhook_secret:
-      System.get_env("TWITCH_WEBHOOK_SECRET") || raise("Env:TWITCH_WEBHOOK_SECRET missing"),
+      System.get_env("TWITCH_WEBHOOKS_SECRET") || raise("Env:TWITCH_WEBHOOKS_SECRET missing"),
     client_id: System.get_env("TWITCH_CLIENT_ID") || raise("Env:TWITCH_CLIENT_ID missing"),
     client_secret:
-      System.get_env("TWITCH_CLIENT_SECRET") || raise("Env:TWITCH_CLIENT_SECRET missing")
+      System.get_env("TWITCH_CLIENT_SECRET") || raise("Env:TWITCH_CLIENT_SECRET missing"),
+    webhook_callback_uri:
+      System.get_env("TWITCH_WEBHOOKS_CALLBACK_URI") ||
+        raise("Env:TWITCH_WEBHOOKS_CALLBACK_URI missing"),
+    redirect_uri:
+      System.get_env("TWITCH_REDIRECT_URI") || raise("Env:TWITCH_REDIRECT_URI missing")
   ]

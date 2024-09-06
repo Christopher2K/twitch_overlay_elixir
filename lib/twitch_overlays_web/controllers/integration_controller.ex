@@ -4,14 +4,25 @@ defmodule TwitchOverlaysWeb.IntegrationController do
   use TwitchOverlaysWeb, :controller
 
   alias TwitchOverlays.Integration.Services, as: IntegrationServices
+  alias TwitchOverlays.Webhooks.Services, as: WebhookServices
+  alias TwitchOverlays.Webhooks.Meta
 
   def index(conn, _) do
     {:ok, integrations} = IntegrationServices.GetAllIntegrations.call()
+    {:ok, subscriptions} = IntegrationServices.GetAllSubscriptions.call()
 
     conn
     |> assign_prop(
       :integrations,
       integrations |> Enum.map(fn integration -> integration.name end)
+    )
+    |> assign_prop(
+      :subscriptions,
+      subscriptions
+    )
+    |> assign_prop(
+      :twitch_sub_types,
+      Meta.get_available_subscriptions_type("twitch")
     )
     |> render_inertia("admin/integrations")
   end
@@ -47,5 +58,35 @@ defmodule TwitchOverlaysWeb.IntegrationController do
     conn
     |> put_flash(:error, "Login to Twitch failed")
     |> redirect(to: ~p"/admin/integrations")
+  end
+
+  def subscribe_to_event(conn, %{"platform" => platform, "type" => type}) do
+    with {:ok, _sub} <- WebhookServices.SubscribeToWebhook.call(platform, type) do
+      conn
+      |> put_flash(:success, "Subscribed to #{type}")
+      |> redirect(to: ~p"/admin/integrations")
+    else
+      error ->
+        Logger.error(inspect(error))
+
+        conn
+        |> put_flash(:error, "Failed to subscribe to #{type}")
+        |> redirect(to: ~p"/admin/integrations")
+    end
+  end
+
+  def unsubscribe_to_event(conn, %{"id" => id}) do
+    with {:ok, _} <- WebhookServices.UnsubscribeToWebhook.call(id) do
+      conn
+      |> put_flash(:success, "Unsubcribed to the event")
+      |> redirect(to: ~p"/admin/integrations")
+    else
+      error ->
+        Logger.error(inspect(error))
+
+        conn
+        |> put_flash(:error, "Failed to unsubscribe")
+        |> redirect(to: ~p"/admin/integrations")
+    end
   end
 end
