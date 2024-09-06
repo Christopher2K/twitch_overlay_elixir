@@ -90,6 +90,7 @@
 
               <Button
                 type="button"
+                disabled={!isSubscribed(subType.type) || loading}
                 on:click={() => unsubscribeToEvent(subType.type, "twitch")}
                 >Unsubscribe</Button
               >
