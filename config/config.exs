@@ -13,7 +13,7 @@ config :twitch_overlays,
 
 # Configures the endpoint
 config :twitch_overlays, TwitchOverlaysWeb.Endpoint,
-  url: [host: "localcan.dev"],
+  url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
     formats: [html: TwitchOverlaysWeb.ErrorHTML, json: TwitchOverlaysWeb.ErrorJSON],
