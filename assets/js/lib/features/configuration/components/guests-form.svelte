@@ -17,7 +17,7 @@
   }
 
   function removeGuestField() {
-    if (guests.length == 1) return;
+    if (guests.length == 0) return;
     guests = guests.slice(0, -1);
   }
 
