@@ -5,7 +5,7 @@ export type Participant = {
 
 export type GlobalMetadata = {
   name: "global";
-  data: { banner: string; title: string };
+  data: { banner: string; title: string; focusMode: boolean };
 };
 
 export type GuestMetadata = {

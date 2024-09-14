@@ -11,6 +11,7 @@
 
   let banner: string = initialData.banner;
   let title: string = initialData.title;
+  let focusMode: boolean = initialData.focusMode;
 
   function handleSubmit(event: SubmitEvent) {
     event.preventDefault();
@@ -18,6 +19,7 @@
       global: {
         banner,
         title,
+        focusMode,
       },
     });
   }
@@ -33,6 +35,11 @@
     <Field label="Stream title" htmlFor="title">
       <Textinput id="title" bind:value={title} />
     </Field>
+
+    <Field label="Focus mode" htmlFor="focusMode" inline>
+      <input type="checkbox" bind:checked={focusMode} />
+    </Field>
+
     <Button type="submit" fullWidth>Save</Button>
   </Form>
 </section>
