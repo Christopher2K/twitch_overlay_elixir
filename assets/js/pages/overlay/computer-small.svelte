@@ -30,6 +30,9 @@
         </div>
       {/if}
     </div>
+  </div>
+  <!-- Cameras -->
+  <div class="flex h-full w-[493px] flex-col items-center justify-center">
     {#if globalData}
       <TitleBanner
         position="right"
@@ -37,9 +40,6 @@
         banner={globalData.data.banner}
       />
     {/if}
-  </div>
-  <!-- Cameras -->
-  <div class="flex h-full w-[493px] flex-col items-center justify-center">
     <div class="w-full flex-1 pb-2 pl-2 pr-4 pt-4">
       <div class="card relative h-[66%] w-full bg-placeholder">
         {#if globalData?.data.focusMode}
