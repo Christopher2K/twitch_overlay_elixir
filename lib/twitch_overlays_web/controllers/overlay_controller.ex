@@ -38,6 +38,19 @@ defmodule TwitchOverlaysWeb.OverlayController do
     |> render_inertia("overlay/computer")
   end
 
+  def computer_small_overlay(conn, _) do
+    global_data =
+      case MetadataServices.GetMetadata.call("global") do
+        {:ok, global} -> global
+        _ -> nil
+      end
+
+    conn
+    |> assign_prop("globalData", global_data)
+    |> put_layout(html: :overlay)
+    |> render_inertia("overlay/computer-small")
+  end
+
   def talk_overlay(conn, _) do
     global_data =
       case MetadataServices.GetMetadata.call("global") do
