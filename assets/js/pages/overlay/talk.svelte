@@ -2,6 +2,7 @@
   import TitleBanner from "$lib/components/title-banner.svelte";
   import { useConfigurationUpdate } from "$lib/features/configuration/hooks/use-configuration-update";
   import type { GlobalMetadata } from "$lib/features/metadata";
+  import MusicPlayer from "$lib/features/music/components/music-player.svelte";
 
   export let globalData: GlobalMetadata | null;
 
@@ -16,12 +17,14 @@
   <!-- Main Screen -->
   <div class="relative h-full w-full flex-1 pb-4 pl-4 pr-4 pt-4">
     <div class="card relative h-full w-full bg-placeholder"></div>
-    {#if globalData}
-      <TitleBanner
-        position="left"
-        title={globalData.data.title}
-        banner={globalData.data.banner}
-      />
-    {/if}
+    <div class="absolute bottom-8 left-8 flex w-fit flex-row items-end gap-4">
+      <MusicPlayer />
+      {#if globalData}
+        <TitleBanner
+          title={globalData.data.title}
+          banner={globalData.data.banner}
+        />
+      {/if}
+    </div>
   </div>
 </div>

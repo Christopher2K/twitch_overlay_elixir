@@ -1,5 +1,6 @@
 <script lang="ts">
   import TitleBanner from "$lib/components/title-banner.svelte";
+  import MusicPlayer from "$lib/features/music/components/music-player.svelte";
   import type { GlobalMetadata } from "$lib/features/metadata";
   import { useConfigurationUpdate } from "$lib/features/configuration/hooks/use-configuration-update";
 
@@ -30,13 +31,6 @@
         </div>
       {/if}
     </div>
-    {#if globalData}
-      <TitleBanner
-        position="right"
-        title={globalData.data.title}
-        banner={globalData.data.banner}
-      />
-    {/if}
   </div>
   <!-- Cameras -->
   <div class="flex h-full w-[493px] flex-col items-center justify-center">
@@ -53,6 +47,12 @@
             <p class="text-center text-seven text-white">Man's locked-in...</p>
           </div>
         {/if}
+
+        <div
+          class="absolute bottom-4 right-0 flex flex-col items-end justify-end gap-4 px-4"
+        >
+          <MusicPlayer />
+        </div>
       </div>
     </div>
     <div class="aspect-video w-full pb-4 pl-2 pr-4 pt-2">
@@ -68,6 +68,15 @@
             <p class="text-center text-seven text-white">
               Keyboard's locked-in...
             </p>
+          </div>
+        {/if}
+
+        {#if globalData}
+          <div class="absolute right-4 top-4">
+            <TitleBanner
+              title={globalData.data.title}
+              banner={globalData.data.banner}
+            />
           </div>
         {/if}
       </div>

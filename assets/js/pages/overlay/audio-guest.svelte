@@ -24,11 +24,12 @@
   <div class="relative h-full w-full flex-1 pb-4 pl-4 pr-4 pt-4">
     <div class="card relative h-full w-full bg-placeholder"></div>
     {#if globalData}
-      <TitleBanner
-        position="left"
-        title={globalData.data.title}
-        banner={globalData.data.banner}
-      />
+      <div class="absolute bottom-8 left-8 w-fit">
+        <TitleBanner
+          title={globalData.data.title}
+          banner={globalData.data.banner}
+        />
+      </div>
     {/if}
 
     <AudioParticipants

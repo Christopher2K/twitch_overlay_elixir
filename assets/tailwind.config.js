@@ -30,6 +30,7 @@ module.exports = {
         six: "1.8rem",
         seven: "1.3rem",
         eight: "1rem",
+        nine: "0.8rem",
       },
     },
   },

@@ -26,18 +26,19 @@
   <div class="relative h-full w-full flex-1">
     <div class="card relative h-full w-full bg-placeholder"></div>
     {#if globalData}
-      <TitleBanner
-        position="left"
-        title={globalData.data.title}
-        banner={globalData.data.banner}
-      />
+      <div class="absolute bottom-4 left-4 w-fit">
+        <TitleBanner
+          title={globalData.data.title}
+          banner={globalData.data.banner}
+        />
+      </div>
     {/if}
   </div>
 
   {#each participants as participant}
     <div class="relative h-full w-full flex-1">
       <div class="card relative h-full w-full bg-placeholder">
-        <div class="absolute bottom-8 left-8 w-fit">
+        <div class="absolute bottom-4 left-4 w-fit">
           <ParticipantView {participant} />
         </div>
       </div>
