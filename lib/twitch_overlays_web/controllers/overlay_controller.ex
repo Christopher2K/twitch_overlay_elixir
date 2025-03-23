@@ -130,4 +130,35 @@ defmodule TwitchOverlaysWeb.OverlayController do
       |> assign(:bg_class, "")
       |> put_layout(html: :overlay)
       |> render_inertia("overlay/alerts")
+
+  def vertical_start_overlay(conn, _),
+    do:
+      conn
+      |> assign(:bg_class, "bg-video-background")
+      |> put_layout(html: :vertical_overlay)
+      |> render_inertia("overlay/vertical/start")
+
+  def vertical_end_overlay(conn, _),
+    do:
+      conn
+      |> put_layout(html: :vertical_overlay)
+      |> render_inertia("overlay/vertical/end")
+
+  def vertical_brb_overlay(conn, _),
+    do:
+      conn
+      |> put_layout(html: :vertical_overlay)
+      |> render_inertia("overlay/vertical/brb") 
+
+  def vertical_computer_overlay(conn, _),
+    do:
+      conn
+      |> put_layout(html: :vertical_overlay)
+      |> render_inertia("overlay/vertical/computer")
+
+  def vertical_talk_overlay(conn, _),
+    do:
+      conn
+      |> put_layout(html: :vertical_overlay)
+      |> render_inertia("overlay/vertical/talk")
 end
