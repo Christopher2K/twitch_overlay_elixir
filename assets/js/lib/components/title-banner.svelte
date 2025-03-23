@@ -12,7 +12,7 @@
     {/if}
 
     {#if title}
-      <p class="text-seven">
+      <p class="text-eight">
         {title}
       </p>
     {/if}
