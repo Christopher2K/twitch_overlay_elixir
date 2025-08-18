@@ -9,7 +9,10 @@ defmodule TwitchOverlays.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      listeners: [
+        Phoenix.CodeReloader
+      ]
     ]
   end
 
@@ -34,14 +37,13 @@ defmodule TwitchOverlays.MixProject do
     [
       {:req, "~> 0.5.6"},
       {:argon2_elixir, "~> 4.0"},
-      {:phoenix, "~> 1.7.14"},
+      {:phoenix, "~> 1.8.0"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
       {:ecto_sqlite3, ">= 0.0.0"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      # TODO bump on release to {:phoenix_live_view, "~> 1.0.0"},
-      {:phoenix_live_view, "~> 1.0.0-rc.1", override: true},
+      {:phoenix_live_view, "~> 1.1.7", override: true},
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
@@ -58,9 +60,9 @@ defmodule TwitchOverlays.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.24"},
       {:jason, "~> 1.2"},
-      {:dns_cluster, "~> 0.1.1"},
+      {:dns_cluster, "~> 0.1.3"},
       {:bandit, "~> 1.5"},
-      {:inertia, "~> 2.3.0"},
+      {:inertia, "~> 2.5.0"},
       {:dotenv, "~> 3.0.0", only: [:dev, :test]}
     ]
   end

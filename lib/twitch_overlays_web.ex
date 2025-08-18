@@ -44,7 +44,6 @@ defmodule TwitchOverlaysWeb do
 
       import Plug.Conn
       import Inertia.Controller
-      import TwitchOverlaysWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -86,9 +85,6 @@ defmodule TwitchOverlaysWeb do
     quote do
       # HTML escaping functionality
       import Phoenix.HTML
-      # Core UI components and translation
-      import TwitchOverlaysWeb.CoreComponents
-      import TwitchOverlaysWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
