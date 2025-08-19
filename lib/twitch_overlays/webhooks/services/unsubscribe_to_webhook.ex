@@ -6,7 +6,7 @@ defmodule TwitchOverlays.Webhooks.Services.UnsubscribeToWebhook do
 
   @twitch_endpoint "https://api.twitch.tv/helix/eventsub/subscriptions"
   def call(subscription_id) do
-    Logger.debug("Unsuscribe to event #{subscription_id}")
+    Logger.info("Unsuscribe to event #{subscription_id}")
 
     with {:ok, subscription} <- SubscriptionRepo.get_by_id(subscription_id) do
       twitch_config = Application.fetch_env!(:twitch_overlays, :integrations)[:twitch]

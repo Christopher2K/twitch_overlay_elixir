@@ -44,7 +44,7 @@ defmodule TwitchOverlays.Webhooks.Services.HandleWebhookEvent do
             )
 
           unhandled_event ->
-            Logger.debug("Unhandled event: #{unhandled_event}")
+            Logger.info("Unhandled event: #{unhandled_event}")
             nil
         end
 
@@ -61,7 +61,7 @@ defmodule TwitchOverlays.Webhooks.Services.HandleWebhookEvent do
   end
 
   def handle_call("webhook_callback_verification", %Plug.Conn{} = conn) do
-    Logger.debug("Subscription challenge from Twitch...")
+    Logger.info("Subscription challenge from Twitch...")
     challenge = conn.body_params["challenge"]
 
     conn

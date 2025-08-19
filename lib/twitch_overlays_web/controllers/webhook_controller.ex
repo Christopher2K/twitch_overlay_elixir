@@ -6,10 +6,10 @@ defmodule TwitchOverlaysWeb.WebhookController do
   alias TwitchOverlays.Webhooks.Services, as: WebhooksServices
 
   def twitch_event(conn, _) do
-    Logger.debug("Twitch webhook endpoint called")
+    Logger.info("Twitch webhook endpoint called")
 
     with {:ok, conn} <- WebhooksServices.CheckTwitchWebhooksSecret.call(conn) do
-      Logger.debug("Twitch webhook event signature verified")
+      Logger.info("Twitch webhook event signature verified")
 
       WebhooksServices.HandleWebhookEvent.call("twitch", conn)
     else

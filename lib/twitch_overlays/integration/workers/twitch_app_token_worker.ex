@@ -12,7 +12,7 @@ defmodule TwitchOverlays.Integration.Workers.TwitchAppTokenWorker do
   @impl true
   def init(_) do
     with {:ok, app_token} <- GetTwitchAppToken.call() do
-      Logger.debug("Intialized the TwitchAppTokenWorker...")
+      Logger.info("Intialized the TwitchAppTokenWorker...")
       Process.send_after(self(), :renew, floor(app_token["expires_in"] * 1000 / 2))
       {:ok, %{app_token: app_token["access_token"], expires_in: app_token["expires_in"]}}
     end

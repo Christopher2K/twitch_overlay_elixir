@@ -45,7 +45,7 @@ defmodule TwitchOverlays.Webhooks.Services.SubscribeToWebhook do
       })
 
   def handle_call("twitch" = platform, type, args) do
-    Logger.debug("Subscribe to the #{type} event")
+    Logger.info("Subscribe to the #{type} event")
     twitch_config = Application.fetch_env!(:twitch_overlays, :integrations)[:twitch]
     client_id = twitch_config[:client_id]
     app_token = TwitchAppTokenWorker.get_token()
