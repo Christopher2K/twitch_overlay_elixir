@@ -10,19 +10,19 @@ defmodule TwitchOverlaysWeb.OverlayController do
     do:
       conn
       |> assign(:bg_class, "bg-video-background")
-      |> put_layout(html: :overlay)
+      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
       |> render_inertia("overlay/start")
 
   def end_overlay(conn, _),
     do:
       conn
-      |> put_layout(html: :overlay)
+      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
       |> render_inertia("overlay/end")
 
   def brb_overlay(conn, _),
     do:
       conn
-      |> put_layout(html: :overlay)
+      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
       |> render_inertia("overlay/brb")
 
   def computer_overlay(conn, _) do
@@ -34,7 +34,7 @@ defmodule TwitchOverlaysWeb.OverlayController do
 
     conn
     |> assign_prop("globalData", global_data)
-    |> put_layout(html: :overlay)
+    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
     |> render_inertia("overlay/computer")
   end
 
@@ -47,7 +47,7 @@ defmodule TwitchOverlaysWeb.OverlayController do
 
     conn
     |> assign_prop("globalData", global_data)
-    |> put_layout(html: :overlay)
+    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
     |> render_inertia("overlay/computer-small")
   end
 
@@ -60,7 +60,7 @@ defmodule TwitchOverlaysWeb.OverlayController do
 
     conn
     |> assign_prop("globalData", global_data)
-    |> put_layout(html: :overlay)
+    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
     |> render_inertia("overlay/talk")
   end
 
@@ -80,7 +80,7 @@ defmodule TwitchOverlaysWeb.OverlayController do
     conn
     |> assign_prop("globalData", global_data)
     |> assign_prop("guestData", guest_data)
-    |> put_layout(html: :overlay)
+    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
     |> render_inertia("overlay/audio-guest")
   end
 
@@ -100,7 +100,7 @@ defmodule TwitchOverlaysWeb.OverlayController do
     conn
     |> assign_prop("globalData", global_data)
     |> assign_prop("guestData", guest_data)
-    |> put_layout(html: :overlay)
+    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
     |> render_inertia("overlay/video-guest")
   end
 
@@ -120,7 +120,7 @@ defmodule TwitchOverlaysWeb.OverlayController do
     conn
     |> assign_prop("globalData", global_data)
     |> assign_prop("guestData", guest_data)
-    |> put_layout(html: :overlay)
+    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
     |> render_inertia("overlay/computer-guest")
   end
 
@@ -128,37 +128,37 @@ defmodule TwitchOverlaysWeb.OverlayController do
     do:
       conn
       |> assign(:bg_class, "")
-      |> put_layout(html: :overlay)
+      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
       |> render_inertia("overlay/alerts")
 
   def vertical_start_overlay(conn, _),
     do:
       conn
       |> assign(:bg_class, "bg-video-background")
-      |> put_layout(html: :vertical_overlay)
+      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
       |> render_inertia("overlay/vertical/start")
 
   def vertical_end_overlay(conn, _),
     do:
       conn
-      |> put_layout(html: :vertical_overlay)
+      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
       |> render_inertia("overlay/vertical/end")
 
   def vertical_brb_overlay(conn, _),
     do:
       conn
-      |> put_layout(html: :vertical_overlay)
-      |> render_inertia("overlay/vertical/brb") 
+      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
+      |> render_inertia("overlay/vertical/brb")
 
   def vertical_computer_overlay(conn, _),
     do:
       conn
-      |> put_layout(html: :vertical_overlay)
+      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
       |> render_inertia("overlay/vertical/computer")
 
   def vertical_talk_overlay(conn, _),
     do:
       conn
-      |> put_layout(html: :vertical_overlay)
+      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
       |> render_inertia("overlay/vertical/talk")
 end
