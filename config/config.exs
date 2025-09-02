@@ -43,6 +43,20 @@ config :tailwind,
     cd: Path.expand("../assets", __DIR__)
   ]
 
+config :esbuild,
+  version: "0.21.5",
+  app: [
+    args:
+      ~w(js/app.jsx --bundle --target=es2020 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ],
+  ssr: [
+    args: ~w(js/ssr.jsx --bundle --platform=node --outdir=../priv --format=cjs),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

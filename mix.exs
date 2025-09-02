@@ -63,7 +63,8 @@ defmodule TwitchOverlays.MixProject do
       {:dns_cluster, "~> 0.1.3"},
       {:bandit, "~> 1.5"},
       {:inertia, "~> 2.5.0"},
-      {:dotenv, "~> 3.0.0", only: [:dev, :test]}
+      {:dotenv, "~> 3.0.0", only: [:dev, :test]},
+      {:esbuild, "~> 0.10", runtime: Mix.env() == :dev}
     ]
   end
 
@@ -82,9 +83,8 @@ defmodule TwitchOverlays.MixProject do
       "assets.setup": ["tailwind.install --if-missing", "pnpm i --prefix assets"],
       "assets.build": [
         "tailwind twitch_overlays",
-        "cd assets && node build.js",
-        "cmd --cd assets node build.js",
-        "cmd --cd assets node build.js --ssr"
+        "esbuild app --minify",
+        "esbuild ssr"
       ],
       "assets.deploy": [
         "tailwind twitch_overlays --minify",

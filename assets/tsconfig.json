@@ -1,17 +1,20 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
     "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "resolveJsonModule": true,
+    "lib": ["DOM", "DOM.Iterable", "ES2017"],
     "allowJs": true,
-    "checkJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
     "isolatedModules": true,
-    "moduleDetection": "force",
     "noEmit": true,
-    "verbatimModuleSyntax": true,
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
       "$lib/*": [
@@ -21,6 +24,6 @@
   },
   "include": [
     "js/**/*.ts",
-    "js/**/*.svelte"
+    "js/**/*.tsx"
   ]
 }
