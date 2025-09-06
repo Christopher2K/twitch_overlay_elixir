@@ -8,7 +8,7 @@ interface LayoutProps {
   flash?: Record<string, string>;
 }
 
-export default function AdminLayout({ children, flash = {} }: LayoutProps) {
+export default function AdminLayout({ children, flash = {}, ...args }: LayoutProps) {
   const handleAlertClose = () => {
     // In React, we would typically manage this through state
     // For now, we'll leave this empty as flash messages are typically
