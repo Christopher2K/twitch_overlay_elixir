@@ -9,6 +9,7 @@
   $: initialGlobalData = metadata.find((m) => m.name === "global")?.data ?? {
     banner: "",
     title: "",
+    focusMode: false,
   };
   $: initialGuestsData = metadata.find((m) => m.name === "guests")?.data ?? {
     members: [],
