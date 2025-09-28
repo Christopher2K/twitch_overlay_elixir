@@ -21,6 +21,16 @@
   font-style: normal;
 }
 
+@layer utilities {
+  .aspect-vertical {
+    aspect-ratio: 9 / 16;
+  }
+
+  .aspect-macbook {
+    aspect-ratio: 1512 / 982;
+  }
+}
+
 @layer components {
   .card {
     border-radius: theme("borderRadius.lg");
