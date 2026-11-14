@@ -31,43 +31,32 @@ export default function Talk({ globalData: initialGlobalData }: Props) {
 
   return (
     <div className="ov-root">
+      <OverlayBanner
+        x={48}
+        y={952}
+        width={780}
+        title={globalData?.data.title}
+        tag={globalData?.data.banner}
+      />
+
       <OverlayRegion
-        x={16}
-        y={16}
-        width={1888}
-        height={1048}
-        label="frame"
-        labelX={32}
-        labelY={30}
+        x={928.68}
+        y={267.1}
+        width={421.32}
+        height={748.9}
+        label="cam · 9:16"
         focus={focus}
-      >
-        <OverlayBanner
-          x={32}
-          y={936}
-          width={780}
-          title={globalData?.data.title}
-          tag={globalData?.data.banner}
-        />
+      />
 
-        <OverlayRegion
-          x={912.68}
-          y={251.1}
-          width={421.32}
-          height={748.9}
-          label="cam · 9:16"
-          focus={focus}
-        />
+      <LiveTicker x={1450.68} y={986} width={421.32} />
 
-        <LiveTicker x={1434.68} y={970} width={421.32} />
-
-        <NowPlayingPill
-          x={32}
-          y={850}
-          width={520}
-          artwork={music.artwork}
-          track={track}
-        />
-      </OverlayRegion>
+      <NowPlayingPill
+        x={48}
+        y={866}
+        width={520}
+        artwork={music.artwork}
+        track={track}
+      />
     </div>
   );
 }
