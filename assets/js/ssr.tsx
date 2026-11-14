@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { createInertiaApp as createReactInertiaApp } from "@inertiajs/react";
 import { createInertiaApp as createSvelteInertiaApp } from "@inertiajs/svelte";
 import { renderToString } from "react-dom/server";
+import { render as renderSvelte } from "svelte/server";
 
 import AdminLayout from "./pages/admin/_layout.svelte";
 
@@ -38,8 +39,8 @@ export function render(page: InitialPage) {
             : undefined,
       };
     },
-    setup({ el, App }: { el: HTMLElement; App: any }) {
-      new App({ target: el, hydrate: true });
+    setup({ App, props }: { App: any; props: any }) {
+      return renderSvelte(App, { props });
     },
   });
 }

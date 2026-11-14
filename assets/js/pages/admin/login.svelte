@@ -1,13 +1,19 @@
 <script lang="ts">
-  import { router } from "@inertiajs/svelte";
+  import { router, usePage } from "@inertiajs/svelte";
 
   import Field from "$lib/components/field.svelte";
   import Button from "$lib/components/button.svelte";
   import Textinput from "$lib/components/textinput.svelte";
   import Alert from "$lib/components/alert.svelte";
 
-  export let flash: Record<string, string> = {};
-  $: error = flash["error"];
+  // Inertia v3 keeps flash at the top level of the page object.
+  const page = usePage();
+  const flash = $derived((page.flash ?? {}) as Record<string, string>);
+
+  // Hide the old error as soon as the user submits again; a new page object
+  // (and therefore a new flash entry) brings the alert back if login fails.
+  let dismissed = $state<Record<string, string> | undefined>(undefined);
+  const error = $derived(flash === dismissed ? undefined : flash["error"]);
 
   const formValues = {
     username: "",
@@ -15,7 +21,7 @@
   };
 
   function handleSubmit() {
-    flash = {};
+    dismissed = flash;
     router.post("/admin/login", formValues);
   }
 </script>

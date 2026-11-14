@@ -62,7 +62,8 @@ defmodule TwitchOverlays.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.3"},
       {:bandit, "~> 1.5"},
-      {:inertia, "~> 2.5.0"},
+      {:inertia, "~> 3.1"},
+      {:nodejs, ">= 3.1.4 and < 4.0.0"},
       {:dotenv, "~> 3.0.0", only: [:dev, :test]}
     ]
   end

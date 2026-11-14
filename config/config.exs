@@ -56,7 +56,7 @@ config :inertia,
   static_paths: ["/assets/app.js"],
   default_version: "1",
   ssr: true,
-  raise_on_ssr_failture: config_env() != :prod
+  raise_on_ssr_failure: config_env() != :prod
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

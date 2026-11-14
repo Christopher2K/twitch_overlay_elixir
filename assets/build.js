@@ -18,13 +18,13 @@ const clientOpts = {
   outdir: "../priv/static/assets",
   external: ["*.css", "fonts/*", "images/*", "sounds/*"],
   nodePaths: ["../deps"],
+  conditions: ["svelte"],
   plugins: [
     sveltePlugin({
       preprocess: sveltePreprocess(),
       compilerOptions: {
         dev: watch,
-        hydratable: true,
-        generate: "dom",
+        generate: "client",
         css: "external",
       },
     }),
@@ -43,14 +43,14 @@ const serverOpts = {
   outdir: "../priv",
   external: ["*.css", "fonts/*", "images/*"],
   nodePaths: ["../deps"],
+  conditions: ["svelte"],
   plugins: [
     sveltePlugin({
       preprocess: sveltePreprocess(),
       compilerOptions: {
         dev: watch,
-        hydratable: true,
-        generate: "ssr",
-        css: "none",
+        generate: "server",
+        css: "external",
       },
     }),
   ],

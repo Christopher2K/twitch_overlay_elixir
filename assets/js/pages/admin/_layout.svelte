@@ -1,12 +1,16 @@
 <script lang="ts">
-  import { inertia } from "@inertiajs/svelte";
+  import { inertia, usePage } from "@inertiajs/svelte";
   import Button from "$lib/components/button.svelte";
   import Alert from "$lib/components/alert.svelte";
 
-  export let flash: Record<string, string> = { success: "yes" };
+  // Inertia v3 keeps flash at the top level of the page object.
+  const page = usePage();
+  let dismissedFor: Record<string, string> | undefined = $state(undefined);
+
+  const flash = $derived((page.flash ?? {}) as Record<string, string>);
 
   function onAlertClose() {
-    flash = {};
+    dismissedFor = flash;
   }
 </script>
 
@@ -26,7 +30,7 @@
       <Button isLink href="/admin/logout">Logout</Button>
     </div>
 
-    {#if Object.keys(flash).length > 0}
+    {#if Object.keys(flash).length > 0 && flash !== dismissedFor}
       <div
         class="absolute -bottom-0 left-1/2 z-50 -translate-x-1/2 translate-y-[100%] p-4"
       >
