@@ -1,12 +1,12 @@
 <script lang="ts">
-  import TitleBanner from "$lib/components/title-banner.svelte";
-  import AudioParticipants from "$lib/components/audio-participants.svelte";
+  import OverlayRegion from "$lib/components/overlay/overlay-region.svelte";
+  import OverlayBanner from "$lib/components/overlay/overlay-banner.svelte";
+  import OverlayAudioStack from "$lib/components/overlay/overlay-audio-stack.svelte";
   import type { GlobalMetadata, GuestMetadata } from "$lib/features/metadata";
   import { useConfigurationUpdate } from "$lib/features/configuration/hooks/use-configuration-update";
 
   export let globalData: GlobalMetadata | null;
   export let guestData: GuestMetadata | null;
-  $: participants = guestData?.data.members ?? [];
 
   useConfigurationUpdate((data) => {
     if (data.name === "global") {
@@ -17,26 +17,37 @@
       guestData = data;
     }
   });
+
+  $: participants = guestData?.data.members ?? [];
+  $: rows = [
+    { name: "llcoolchris", role: "développeur web · toronto", onAir: true },
+    ...participants.map((participant) => ({
+      name: participant.name,
+      role: participant.description || "en écoute",
+    })),
+  ];
+  // Anchored to the same bottom edge as the designed three-row stack.
+  $: stackY = 1020 - 58 * rows.length;
 </script>
 
-<div class="flex h-full w-full flex-row items-start justify-start bg-desktop">
-  <!-- Main Screen -->
-  <div class="relative h-full w-full flex-1 pb-4 pl-4 pr-4 pt-4">
-    <div class="card relative h-full w-full bg-placeholder"></div>
-    {#if globalData}
-      <div class="absolute bottom-8 left-8 w-fit">
-        <TitleBanner
-          title={globalData.data.title}
-          banner={globalData.data.banner}
-        />
-      </div>
-    {/if}
-
-    <AudioParticipants
-      participants={[
-        { name: "LLCoolChris_", description: "Developeur web a Toronto" },
-        ...participants,
-      ]}
+<div class="ov-root">
+  <OverlayRegion
+    x={16}
+    y={16}
+    width={1888}
+    height={1048}
+    label="frame"
+    labelX={32}
+    labelY={30}
+  >
+    <OverlayBanner
+      x={32}
+      y={936}
+      width={780}
+      title={globalData?.data.title}
+      tag={globalData?.data.banner}
     />
-  </div>
+
+    <OverlayAudioStack x={1516} y={stackY} width={340} participants={rows} />
+  </OverlayRegion>
 </div>
