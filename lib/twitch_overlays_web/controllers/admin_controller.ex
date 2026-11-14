@@ -3,14 +3,12 @@ defmodule TwitchOverlaysWeb.AdminController do
   use TwitchOverlaysWeb, :controller
 
   alias TwitchOverlays.Accounts.Services, as: AccountsServices
-  alias TwitchOverlays.Configuration.Services, as: MetadataServices
+  alias TwitchOverlays.Configuration.Store
 
   def index(conn, _) do
-    with {:ok, metadata} <- MetadataServices.GetAllMetadata.call() do
-      conn
-      |> assign_prop(:metadata, metadata)
-      |> render_inertia("admin/index")
-    end
+    conn
+    |> assign_prop(:metadata, Store.all())
+    |> render_inertia("admin/index")
   end
 
   def login(conn, _),
@@ -31,7 +29,7 @@ defmodule TwitchOverlaysWeb.AdminController do
         |> redirect(to: ~p"/admin/login")
 
       {:error, reason} ->
-        Logger.error("GET /admin/login failed with reason: #{inspect(reason)}")
+        Logger.error("POST /admin/login failed with reason: #{inspect(reason)}")
 
         conn
         |> put_flash(:error, "Something went wrong")
@@ -45,41 +43,21 @@ defmodule TwitchOverlaysWeb.AdminController do
       |> delete_session(:user_id)
       |> redirect(to: ~p"/admin/login")
 
-  def configuration_submission(conn, %{"global" => global_data}) do
-    case MetadataServices.UpdateMetadata.call("global", global_data) do
-      {:ok, _} ->
+  def configuration_submission(conn, %{"global" => data}),
+    do: save_setting(conn, "global", data, "Global information updated")
+
+  def configuration_submission(conn, %{"guests" => data}),
+    do: save_setting(conn, "guests", data, "Guests information updated")
+
+  defp save_setting(conn, name, data, success_message) do
+    case Store.put(name, data) do
+      {:ok, _metadata} ->
         conn
-        |> put_flash(:success, "Global information updated")
+        |> put_flash(:success, success_message)
         |> redirect(to: ~p"/admin")
 
-      {:error, reason} when is_binary(reason) ->
-        conn
-        |> put_flash(:error, reason)
-        |> redirect(to: ~p"/admin")
-
-      {:error, reason} ->
-        Logger.error("GET /admin/login failed with reason: #{inspect(reason)}")
-
-        conn
-        |> put_flash(:error, "Something went wrong")
-        |> redirect(to: ~p"/admin")
-    end
-  end
-
-  def configuration_submission(conn, %{"guests" => guests_data}) do
-    case MetadataServices.UpdateMetadata.call("guests", guests_data) do
-      {:ok, _} ->
-        conn
-        |> put_flash(:success, "Guests information updated")
-        |> redirect(to: ~p"/admin")
-
-      {:error, reason} when is_binary(reason) ->
-        conn
-        |> put_flash(:error, reason)
-        |> redirect(to: ~p"/admin")
-
-      {:error, reason} ->
-        Logger.error("GET /admin/login failed with reason: #{inspect(reason)}")
+      {:error, %Ecto.Changeset{} = changeset} ->
+        Logger.error("POST /admin could not save #{name}: #{inspect(changeset.errors)}")
 
         conn
         |> put_flash(:error, "Something went wrong")

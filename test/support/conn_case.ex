@@ -15,6 +15,8 @@ defmodule TwitchOverlaysWeb.ConnCase do
   this option is not recommended for other databases.
   """
 
+  import Phoenix.ConnTest, only: [html_response: 2]
+
   use ExUnit.CaseTemplate
 
   using do
@@ -34,5 +36,22 @@ defmodule TwitchOverlaysWeb.ConnCase do
   setup tags do
     TwitchOverlays.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
+  end
+
+  @doc """
+  Returns the props embedded by Inertia in the page's data script.
+
+  Keys are strings, as they come back from decoding the JSON payload
+  (for example `%{"globalData" => %{"name" => "global"}}`).
+  """
+  def inertia_props(conn) do
+    conn
+    |> html_response(200)
+    |> then(
+      &Regex.run(~r/<script data-page="app" type="application\/json">(.*?)<\/script>/s, &1,
+        capture: :all_but_first
+      )
+    )
+    |> then(fn [json] -> json |> Jason.decode!() |> Map.fetch!("props") end)
   end
 end

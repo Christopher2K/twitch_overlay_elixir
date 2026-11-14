@@ -1,187 +1,82 @@
 defmodule TwitchOverlaysWeb.OverlayController do
   use TwitchOverlaysWeb, :controller
 
-  alias TwitchOverlays.Configuration.Services, as: MetadataServices
+  alias TwitchOverlays.Configuration.Store
 
   def index(conn, _), do: render(conn, :index)
 
-  def start_overlay(conn, _),
+  def start_overlay(conn, _), do: render_overlay(conn, "overlay/start")
+
+  def end_overlay(conn, _), do: render_overlay(conn, "overlay/end")
+
+  def brb_overlay(conn, _), do: render_overlay(conn, "overlay/brb")
+
+  def computer_overlay(conn, _),
+    do: render_overlay(conn, "overlay/computer", props: [globalData: Store.get(:global)])
+
+  def computer_small_overlay(conn, _),
+    do: render_overlay(conn, "overlay/computer-small", props: [globalData: Store.get(:global)])
+
+  def computer_built_in_overlay(conn, _),
+    do: render_overlay(conn, "overlay/computer-built-in", props: [globalData: Store.get(:global)])
+
+  def talk_overlay(conn, _),
+    do: render_overlay(conn, "overlay/talk", props: [globalData: Store.get(:global)])
+
+  def audio_guest_overlay(conn, _),
     do:
-      conn
-      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
-      |> render_inertia("overlay/start")
+      render_overlay(conn, "overlay/audio-guest",
+        props: [globalData: Store.get(:global), guestData: Store.get(:guests)]
+      )
 
-  def end_overlay(conn, _),
+  def video_guest_overlay(conn, _),
     do:
-      conn
-      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
-      |> render_inertia("overlay/end")
+      render_overlay(conn, "overlay/video-guest",
+        props: [globalData: Store.get(:global), guestData: Store.get(:guests)]
+      )
 
-  def brb_overlay(conn, _),
+  def computer_guest_overlay(conn, _),
     do:
-      conn
-      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
-      |> render_inertia("overlay/brb")
+      render_overlay(conn, "overlay/computer-guest",
+        props: [globalData: Store.get(:global), guestData: Store.get(:guests)]
+      )
 
-  def computer_overlay(conn, _) do
-    global_data =
-      case MetadataServices.GetMetadata.call("global") do
-        {:ok, global} -> global
-        _ -> nil
-      end
-
-    conn
-    |> assign_prop("globalData", global_data)
-    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
-    |> render_inertia("overlay/computer")
-  end
-
-  def computer_small_overlay(conn, _) do
-    global_data =
-      case MetadataServices.GetMetadata.call("global") do
-        {:ok, global} -> global
-        _ -> nil
-      end
-
-    conn
-    |> assign_prop("globalData", global_data)
-    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
-    |> render_inertia("overlay/computer-small")
-  end
-
-  def computer_built_in_overlay(conn, _) do
-    global_data =
-      case MetadataServices.GetMetadata.call("global") do
-        {:ok, global} -> global
-        _ -> nil
-      end
-
-    conn
-    |> assign_prop("globalData", global_data)
-    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
-    |> render_inertia("overlay/computer-built-in")
-  end
-
-  def talk_overlay(conn, _) do
-    global_data =
-      case MetadataServices.GetMetadata.call("global") do
-        {:ok, global} -> global
-        _ -> nil
-      end
-
-    conn
-    |> assign_prop("globalData", global_data)
-    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
-    |> render_inertia("overlay/talk")
-  end
-
-  def audio_guest_overlay(conn, _) do
-    global_data =
-      case MetadataServices.GetMetadata.call("global") do
-        {:ok, global} -> global
-        _ -> nil
-      end
-
-    guest_data =
-      case MetadataServices.GetMetadata.call("guests") do
-        {:ok, guests} -> guests
-        _ -> nil
-      end
-
-    conn
-    |> assign_prop("globalData", global_data)
-    |> assign_prop("guestData", guest_data)
-    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
-    |> render_inertia("overlay/audio-guest")
-  end
-
-  def video_guest_overlay(conn, _) do
-    global_data =
-      case MetadataServices.GetMetadata.call("global") do
-        {:ok, global} -> global
-        _ -> nil
-      end
-
-    guest_data =
-      case MetadataServices.GetMetadata.call("guests") do
-        {:ok, guests} -> guests
-        _ -> nil
-      end
-
-    conn
-    |> assign_prop("globalData", global_data)
-    |> assign_prop("guestData", guest_data)
-    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
-    |> render_inertia("overlay/video-guest")
-  end
-
-  def computer_guest_overlay(conn, _) do
-    global_data =
-      case MetadataServices.GetMetadata.call("global") do
-        {:ok, global} -> global
-        _ -> nil
-      end
-
-    guest_data =
-      case MetadataServices.GetMetadata.call("guests") do
-        {:ok, guests} -> guests
-        _ -> nil
-      end
-
-    conn
-    |> assign_prop("globalData", global_data)
-    |> assign_prop("guestData", guest_data)
-    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
-    |> render_inertia("overlay/computer-guest")
-  end
-
-  def alerts_overlay(conn, _),
-    do:
-      conn
-      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
-      |> render_inertia("overlay/alerts")
+  def alerts_overlay(conn, _), do: render_overlay(conn, "overlay/alerts")
 
   def vertical_start_overlay(conn, _),
-    do:
-      conn
-      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
-      |> render_inertia("overlay/vertical/start")
+    do: render_overlay(conn, "overlay/vertical/start", layout: :vertical_overlay)
 
   def vertical_end_overlay(conn, _),
-    do:
-      conn
-      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
-      |> render_inertia("overlay/vertical/end")
+    do: render_overlay(conn, "overlay/vertical/end", layout: :vertical_overlay)
 
   def vertical_brb_overlay(conn, _),
-    do:
-      conn
-      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
-      |> render_inertia("overlay/vertical/brb")
+    do: render_overlay(conn, "overlay/vertical/brb", layout: :vertical_overlay)
 
-  def vertical_computer_overlay(conn, _) do
-    global_data =
-      case MetadataServices.GetMetadata.call("global") do
-        {:ok, global} -> global
-        _ -> nil
-      end
+  def vertical_computer_overlay(conn, _),
+    do:
+      render_overlay(conn, "overlay/vertical/computer",
+        layout: :vertical_overlay,
+        props: [globalData: Store.get(:global)]
+      )
+
+  def vertical_talk_overlay(conn, _),
+    do:
+      render_overlay(conn, "overlay/vertical/talk",
+        layout: :vertical_overlay,
+        props: [globalData: Store.get(:global)]
+      )
+
+  defp render_overlay(conn, page, opts \\ []) do
+    layout = Keyword.get(opts, :layout, :overlay)
+    props = Keyword.get(opts, :props, [])
 
     conn
-    |> assign_prop("globalData", global_data)
-    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
-    |> render_inertia("overlay/vertical/computer")
+    |> assign_overlay_props(props)
+    |> put_layout(html: {TwitchOverlaysWeb.Layouts, layout})
+    |> render_inertia(page)
   end
 
-  def vertical_talk_overlay(conn, _) do
-    global_data =
-      case MetadataServices.GetMetadata.call("global") do
-        {:ok, global} -> global
-        _ -> nil
-      end
-
-    conn
-    |> assign_prop("globalData", global_data)
-    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
-    |> render_inertia("overlay/vertical/talk")
+  defp assign_overlay_props(conn, props) do
+    Enum.reduce(props, conn, fn {key, value}, conn -> assign_prop(conn, key, value) end)
   end
 end
