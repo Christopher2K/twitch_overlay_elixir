@@ -461,6 +461,120 @@
   text-align: right;
 }
 
+/* Chat ---------------------------------------------------------------- */
+
+.ov-chat {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0 0 0 1px var(--ov-line);
+  background: var(--ov-widget);
+}
+
+.ov-chat__head {
+  height: 44px;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 16px;
+  box-shadow: inset 0 -1px 0 0 var(--ov-line);
+}
+
+.ov-chat__live {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.ov-chat__label {
+  font-size: 11px;
+  letter-spacing: 1.54px;
+  line-height: 1;
+  color: var(--ov-dim);
+}
+
+.ov-chat__count {
+  font-size: 11px;
+  letter-spacing: 1.76px;
+  line-height: 1;
+  color: var(--ov-accent);
+  white-space: nowrap;
+}
+
+.ov-chat__list {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.ov-chat__row {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ov-chat__meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.ov-chat__author {
+  overflow: hidden;
+  font-size: 11px;
+  letter-spacing: 0.22px;
+  line-height: 1;
+  color: var(--ov-accent);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ov-chat__badge {
+  flex: 0 0 auto;
+  padding: 3px 4px 2px;
+  font-size: 9px;
+  letter-spacing: 0.9px;
+  line-height: 1;
+  color: var(--ov-accent);
+  text-transform: uppercase;
+  box-shadow: inset 0 0 0 1px var(--ov-accent-muted);
+}
+
+.ov-chat__time {
+  margin-left: auto;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  line-height: 1;
+  color: var(--ov-dim);
+  white-space: nowrap;
+}
+
+.ov-chat__text {
+  font-size: 13px;
+  letter-spacing: 0.26px;
+  line-height: 1.35;
+  color: var(--ov-ink);
+  overflow-wrap: anywhere;
+}
+
+.ov-chat__empty {
+  margin: auto 0;
+  font-size: 12px;
+  letter-spacing: 1.44px;
+  line-height: 1;
+  color: var(--ov-dim);
+  text-transform: lowercase;
+}
+
 /* Transition stage ---------------------------------------------------- */
 
 .ov-stage {

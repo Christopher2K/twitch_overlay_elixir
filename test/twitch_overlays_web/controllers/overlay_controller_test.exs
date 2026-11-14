@@ -50,6 +50,15 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
     refute Map.has_key?(inertia_props(conn), "layout")
   end
 
+  test "renders the chat overlay on the transparent canvas", %{conn: conn} do
+    conn = get(conn, ~p"/overlay/chat")
+    html = html_response(conn, 200)
+
+    assert html =~ "h-[1080px] w-[1920px]"
+    assert html =~ "ov-chat"
+    assert %{} = inertia_props(conn)
+  end
+
   test "renders overlays without settings when nothing is stored", %{conn: conn} do
     Repo.delete_all(TwitchOverlays.Configuration.Metadata)
 
