@@ -4,6 +4,7 @@ defmodule TwitchOverlays.Webhooks.Meta do
       %{"type" => "channel.follow", "name" => "New followers"},
       %{"type" => "channel.subscribe", "name" => "New subscribers"},
       %{"type" => "channel.raid", "name" => "Raid"},
-      %{"type" => "channel.subscription.gift", "name" => "Gifts"}
+      %{"type" => "channel.subscription.gift", "name" => "Gifts"},
+      %{"type" => "channel.chat.message", "name" => "Chat messages"}
     ]
 end

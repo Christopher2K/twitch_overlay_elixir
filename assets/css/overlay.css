@@ -573,6 +573,16 @@
   overflow-wrap: anywhere;
 }
 
+.ov-chat__emote {
+  /* Tailwind's preflight makes images block-level, which drops every emote
+     onto its own line. Keep it in the text flow. */
+  display: inline-block;
+  width: auto;
+  max-width: none;
+  height: 1.55em;
+  vertical-align: text-bottom;
+}
+
 .ov-chat__empty {
   margin: auto 0;
   font-size: 12px;

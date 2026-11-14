@@ -40,4 +40,8 @@ defmodule TwitchOverlays.Integration.SubscriptionRepo do
   def delete(id) do
     from(Subscription, where: [id: ^id]) |> Repo.delete_all()
   end
+
+  def delete_by_sub_id(sub_id) do
+    from(Subscription, where: [sub_id: ^sub_id]) |> Repo.delete_all()
+  end
 end

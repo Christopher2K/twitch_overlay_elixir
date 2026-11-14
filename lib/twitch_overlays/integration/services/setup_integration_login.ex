@@ -13,12 +13,15 @@ defmodule TwitchOverlays.Integration.Services.SetupIntegrationLogin do
     scope =
       [
         "bits:read",
+        "channel:bot",
         "channel:moderate",
         "channel:read:subscriptions",
         "chat:edit",
         "chat:read",
         "moderation:read",
         "moderator:read:followers",
+        "user:bot",
+        "user:read:chat",
         "user:read:email",
         "user:read:subscriptions"
       ]

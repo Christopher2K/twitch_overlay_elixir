@@ -66,16 +66,11 @@ export default function Integrations({
           <IntegrationStatus isConnected={isTwitchConnected} />
         </div>
 
-        {!isTwitchConnected ? (
-          <Button
-            size="sm"
-            isLink
-            href="/admin/integrations/twitch"
-            disabled={isTwitchConnected}
-          >
-            Login with Twitch
-          </Button>
-        ) : null}
+        {/* Twitch does not let a connected app add scopes, so re-authorizing
+            has to stay reachable after the first connection. */}
+        <Button size="sm" isLink href="/admin/integrations/twitch">
+          {isTwitchConnected ? "Reconnect Twitch" : "Login with Twitch"}
+        </Button>
 
         <div className="w-full">
           <h4 className="mb-4 text-xl text-gray-600">Event subscriptions</h4>

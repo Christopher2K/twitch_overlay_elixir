@@ -1,10 +1,28 @@
 import { useEffect, useRef } from "react";
 
-import type { ChatMessage } from "$lib/features/chat/chat.types";
+import type { ChatFragment, ChatMessage } from "$lib/features/chat/chat.types";
 
 type Props = {
   messages: ChatMessage[];
 };
+
+type EmoteFragment = Extract<ChatFragment, { type: "emote" }>;
+
+function pad(value: number) {
+  return String(value).padStart(2, "0");
+}
+
+function clock(sentAt: string) {
+  const date = new Date(sentAt);
+  if (Number.isNaN(date.getTime())) return "";
+  return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
+}
+
+function emoteUrl(fragment: EmoteFragment) {
+  const format = fragment.animated ? "animated" : "static";
+
+  return `https://static-cdn.jtvnw.net/emoticons/v2/${encodeURIComponent(fragment.emote_id)}/${format}/dark/1.0`;
+}
 
 /**
  * Fills whatever box it is placed in. The overlay page hands sizing to OBS,
@@ -48,10 +66,23 @@ export default function OverlayChat({ messages }: Props) {
                   <span className="ov-chat__badge">{message.badge}</span>
                 ) : null}
 
-                <span className="ov-chat__time">{message.time}</span>
+                <span className="ov-chat__time">{clock(message.sent_at)}</span>
               </div>
 
-              <span className="ov-chat__text">{message.text}</span>
+              <span className="ov-chat__text">
+                {message.fragments.map((fragment, index) =>
+                  fragment.type === "emote" ? (
+                    <img
+                      key={`${message.id}-${index}`}
+                      className="ov-chat__emote"
+                      src={emoteUrl(fragment)}
+                      alt={fragment.text}
+                    />
+                  ) : (
+                    <span key={`${message.id}-${index}`}>{fragment.text}</span>
+                  ),
+                )}
+              </span>
             </div>
           ))
         ) : (
