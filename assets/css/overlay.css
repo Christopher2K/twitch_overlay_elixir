@@ -304,6 +304,7 @@
   height: 52px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 4px;
   padding: 0 14px;
   box-shadow: inset 0 0 0 1px var(--ov-line);

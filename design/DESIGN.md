@@ -114,7 +114,8 @@ No border, because it sits on the frame edge.
 **Now playing** — two sizes. Panel: label, 72px artwork slot, track, artist · year, used when
 there is room. Pill: 38px artwork, label, track, used where space is tight.
 
-**Participant tag** — 52px chip inside a feed: name (12, primary) over role (11, dim).
+**Participant tag** — 52px chip inside a feed: name (12, primary) over role (11, dim), the pair
+vertically centered in the chip (12.5px above and below, 14px side padding).
 
 **Audio row** — 50px row: for the host a 5px `$accent` dot, for listeners an invisible 5px
 spacer (alignment over decoration), then name and status.
