@@ -34,7 +34,7 @@ export default function Talk({ globalData: initialGlobalData }: Props) {
       <OverlayBanner
         x={48}
         y={952}
-        width={780}
+        width={626}
         title={globalData?.data.title}
         tag={globalData?.data.banner}
       />
