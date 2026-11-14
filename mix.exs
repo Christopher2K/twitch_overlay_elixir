@@ -82,7 +82,6 @@ defmodule TwitchOverlays.MixProject do
       "assets.setup": ["tailwind.install --if-missing", "pnpm i --prefix assets"],
       "assets.build": [
         "tailwind twitch_overlays",
-        "cd assets && node build.js",
         "cmd --cd assets node build.js",
         "cmd --cd assets node build.js --ssr"
       ],

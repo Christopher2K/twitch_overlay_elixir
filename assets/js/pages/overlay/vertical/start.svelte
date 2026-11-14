@@ -1,5 +1,13 @@
 <script lang="ts">
-  import StartOverlay from "../start.svelte";
+  import OverlayTransition from "$lib/components/overlay/overlay-transition.svelte";
 </script>
 
-<StartOverlay />
+<div class="ov-root">
+  <OverlayTransition
+    variant="vertical"
+    status="starting"
+    headline="starting soon"
+    subline="ok, peut-être en retard"
+    countdownSeconds={60 * 5}
+  />
+</div>

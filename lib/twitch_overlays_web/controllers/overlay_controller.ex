@@ -3,13 +3,11 @@ defmodule TwitchOverlaysWeb.OverlayController do
 
   alias TwitchOverlays.Configuration.Services, as: MetadataServices
 
-  def index(conn, _),
-    do: conn |> assign(:bg_class, "") |> render(:index)
+  def index(conn, _), do: render(conn, :index)
 
   def start_overlay(conn, _),
     do:
       conn
-      |> assign(:bg_class, "bg-video-background")
       |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
       |> render_inertia("overlay/start")
 
@@ -140,14 +138,12 @@ defmodule TwitchOverlaysWeb.OverlayController do
   def alerts_overlay(conn, _),
     do:
       conn
-      |> assign(:bg_class, "")
       |> put_layout(html: {TwitchOverlaysWeb.Layouts, :overlay})
       |> render_inertia("overlay/alerts")
 
   def vertical_start_overlay(conn, _),
     do:
       conn
-      |> assign(:bg_class, "bg-video-background")
       |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
       |> render_inertia("overlay/vertical/start")
 
@@ -163,15 +159,29 @@ defmodule TwitchOverlaysWeb.OverlayController do
       |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
       |> render_inertia("overlay/vertical/brb")
 
-  def vertical_computer_overlay(conn, _),
-    do:
-      conn
-      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
-      |> render_inertia("overlay/vertical/computer")
+  def vertical_computer_overlay(conn, _) do
+    global_data =
+      case MetadataServices.GetMetadata.call("global") do
+        {:ok, global} -> global
+        _ -> nil
+      end
 
-  def vertical_talk_overlay(conn, _),
-    do:
-      conn
-      |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
-      |> render_inertia("overlay/vertical/talk")
+    conn
+    |> assign_prop("globalData", global_data)
+    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
+    |> render_inertia("overlay/vertical/computer")
+  end
+
+  def vertical_talk_overlay(conn, _) do
+    global_data =
+      case MetadataServices.GetMetadata.call("global") do
+        {:ok, global} -> global
+        _ -> nil
+      end
+
+    conn
+    |> assign_prop("globalData", global_data)
+    |> put_layout(html: {TwitchOverlaysWeb.Layouts, :vertical_overlay})
+    |> render_inertia("overlay/vertical/talk")
+  end
 end

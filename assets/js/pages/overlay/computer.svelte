@@ -1,6 +1,10 @@
 <script lang="ts">
-  import TitleBanner from "$lib/components/title-banner.svelte";
-  import MusicPlayer from "$lib/features/music/components/music-player.svelte";
+  import OverlayRegion from "$lib/components/overlay/overlay-region.svelte";
+  import OverlayBanner from "$lib/components/overlay/overlay-banner.svelte";
+  import LiveTicker from "$lib/components/overlay/live-ticker.svelte";
+  import NowPlayingPill from "$lib/components/overlay/now-playing-pill.svelte";
+  import { useCiderMusic } from "$lib/features/music/hooks/use-cider-music";
+  import { trackTitle } from "$lib/features/music/track";
   import type { GlobalMetadata } from "$lib/features/metadata";
   import { useConfigurationUpdate } from "$lib/features/configuration/hooks/use-configuration-update";
 
@@ -11,75 +15,59 @@
       globalData = data;
     }
   });
+
+  const { music } = useCiderMusic();
+  $: track = trackTitle($music);
+  $: focus = globalData?.data.focusMode ?? false;
 </script>
 
-<div class="flex h-full w-full flex-row items-start justify-start bg-desktop">
-  <!-- Main Screen -->
-  <div class="relative h-full w-full flex-1 pb-4 pl-4 pr-2 pt-4">
-    <div class="card relative h-full w-full bg-placeholder">
-      {#if globalData?.data.focusMode}
-        <div
-          class="absolute bottom-0 left-0 right-0 top-0 rounded-md border-[10px] border-red-400"
-        ></div>
-        <div
-          class="absolute left-0 right-0 top-0 flex flex-col items-center justify-center rounded-md bg-red-400 py-1"
-        >
-          <p class="text-center text-six text-white">
-            Currently LOCKED-IN! I'm not talking I just CODEMAXXXING! Leave a
-            message in the chat
-          </p>
-        </div>
-      {/if}
-    </div>
-  </div>
-  <!-- Cameras -->
-  <div class="flex h-full w-[493px] flex-col items-center justify-center">
-    <div class="w-full flex-1 pb-2 pl-2 pr-4 pt-4">
-      <div class="card relative h-full w-full bg-placeholder">
-        {#if globalData?.data.focusMode}
-          <div
-            class="absolute bottom-0 left-0 right-0 top-0 rounded-md border-[10px] border-red-400"
-          ></div>
+<div class="ov-root">
+  <OverlayRegion
+    x={16}
+    y={16}
+    width={1290.67}
+    height={968}
+    label="screen"
+    ratio="4:3"
+    labelX={20}
+    labelY={18}
+    {focus}
+  />
 
-          <div
-            class="absolute left-0 right-0 top-0 flex flex-col items-center justify-center rounded-md bg-red-400 py-2"
-          >
-            <p class="text-center text-seven text-white">Man's locked-in...</p>
-          </div>
-        {/if}
+  <OverlayBanner
+    x={16}
+    y={1000}
+    width={1290.67}
+    title={globalData?.data.title}
+    tag={globalData?.data.banner}
+  />
 
-        <div
-          class="absolute bottom-4 right-0 flex flex-col items-end justify-end gap-4 px-4"
-        >
-          <MusicPlayer />
-        </div>
-      </div>
-    </div>
-    <div class="aspect-video w-full pb-4 pl-2 pr-4 pt-2">
-      <div class="card relative h-full w-full bg-placeholder">
-        {#if globalData?.data.focusMode}
-          <div
-            class="absolute bottom-0 left-0 right-0 top-0 rounded-md border-[10px] border-red-400"
-          ></div>
+  <OverlayRegion
+    x={1482.68}
+    y={16}
+    width={421.32}
+    height={748.9}
+    label="cam · 9:16"
+    {focus}
+  >
+    <NowPlayingPill
+      x={16}
+      y={662.9}
+      width={389.32}
+      artwork={$music.artwork}
+      {track}
+    />
+  </OverlayRegion>
 
-          <div
-            class="absolute left-0 right-0 top-0 flex flex-col items-center justify-center rounded-md bg-red-400 py-2"
-          >
-            <p class="text-center text-seven text-white">
-              Keyboard's locked-in...
-            </p>
-          </div>
-        {/if}
+  <OverlayRegion
+    x={1482.68}
+    y={780.9}
+    width={421.32}
+    height={237}
+    label="overhead"
+    labelY={14}
+    {focus}
+  />
 
-        {#if globalData}
-          <div class="absolute right-4 top-4">
-            <TitleBanner
-              title={globalData.data.title}
-              banner={globalData.data.banner}
-            />
-          </div>
-        {/if}
-      </div>
-    </div>
-  </div>
+  <LiveTicker x={1482.68} y={1033.9} width={421.32} />
 </div>

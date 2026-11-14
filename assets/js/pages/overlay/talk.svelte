@@ -1,8 +1,12 @@
 <script lang="ts">
-  import TitleBanner from "$lib/components/title-banner.svelte";
-  import { useConfigurationUpdate } from "$lib/features/configuration/hooks/use-configuration-update";
+  import OverlayRegion from "$lib/components/overlay/overlay-region.svelte";
+  import OverlayBanner from "$lib/components/overlay/overlay-banner.svelte";
+  import LiveTicker from "$lib/components/overlay/live-ticker.svelte";
+  import NowPlayingPill from "$lib/components/overlay/now-playing-pill.svelte";
+  import { useCiderMusic } from "$lib/features/music/hooks/use-cider-music";
+  import { trackTitle } from "$lib/features/music/track";
   import type { GlobalMetadata } from "$lib/features/metadata";
-  import MusicPlayer from "$lib/features/music/components/music-player.svelte";
+  import { useConfigurationUpdate } from "$lib/features/configuration/hooks/use-configuration-update";
 
   export let globalData: GlobalMetadata | null;
 
@@ -11,20 +15,39 @@
       globalData = data;
     }
   });
+
+  const { music } = useCiderMusic();
+  $: track = trackTitle($music);
+  $: focus = globalData?.data.focusMode ?? false;
 </script>
 
-<div class="flex h-full w-full flex-row items-start justify-start bg-desktop">
-  <!-- Main Screen -->
-  <div class="relative h-full w-full flex-1 pb-4 pl-4 pr-4 pt-4">
-    <div class="card relative h-full w-full bg-placeholder"></div>
-    <div class="absolute bottom-8 left-8 flex w-fit flex-row items-end gap-4">
-      <MusicPlayer />
-      {#if globalData}
-        <TitleBanner
-          title={globalData.data.title}
-          banner={globalData.data.banner}
-        />
-      {/if}
-    </div>
-  </div>
+<div class="ov-root">
+  <OverlayRegion
+    x={16}
+    y={16}
+    width={1888}
+    height={1048}
+    label="frame"
+    labelX={32}
+    labelY={30}
+    {focus}
+  >
+    <OverlayBanner
+      x={32}
+      y={936}
+      width={780}
+      title={globalData?.data.title}
+      tag={globalData?.data.banner}
+    />
+
+    <LiveTicker x={1434.68} y={970} width={421.32} />
+
+    <NowPlayingPill
+      x={32}
+      y={850}
+      width={520}
+      artwork={$music.artwork}
+      {track}
+    />
+  </OverlayRegion>
 </div>

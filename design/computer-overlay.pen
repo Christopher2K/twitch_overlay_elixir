@@ -40,6 +40,23 @@
               "fontSize": 12,
               "fontWeight": "normal",
               "letterSpacing": 1.92
+            },
+            {
+              "type": "text",
+              "id": "LaP16",
+              "x": 1190.67,
+              "y": 18,
+              "name": "Label — ratio",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 80,
+              "content": "4:3",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
             }
           ]
         },
@@ -127,7 +144,7 @@
               "y": 16,
               "name": "Label — cam",
               "fill": "$text-dim",
-              "content": "cam",
+              "content": "cam · 9:16",
               "lineHeight": 1,
               "fontFamily": "$font-mono",
               "fontSize": 12,
@@ -136,42 +153,65 @@
             },
             {
               "type": "frame",
-              "id": "RZCwM",
-              "x": 14,
-              "y": 688.9,
+              "id": "W3Iwx",
+              "x": 16,
+              "y": 662.9,
               "name": "Now playing",
+              "width": 389.32,
+              "height": 70,
               "fill": "$widget-fill",
               "stroke": "$line",
               "strokeWidth": 1,
-              "layout": "vertical",
-              "gap": 3,
+              "gap": 14,
               "padding": [
-                9,
-                11
+                0,
+                14
               ],
+              "alignItems": "center",
               "children": [
                 {
-                  "type": "text",
-                  "id": "emG8x",
-                  "name": "Now playing label",
-                  "fill": "$text-dim",
-                  "content": "now playing",
-                  "lineHeight": 1,
-                  "fontFamily": "$font-mono",
-                  "fontSize": 11,
-                  "fontWeight": "normal",
-                  "letterSpacing": 1.32
+                  "type": "frame",
+                  "id": "apcn5",
+                  "name": "Artwork",
+                  "width": 38,
+                  "height": 38,
+                  "fill": "$region-fill",
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "layout": "none"
                 },
                 {
-                  "type": "text",
-                  "id": "Ew5TV",
-                  "name": "Now playing track",
-                  "fill": "$text-primary",
-                  "content": "boards of canada — roygbiv",
-                  "lineHeight": 1.2,
-                  "fontFamily": "$font-mono",
-                  "fontSize": 12,
-                  "fontWeight": "normal"
+                  "type": "frame",
+                  "id": "eYwrv",
+                  "name": "Track",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "f6faPl",
+                      "name": "Now playing label",
+                      "fill": "$text-dim",
+                      "content": "now playing",
+                      "lineHeight": 1,
+                      "fontFamily": "$font-mono",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1.2
+                    },
+                    {
+                      "type": "text",
+                      "id": "tzOpO",
+                      "name": "Now playing track",
+                      "fill": "$text-primary",
+                      "content": "boards of canada — roygbiv",
+                      "lineHeight": 1.2,
+                      "fontFamily": "$font-mono",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.26
+                    }
+                  ]
                 }
               ]
             }
@@ -1266,6 +1306,23 @@
               "fontSize": 12,
               "fontWeight": "normal",
               "letterSpacing": 1.92
+            },
+            {
+              "type": "text",
+              "id": "P75Ku",
+              "x": 1190.67,
+              "y": 18,
+              "name": "Label — ratio",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 80,
+              "content": "4:3",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
             }
           ]
         },
@@ -1353,7 +1410,7 @@
               "y": 16,
               "name": "Label — cam",
               "fill": "$text-dim",
-              "content": "cam",
+              "content": "cam · 9:16",
               "lineHeight": 1,
               "fontFamily": "$font-mono",
               "fontSize": 12,
@@ -2550,6 +2607,23 @@
               "fontSize": 12,
               "fontWeight": "normal",
               "letterSpacing": 1.92
+            },
+            {
+              "type": "text",
+              "id": "iP60W",
+              "x": 1190.67,
+              "y": 18,
+              "name": "Label — ratio",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 80,
+              "content": "4:3",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
             }
           ]
         },

@@ -13,6 +13,7 @@ export function useCiderMusic() {
       name: string;
       artist: string;
       album: string;
+      year: string;
       artwork: string;
       position: number;
       isPlaying: boolean;
@@ -34,6 +35,7 @@ export function useCiderMusic() {
           name: item.name,
           artist: item.artistName,
           album: item.albumName,
+          year: item.releaseDate?.slice(0, 4),
           artwork: item.artwork.url,
           position: +(
             item.currentPlaybackTime / Math.round(item.durationInMillis / 1000)
@@ -76,6 +78,7 @@ export function useCiderMusic() {
           name: info.name,
           artist: info.artistName,
           album: info.albumName,
+          year: info.releaseDate?.slice(0, 4),
           artwork: info.artwork.url,
           position: +(
             info.currentPlaybackTime / Math.round(info.durationInMillis / 1000)

@@ -1,17 +1,13 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import TitleBanner from "$lib/components/title-banner.svelte";
-  import ParticipantView from "$lib/components/participant-view.svelte";
+  import OverlayRegion from "$lib/components/overlay/overlay-region.svelte";
+  import OverlayBanner from "$lib/components/overlay/overlay-banner.svelte";
+  import OverlayTag from "$lib/components/overlay/overlay-tag.svelte";
+  import LiveTicker from "$lib/components/overlay/live-ticker.svelte";
   import type { GlobalMetadata, GuestMetadata } from "$lib/features/metadata";
   import { useConfigurationUpdate } from "$lib/features/configuration/hooks/use-configuration-update";
-  import { useCiderMusic } from "$lib/features/music/hooks/use-cider-music";
 
   export let globalData: GlobalMetadata | null;
   export let guestData: GuestMetadata | null;
-  $: participants = guestData?.data.members ?? [];
-
-  const { music } = useCiderMusic();
-  $: console.log("Music", $music);
 
   useConfigurationUpdate((data) => {
     if (data.name === "global") {
@@ -22,44 +18,68 @@
       guestData = data;
     }
   });
+
+  $: participants = guestData?.data.members ?? [];
+  $: guest = participants[0];
+  $: focus = globalData?.data.focusMode ?? false;
 </script>
 
-<div class="flex h-full w-full flex-row items-start justify-start bg-desktop">
-  <!-- Main Screen -->
-  <div class="relative h-full w-full flex-1 pb-4 pl-4 pr-2 pt-4">
-    <div class="card relative h-full w-full bg-placeholder"></div>
-    {#if globalData}
-      <div class="absolute bottom-8 left-8 w-fit">
-        <TitleBanner
-          title={globalData.data.title}
-          banner={globalData.data.banner}
-        />
-      </div>
-    {/if}
-  </div>
-  <!-- Cameras -->
-  <div
-    class="flex h-full w-[493px] flex-col items-center justify-center gap-4 py-4"
-  >
-    <div class="relative w-full flex-1 pl-2 pr-4">
-      <div class="card h-full w-full bg-placeholder"></div>
-      <div class="absolute bottom-4 left-4 w-fit">
-        <ParticipantView
-          participant={{
-            name: "@LLCoolChris_",
-            description: "Software Engineer",
-          }}
-        />
-      </div>
-    </div>
+<div class="ov-root">
+  <OverlayRegion
+    x={16}
+    y={16}
+    width={1290.67}
+    height={968}
+    label="screen"
+    ratio="4:3"
+    labelX={20}
+    labelY={18}
+    {focus}
+  />
 
-    {#each participants as participant}
-      <div class="relative w-full flex-1 pl-2 pr-4">
-        <div class="card h-full w-full bg-placeholder"></div>
-        <div class="absolute bottom-4 left-4 w-fit">
-          <ParticipantView {participant} />
-        </div>
-      </div>
-    {/each}
-  </div>
+  <OverlayBanner
+    x={16}
+    y={1000}
+    width={1290.67}
+    title={globalData?.data.title}
+    tag={globalData?.data.banner}
+  />
+
+  <OverlayRegion
+    x={1482.68}
+    y={16}
+    width={421.32}
+    height={748.9}
+    label="host"
+    {focus}
+  >
+    <OverlayTag
+      x={16}
+      y={680.9}
+      width={300}
+      name="llcoolchris"
+      role="software engineer"
+    />
+  </OverlayRegion>
+
+  {#if guest}
+    <OverlayRegion
+      x={1482.68}
+      y={780.9}
+      width={421.32}
+      height={237}
+      label="guest 01"
+      {focus}
+    >
+      <OverlayTag
+        x={16}
+        y={169}
+        width={300}
+        name={guest.name}
+        role={guest.description}
+      />
+    </OverlayRegion>
+  {/if}
+
+  <LiveTicker x={1482.68} y={1033.9} width={421.32} />
 </div>

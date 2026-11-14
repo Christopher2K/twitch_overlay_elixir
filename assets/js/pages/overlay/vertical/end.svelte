@@ -1,5 +1,13 @@
 <script lang="ts">
-  import EndOverlay from "../end.svelte";
+  import OverlayTransition from "$lib/components/overlay/overlay-transition.svelte";
 </script>
 
-<EndOverlay />
+<div class="ov-root">
+  <OverlayTransition
+    variant="vertical"
+    status="offline"
+    headline="see you next time"
+    subline="merci d'être passé"
+    action="follow pour la prochaine session"
+  />
+</div>
