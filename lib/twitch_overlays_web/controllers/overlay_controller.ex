@@ -75,16 +75,9 @@ defmodule TwitchOverlaysWeb.OverlayController do
 
     conn
     |> assign_overlay_props(props)
-    |> assign(:body_class, layout_body_class(layout))
     |> put_layout(html: {TwitchOverlaysWeb.Layouts, layout})
     |> render_inertia(page)
   end
-
-  # Opaque scenes paint the page too, so a browser window larger than the
-  # canvas does not show white bands around it. Transparent scenes leave the
-  # page untouched.
-  defp layout_body_class(layout) when layout in [:overlay, :vertical_overlay], do: "ov-canvas"
-  defp layout_body_class(_layout), do: nil
 
   defp assign_overlay_props(conn, props) do
     Enum.reduce(props, conn, fn {key, value}, conn -> assign_prop(conn, key, value) end)
