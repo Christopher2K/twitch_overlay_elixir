@@ -4,14 +4,16 @@
  * Bordered boxes use inset shadows for their 1px rules so Pencil child and
  * padding coordinates map 1:1 (CSS borders would shift the content by 1px).
  *
- * Content scenes paint --ov-canvas as a chroma-key green: OBS masks the
- * background with a Chroma Key filter instead of relying on source
- * transparency. Transition scenes (start/brb/end) keep a transparent
- * canvas so they composite over whatever sits below in the scene.
+ * Content scenes paint --ov-canvas so the rendered canvas matches the artboard.
+ * Video placeholder regions paint --ov-chroma, a chroma-key green, so OBS can
+ * mask a feed's exact slot with a Chroma Key filter. Transition scenes
+ * (start/brb/end) keep a transparent canvas so they composite over whatever
+ * sits below in the scene.
  */
 
 :root {
-  --ov-canvas: #00ff00;
+  --ov-canvas: #121216;
+  --ov-chroma: #00ff00;
   --ov-ink: #ececf1;
   --ov-dim: #74747f;
   --ov-line: rgba(236, 236, 241, 0.14);
@@ -58,7 +60,7 @@
 .ov-region {
   position: absolute;
   box-shadow: inset 0 0 0 1px var(--ov-line);
-  background: var(--ov-region);
+  background: var(--ov-chroma);
 }
 
 .ov-region--focus {
