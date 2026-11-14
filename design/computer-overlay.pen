@@ -1,0 +1,3524 @@
+{
+  "version": "2.22",
+  "children": [
+    {
+      "type": "frame",
+      "id": "X3RPK",
+      "x": 0,
+      "y": 1200,
+      "name": "04 · Computer — 1920x1080",
+      "clip": true,
+      "width": 1920,
+      "height": 1080,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "S9fNsX",
+          "x": 16,
+          "y": 16,
+          "name": "Main screen",
+          "clip": true,
+          "width": 1290.67,
+          "height": 968,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "lS0cK",
+              "x": 20,
+              "y": 18,
+              "name": "Label — screen",
+              "fill": "$accent",
+              "content": "screen",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Za0D5",
+          "x": 16,
+          "y": 1000,
+          "name": "Title banner",
+          "width": 1290.67,
+          "height": 64,
+          "fill": "$widget-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "gap": 12,
+          "padding": [
+            0,
+            22
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "hb1Dv",
+              "name": "Live state",
+              "gap": 7,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "wltgA",
+                  "name": "Live dot",
+                  "fill": "$accent",
+                  "width": 6,
+                  "height": 6
+                },
+                {
+                  "type": "text",
+                  "id": "bJ8QZ",
+                  "name": "Live label",
+                  "fill": "$accent-muted",
+                  "content": "live",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.54
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "Wu2Ac",
+              "name": "Title",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "building a twitch overlay in elixir",
+              "lineHeight": 1.2,
+              "fontFamily": "$font-mono",
+              "fontSize": 16,
+              "fontWeight": "normal",
+              "letterSpacing": 0.32
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "z9bej",
+          "x": 1482.68,
+          "y": 16,
+          "name": "Head cam",
+          "clip": true,
+          "width": 421.32,
+          "height": 748.9,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "sqjkL",
+              "x": 16,
+              "y": 16,
+              "name": "Label — cam",
+              "fill": "$text-dim",
+              "content": "cam",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            },
+            {
+              "type": "frame",
+              "id": "RZCwM",
+              "x": 14,
+              "y": 688.9,
+              "name": "Now playing",
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 3,
+              "padding": [
+                9,
+                11
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "emG8x",
+                  "name": "Now playing label",
+                  "fill": "$text-dim",
+                  "content": "now playing",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.32
+                },
+                {
+                  "type": "text",
+                  "id": "Ew5TV",
+                  "name": "Now playing track",
+                  "fill": "$text-primary",
+                  "content": "boards of canada — roygbiv",
+                  "lineHeight": 1.2,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "IlwaF",
+          "x": 1482.68,
+          "y": 780.9,
+          "name": "Overhead cam",
+          "clip": true,
+          "width": 421.32,
+          "height": 237,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "VGDDC",
+              "x": 16,
+              "y": 14,
+              "name": "Label — overhead",
+              "fill": "$text-dim",
+              "content": "overhead",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "BlHzp",
+          "x": 1482.68,
+          "y": 1033.9,
+          "name": "Recent event ticker",
+          "width": 421.32,
+          "height": 30,
+          "gap": 9,
+          "padding": [
+            0,
+            2
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "AWIH2",
+              "name": "Ticker icon",
+              "fill": "$accent",
+              "content": "+",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "pPVPb",
+              "name": "Ticker text",
+              "fill": "$text-dim",
+              "content": "chris just followed",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 0.72
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "gFKI4",
+      "x": 0,
+      "y": 0,
+      "name": "01 · Start — 1920x1080",
+      "clip": true,
+      "width": 1920,
+      "height": 1080,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "ypUbp",
+          "x": 16,
+          "y": 16,
+          "name": "Stage",
+          "clip": true,
+          "width": 1888,
+          "height": 1048,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "a8sxo8",
+              "x": 32,
+              "y": 26,
+              "name": "Header — brand",
+              "fill": "$text-dim",
+              "content": "llcoolchris // live",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "ygUCn",
+              "x": 1616,
+              "y": 26,
+              "name": "Header — status",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 240,
+              "content": "starting",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "V0Lyi",
+              "x": 32,
+              "y": 1004,
+              "name": "Footer — left",
+              "fill": "$text-dim",
+              "content": "llcoolchris // twitch.tv",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "S2JnE",
+              "x": 1616,
+              "y": 1004,
+              "name": "Footer — right",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 240,
+              "content": "[discord] to join",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "m61Iqi",
+          "x": 560,
+          "y": 456,
+          "name": "Center",
+          "width": 800,
+          "layout": "vertical",
+          "gap": 20,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "yYlBu",
+              "name": "Headline",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "starting soon",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 56,
+              "fontWeight": "normal",
+              "letterSpacing": 0.56
+            },
+            {
+              "type": "frame",
+              "id": "bPrQy",
+              "name": "Divider",
+              "width": 360,
+              "height": 1,
+              "fill": "$line",
+              "layout": "none"
+            },
+            {
+              "type": "text",
+              "id": "c2rlK",
+              "name": "Subline",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "ok, peut-être en retard",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 13,
+              "fontWeight": "normal",
+              "letterSpacing": 1.04
+            },
+            {
+              "type": "frame",
+              "id": "x0usV",
+              "name": "Countdown",
+              "width": 104,
+              "height": 38,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "p1KuMD",
+                  "x": 29,
+                  "y": 12,
+                  "name": "Countdown — value",
+                  "fill": "$accent",
+                  "content": "05:00",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2.08
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "i1zAcf",
+      "x": 2040,
+      "y": 0,
+      "name": "02 · Be right back — 1920x1080",
+      "clip": true,
+      "width": 1920,
+      "height": 1080,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "iE2Ts",
+          "x": 16,
+          "y": 16,
+          "name": "Stage",
+          "clip": true,
+          "width": 1888,
+          "height": 1048,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "oCPzH",
+              "x": 32,
+              "y": 26,
+              "name": "Header — brand",
+              "fill": "$text-dim",
+              "content": "llcoolchris // live",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "JU7UF",
+              "x": 1616,
+              "y": 26,
+              "name": "Header — status",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 240,
+              "content": "away",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "kWCS6",
+              "x": 32,
+              "y": 1004,
+              "name": "Footer — left",
+              "fill": "$text-dim",
+              "content": "llcoolchris // twitch.tv",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "hta2v",
+              "x": 1616,
+              "y": 1004,
+              "name": "Footer — right",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 240,
+              "content": "[discord] to join",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "h7GT6e",
+          "x": 560,
+          "y": 468.5,
+          "name": "Center",
+          "width": 800,
+          "layout": "vertical",
+          "gap": 20,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "RORjT",
+              "name": "Headline",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "be right back",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 56,
+              "fontWeight": "normal",
+              "letterSpacing": 0.56
+            },
+            {
+              "type": "frame",
+              "id": "k3xHlA",
+              "name": "Divider",
+              "width": 360,
+              "height": 1,
+              "fill": "$accent",
+              "layout": "none"
+            },
+            {
+              "type": "text",
+              "id": "rmVsy",
+              "name": "Subline",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "rejoins le discord en attendant",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 13,
+              "fontWeight": "normal",
+              "letterSpacing": 1.04
+            },
+            {
+              "type": "text",
+              "id": "YvWPM",
+              "name": "Action",
+              "fill": "$accent",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "[!discord] to join",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 13,
+              "fontWeight": "normal",
+              "letterSpacing": 1.04
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "umEYr",
+      "x": 4080,
+      "y": 0,
+      "name": "03 · End — 1920x1080",
+      "clip": true,
+      "width": 1920,
+      "height": 1080,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "b6HLIY",
+          "x": 16,
+          "y": 16,
+          "name": "Stage",
+          "clip": true,
+          "width": 1888,
+          "height": 1048,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "MNKfj",
+              "x": 32,
+              "y": 26,
+              "name": "Header — brand",
+              "fill": "$text-dim",
+              "content": "llcoolchris // live",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "x4SPod",
+              "x": 1616,
+              "y": 26,
+              "name": "Header — status",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 240,
+              "content": "offline",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "JkA2s",
+              "x": 32,
+              "y": 1004,
+              "name": "Footer — left",
+              "fill": "$text-dim",
+              "content": "llcoolchris // twitch.tv",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "bRwJj",
+              "x": 1616,
+              "y": 1004,
+              "name": "Footer — right",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 240,
+              "content": "[discord] to join",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "f79Oxh",
+          "x": 560,
+          "y": 468.5,
+          "name": "Center",
+          "width": 800,
+          "layout": "vertical",
+          "gap": 20,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "m8ttSi",
+              "name": "Headline",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "see you next time",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 56,
+              "fontWeight": "normal",
+              "letterSpacing": 0.56
+            },
+            {
+              "type": "frame",
+              "id": "bytOo",
+              "name": "Divider",
+              "width": 360,
+              "height": 1,
+              "fill": "$line",
+              "layout": "none"
+            },
+            {
+              "type": "text",
+              "id": "KbBAN",
+              "name": "Subline",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "merci d'être passé",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 13,
+              "fontWeight": "normal",
+              "letterSpacing": 1.04
+            },
+            {
+              "type": "text",
+              "id": "QiBEn",
+              "name": "Action",
+              "fill": "$accent",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "follow pour la prochaine session",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 13,
+              "fontWeight": "normal",
+              "letterSpacing": 1.04
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "H4GoHP",
+      "x": 0,
+      "y": 4920,
+      "name": "12 · Start — 1080x1920",
+      "clip": true,
+      "width": 1080,
+      "height": 1920,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "n8LE9f",
+          "x": 16,
+          "y": 16,
+          "name": "Stage",
+          "clip": true,
+          "width": 1048,
+          "height": 1888,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "I7eL1e",
+              "x": 32,
+              "y": 26,
+              "name": "Header — brand",
+              "fill": "$text-dim",
+              "content": "llcoolchris // live",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "XHwtf",
+              "x": 776,
+              "y": 26,
+              "name": "Header — status",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 240,
+              "content": "starting",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "vC9BL",
+              "x": 32,
+              "y": 1844,
+              "name": "Footer — left",
+              "fill": "$text-dim",
+              "content": "llcoolchris // twitch.tv",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "psjx4",
+              "x": 776,
+              "y": 1844,
+              "name": "Footer — right",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 240,
+              "content": "[discord] to join",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "jKpc5",
+          "x": 140,
+          "y": 882,
+          "name": "Center",
+          "width": 800,
+          "layout": "vertical",
+          "gap": 20,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "FgGCN",
+              "name": "Headline",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "starting soon",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 44,
+              "fontWeight": "normal",
+              "letterSpacing": 0.56
+            },
+            {
+              "type": "frame",
+              "id": "dSVdx",
+              "name": "Divider",
+              "width": 360,
+              "height": 1,
+              "fill": "$line",
+              "layout": "none"
+            },
+            {
+              "type": "text",
+              "id": "C3zIY",
+              "name": "Subline",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "ok, peut-être en retard",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 13,
+              "fontWeight": "normal",
+              "letterSpacing": 1.04
+            },
+            {
+              "type": "frame",
+              "id": "Fw5iT",
+              "name": "Countdown",
+              "width": 104,
+              "height": 38,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "LwIeJ",
+                  "x": 29,
+                  "y": 12,
+                  "name": "Countdown — value",
+                  "fill": "$accent",
+                  "content": "05:00",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2.08
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "jxAAR",
+      "x": 1200,
+      "y": 4920,
+      "name": "13 · Be right back — 1080x1920",
+      "clip": true,
+      "width": 1080,
+      "height": 1920,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "KIx2Y",
+          "x": 16,
+          "y": 16,
+          "name": "Stage",
+          "clip": true,
+          "width": 1048,
+          "height": 1888,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "FDPzg",
+              "x": 32,
+              "y": 26,
+              "name": "Header — brand",
+              "fill": "$text-dim",
+              "content": "llcoolchris // live",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "EN9Cj",
+              "x": 776,
+              "y": 26,
+              "name": "Header — status",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 240,
+              "content": "away",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "sIdMG",
+              "x": 32,
+              "y": 1844,
+              "name": "Footer — left",
+              "fill": "$text-dim",
+              "content": "llcoolchris // twitch.tv",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "IhDPk",
+              "x": 776,
+              "y": 1844,
+              "name": "Footer — right",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 240,
+              "content": "[discord] to join",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "G3tKKp",
+          "x": 140,
+          "y": 894.5,
+          "name": "Center",
+          "width": 800,
+          "layout": "vertical",
+          "gap": 20,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "z0pHex",
+              "name": "Headline",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "be right back",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 44,
+              "fontWeight": "normal",
+              "letterSpacing": 0.56
+            },
+            {
+              "type": "frame",
+              "id": "d6tzv",
+              "name": "Divider",
+              "width": 360,
+              "height": 1,
+              "fill": "$accent",
+              "layout": "none"
+            },
+            {
+              "type": "text",
+              "id": "uj5XB",
+              "name": "Subline",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "rejoins le discord en attendant",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 13,
+              "fontWeight": "normal",
+              "letterSpacing": 1.04
+            },
+            {
+              "type": "text",
+              "id": "ksotG",
+              "name": "Action",
+              "fill": "$accent",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "[!discord] to join",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 13,
+              "fontWeight": "normal",
+              "letterSpacing": 1.04
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "WUFYs",
+      "x": 2400,
+      "y": 4920,
+      "name": "14 · End — 1080x1920",
+      "clip": true,
+      "width": 1080,
+      "height": 1920,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "O5t6Lo",
+          "x": 16,
+          "y": 16,
+          "name": "Stage",
+          "clip": true,
+          "width": 1048,
+          "height": 1888,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "sl7R3",
+              "x": 32,
+              "y": 26,
+              "name": "Header — brand",
+              "fill": "$text-dim",
+              "content": "llcoolchris // live",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "CLOjt",
+              "x": 776,
+              "y": 26,
+              "name": "Header — status",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 240,
+              "content": "offline",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "vBh0n",
+              "x": 32,
+              "y": 1844,
+              "name": "Footer — left",
+              "fill": "$text-dim",
+              "content": "llcoolchris // twitch.tv",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "text",
+              "id": "wCCbH",
+              "x": 776,
+              "y": 1844,
+              "name": "Footer — right",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 240,
+              "content": "[discord] to join",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "BuNSg",
+          "x": 140,
+          "y": 894.5,
+          "name": "Center",
+          "width": 800,
+          "layout": "vertical",
+          "gap": 20,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "jzZ6g",
+              "name": "Headline",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "see you next time",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 44,
+              "fontWeight": "normal",
+              "letterSpacing": 0.56
+            },
+            {
+              "type": "frame",
+              "id": "UlkEX",
+              "name": "Divider",
+              "width": 360,
+              "height": 1,
+              "fill": "$line",
+              "layout": "none"
+            },
+            {
+              "type": "text",
+              "id": "zCzkc",
+              "name": "Subline",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "merci d'être passé",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 13,
+              "fontWeight": "normal",
+              "letterSpacing": 1.04
+            },
+            {
+              "type": "text",
+              "id": "mf76i",
+              "name": "Action",
+              "fill": "$accent",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "follow pour la prochaine session",
+              "lineHeight": 1,
+              "textAlign": "center",
+              "fontFamily": "$font-mono",
+              "fontSize": 13,
+              "fontWeight": "normal",
+              "letterSpacing": 1.04
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "OWGF5",
+      "x": 2040,
+      "y": 1200,
+      "name": "05 · Computer small — 1920x1080",
+      "clip": true,
+      "width": 1920,
+      "height": 1080,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "CpQr2",
+          "x": 16,
+          "y": 16,
+          "name": "Main screen",
+          "clip": true,
+          "width": 1290.67,
+          "height": 968,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "o1wJ9v",
+              "x": 20,
+              "y": 18,
+              "name": "Label — screen",
+              "fill": "$accent",
+              "content": "screen",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "BT08o",
+          "x": 16,
+          "y": 1000,
+          "name": "Title banner",
+          "width": 1290.67,
+          "height": 64,
+          "fill": "$widget-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "gap": 12,
+          "padding": [
+            0,
+            22
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "yrHXw",
+              "name": "Live state",
+              "gap": 7,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "pYbTi",
+                  "name": "Live dot",
+                  "fill": "$accent",
+                  "width": 6,
+                  "height": 6
+                },
+                {
+                  "type": "text",
+                  "id": "Y54WBA",
+                  "name": "Live label",
+                  "fill": "$accent-muted",
+                  "content": "live",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.54
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "idNC6",
+              "name": "Title",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "building a twitch overlay in elixir",
+              "lineHeight": 1.2,
+              "fontFamily": "$font-mono",
+              "fontSize": 16,
+              "fontWeight": "normal",
+              "letterSpacing": 0.32
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "atEDD",
+          "x": 1482.68,
+          "y": 16,
+          "name": "Head cam",
+          "clip": true,
+          "width": 421.32,
+          "height": 748.9,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "imfeX",
+              "x": 16,
+              "y": 16,
+              "name": "Label — cam",
+              "fill": "$text-dim",
+              "content": "cam",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "z1Lpc",
+          "x": 1482.68,
+          "y": 780.9,
+          "name": "Now playing",
+          "clip": true,
+          "width": 421.32,
+          "height": 237,
+          "fill": "$widget-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "J0dn8T",
+              "x": 20,
+              "y": 18,
+              "name": "Now playing label",
+              "fill": "$text-dim",
+              "content": "now playing",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.32
+            },
+            {
+              "type": "frame",
+              "id": "Co8Md",
+              "x": 20,
+              "y": 48,
+              "name": "Artwork",
+              "width": 72,
+              "height": 72,
+              "fill": "$region-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "none"
+            },
+            {
+              "type": "text",
+              "id": "p5Bvw0",
+              "x": 108,
+              "y": 52,
+              "name": "Now playing track",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": 293.32,
+              "content": "boards of canada — roygbiv",
+              "lineHeight": 1.2,
+              "fontFamily": "$font-mono",
+              "fontSize": 14,
+              "fontWeight": "normal",
+              "letterSpacing": 0.28
+            },
+            {
+              "type": "text",
+              "id": "xSLWx",
+              "x": 108,
+              "y": 76,
+              "name": "Now playing artist",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 293.32,
+              "content": "geogaddi · 2002",
+              "lineHeight": 1.2,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.32
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "cuPKM",
+          "x": 1482.68,
+          "y": 1033.9,
+          "name": "Recent event ticker",
+          "width": 421.32,
+          "height": 30,
+          "gap": 9,
+          "padding": [
+            0,
+            2
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "W96Lbh",
+              "name": "Ticker icon",
+              "fill": "$accent",
+              "content": "+",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "a6vnSG",
+              "name": "Ticker text",
+              "fill": "$text-dim",
+              "content": "chris just followed",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 0.72
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "znyhq",
+      "x": 4080,
+      "y": 1200,
+      "name": "06 · Computer built-in — 1920x1080",
+      "clip": true,
+      "width": 1920,
+      "height": 1080,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "qc2jC",
+          "x": 16,
+          "y": 16,
+          "name": "Main screen 16:10",
+          "clip": true,
+          "width": 1290.67,
+          "height": 806.67,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "IEMdU",
+              "x": 20,
+              "y": 18,
+              "name": "Label — screen",
+              "fill": "$accent",
+              "content": "screen",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            },
+            {
+              "type": "text",
+              "id": "I67FXN",
+              "x": 1190.67,
+              "y": 18,
+              "name": "Label — ratio",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 80,
+              "content": "16:10",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Mk4vq",
+          "x": 16,
+          "y": 1000,
+          "name": "Title banner",
+          "width": 1290.67,
+          "height": 64,
+          "fill": "$widget-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "gap": 12,
+          "padding": [
+            0,
+            22
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "fKtKE",
+              "name": "Live state",
+              "gap": 7,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "bfzfT",
+                  "name": "Live dot",
+                  "fill": "$accent",
+                  "width": 6,
+                  "height": 6
+                },
+                {
+                  "type": "text",
+                  "id": "rkY3Z",
+                  "name": "Live label",
+                  "fill": "$accent-muted",
+                  "content": "live",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.54
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "y6Z95",
+              "name": "Title",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "building a twitch overlay in elixir",
+              "lineHeight": 1.2,
+              "fontFamily": "$font-mono",
+              "fontSize": 16,
+              "fontWeight": "normal",
+              "letterSpacing": 0.32
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "gKWkm",
+          "x": 1482.68,
+          "y": 16,
+          "name": "Head cam",
+          "clip": true,
+          "width": 421.32,
+          "height": 748.9,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "QY8Sl",
+              "x": 16,
+              "y": 16,
+              "name": "Label — cam",
+              "fill": "$text-dim",
+              "content": "cam · 9:16",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "h6sx1q",
+          "x": 1482.68,
+          "y": 780.9,
+          "name": "Now playing",
+          "clip": true,
+          "width": 421.32,
+          "height": 237,
+          "fill": "$widget-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "s1MACQ",
+              "x": 20,
+              "y": 18,
+              "name": "Now playing label",
+              "fill": "$text-dim",
+              "content": "now playing",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.32
+            },
+            {
+              "type": "frame",
+              "id": "IBdFl",
+              "x": 20,
+              "y": 48,
+              "name": "Artwork",
+              "width": 72,
+              "height": 72,
+              "fill": "$region-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "none"
+            },
+            {
+              "type": "text",
+              "id": "By0sN",
+              "x": 108,
+              "y": 52,
+              "name": "Now playing track",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": 293.32,
+              "content": "boards of canada — roygbiv",
+              "lineHeight": 1.2,
+              "fontFamily": "$font-mono",
+              "fontSize": 14,
+              "fontWeight": "normal",
+              "letterSpacing": 0.28
+            },
+            {
+              "type": "text",
+              "id": "k039Q",
+              "x": 108,
+              "y": 76,
+              "name": "Now playing artist",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 293.32,
+              "content": "geogaddi · 2002",
+              "lineHeight": 1.2,
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.32
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Sy4J1",
+          "x": 1482.68,
+          "y": 1033.9,
+          "name": "Recent event ticker",
+          "width": 421.32,
+          "height": 30,
+          "gap": 9,
+          "padding": [
+            0,
+            2
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "LxmoX",
+              "name": "Ticker icon",
+              "fill": "$accent",
+              "content": "+",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "Z4iUgg",
+              "name": "Ticker text",
+              "fill": "$text-dim",
+              "content": "chris just followed",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 0.72
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "BHZxS",
+      "x": 0,
+      "y": 2400,
+      "name": "07 · Talk — 1920x1080",
+      "clip": true,
+      "width": 1920,
+      "height": 1080,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "hYngd",
+          "x": 16,
+          "y": 16,
+          "name": "Frame",
+          "clip": true,
+          "width": 1888,
+          "height": 1048,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "S87M9H",
+              "x": 32,
+              "y": 30,
+              "name": "Label — frame",
+              "fill": "$text-dim",
+              "content": "frame",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            },
+            {
+              "type": "frame",
+              "id": "GBkjY",
+              "x": 32,
+              "y": 936,
+              "name": "Title banner",
+              "width": 780,
+              "height": 64,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "gap": 12,
+              "padding": [
+                0,
+                22
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ZkLLi",
+                  "name": "Live state",
+                  "gap": 7,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "LfnkE",
+                      "name": "Live dot",
+                      "fill": "$accent",
+                      "width": 6,
+                      "height": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "b4W6E",
+                      "name": "Live label",
+                      "fill": "$accent-muted",
+                      "content": "live",
+                      "lineHeight": 1,
+                      "fontFamily": "$font-mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1.54
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "GK4Kf",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "building a twitch overlay in elixir",
+                  "lineHeight": 1.2,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 16,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.32
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wzwO6",
+              "x": 1434.68,
+              "y": 970,
+              "name": "Recent event ticker",
+              "width": 421.32,
+              "height": 30,
+              "gap": 9,
+              "padding": [
+                0,
+                2
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "OeIoV",
+                  "name": "Ticker icon",
+                  "fill": "$accent",
+                  "content": "+",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "V8APC",
+                  "name": "Ticker text",
+                  "fill": "$text-dim",
+                  "content": "chris just followed",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.72
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "lTSAZ",
+              "x": 32,
+              "y": 850,
+              "name": "Now playing",
+              "width": 520,
+              "height": 70,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "gap": 14,
+              "padding": [
+                0,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "unZ4D",
+                  "name": "Artwork",
+                  "width": 38,
+                  "height": 38,
+                  "fill": "$region-fill",
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "layout": "none"
+                },
+                {
+                  "type": "frame",
+                  "id": "EKFoE",
+                  "name": "Track",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Oir7g",
+                      "name": "Now playing label",
+                      "fill": "$text-dim",
+                      "content": "now playing",
+                      "lineHeight": 1,
+                      "fontFamily": "$font-mono",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1.2
+                    },
+                    {
+                      "type": "text",
+                      "id": "DDzic",
+                      "name": "Now playing track",
+                      "fill": "$text-primary",
+                      "content": "boards of canada — roygbiv",
+                      "lineHeight": 1.2,
+                      "fontFamily": "$font-mono",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.26
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "IkZSb",
+      "x": 2040,
+      "y": 2400,
+      "name": "08 · Audio guest — 1920x1080",
+      "clip": true,
+      "width": 1920,
+      "height": 1080,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "eEi3q",
+          "x": 16,
+          "y": 16,
+          "name": "Frame",
+          "clip": true,
+          "width": 1888,
+          "height": 1048,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "G7RT1",
+              "x": 32,
+              "y": 30,
+              "name": "Label — frame",
+              "fill": "$text-dim",
+              "content": "frame",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            },
+            {
+              "type": "frame",
+              "id": "Qqfv4",
+              "x": 32,
+              "y": 936,
+              "name": "Title banner",
+              "width": 780,
+              "height": 64,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "gap": 12,
+              "padding": [
+                0,
+                22
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "D4Irm",
+                  "name": "Live state",
+                  "gap": 7,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "Gy0Nj",
+                      "name": "Live dot",
+                      "fill": "$accent",
+                      "width": 6,
+                      "height": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "xYYbl",
+                      "name": "Live label",
+                      "fill": "$accent-muted",
+                      "content": "live",
+                      "lineHeight": 1,
+                      "fontFamily": "$font-mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1.54
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "jlhC8",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "building a twitch overlay in elixir",
+                  "lineHeight": 1.2,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 16,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.32
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "JrBq6",
+              "x": 1516,
+              "y": 846,
+              "name": "Audio participants",
+              "width": 340,
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "oP6L7",
+                  "name": "Participant — llcoolchris",
+                  "width": 340,
+                  "height": 50,
+                  "fill": "$widget-fill",
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "g3TvLl",
+                      "name": "On air dot",
+                      "fill": "$accent",
+                      "width": 5,
+                      "height": 5
+                    },
+                    {
+                      "type": "frame",
+                      "id": "D9iY8p",
+                      "name": "Identity",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "u7CrN8",
+                          "name": "Name",
+                          "fill": "$text-primary",
+                          "content": "llcoolchris",
+                          "lineHeight": 1,
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 0.24
+                        },
+                        {
+                          "type": "text",
+                          "id": "J8tGJk",
+                          "name": "Role",
+                          "fill": "$text-dim",
+                          "content": "développeur web · toronto",
+                          "lineHeight": 1,
+                          "fontFamily": "$font-mono",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.32
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "oMjlU",
+                  "name": "Participant — guest_01",
+                  "width": 340,
+                  "height": 50,
+                  "fill": "$widget-fill",
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "EklBD",
+                      "name": "Idle mark",
+                      "width": 5,
+                      "height": 5,
+                      "fill": "$widget-fill",
+                      "layout": "none"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "J1ZSxR",
+                      "name": "Identity",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "GgqJh",
+                          "name": "Name",
+                          "fill": "$text-primary",
+                          "content": "guest_01",
+                          "lineHeight": 1,
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 0.24
+                        },
+                        {
+                          "type": "text",
+                          "id": "gveJO",
+                          "name": "Role",
+                          "fill": "$text-dim",
+                          "content": "en écoute",
+                          "lineHeight": 1,
+                          "fontFamily": "$font-mono",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.32
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tzgMS",
+                  "name": "Participant — guest_02",
+                  "width": 340,
+                  "height": 50,
+                  "fill": "$widget-fill",
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "VKPJd",
+                      "name": "Idle mark",
+                      "width": 5,
+                      "height": 5,
+                      "fill": "$widget-fill",
+                      "layout": "none"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Uj0Ng",
+                      "name": "Identity",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "wgJOQ",
+                          "name": "Name",
+                          "fill": "$text-primary",
+                          "content": "guest_02",
+                          "lineHeight": 1,
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 0.24
+                        },
+                        {
+                          "type": "text",
+                          "id": "tInSz",
+                          "name": "Role",
+                          "fill": "$text-dim",
+                          "content": "en écoute",
+                          "lineHeight": 1,
+                          "fontFamily": "$font-mono",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.32
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "peVXV",
+      "x": 4080,
+      "y": 2400,
+      "name": "09 · Video guest — 1920x1080",
+      "clip": true,
+      "width": 1920,
+      "height": 1080,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "OdXWd",
+          "x": 16,
+          "y": 16,
+          "name": "Feed 1",
+          "clip": true,
+          "width": 618.67,
+          "height": 1048,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "gIYno",
+              "x": 20,
+              "y": 20,
+              "name": "Label — feed",
+              "fill": "$accent",
+              "content": "host",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            },
+            {
+              "type": "text",
+              "id": "gmBYM",
+              "x": 518.67,
+              "y": 20,
+              "name": "On air",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 80,
+              "content": "on air",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            },
+            {
+              "type": "frame",
+              "id": "h9uEG",
+              "x": 20,
+              "y": 976,
+              "name": "Participant tag",
+              "width": 320,
+              "height": 52,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                0,
+                14
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ITgnE",
+                  "name": "Name",
+                  "fill": "$text-primary",
+                  "content": "llcoolchris",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.24
+                },
+                {
+                  "type": "text",
+                  "id": "yEjgT",
+                  "name": "Role",
+                  "fill": "$text-dim",
+                  "content": "software engineer",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.32
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UndF7",
+          "x": 650.67,
+          "y": 16,
+          "name": "Feed 2",
+          "clip": true,
+          "width": 618.67,
+          "height": 1048,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "oqQ6m",
+              "x": 20,
+              "y": 20,
+              "name": "Label — feed",
+              "fill": "$text-dim",
+              "content": "guest 01",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            },
+            {
+              "type": "frame",
+              "id": "eWo1X",
+              "x": 20,
+              "y": 976,
+              "name": "Participant tag",
+              "width": 320,
+              "height": 52,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                0,
+                14
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "WLhTH",
+                  "name": "Name",
+                  "fill": "$text-primary",
+                  "content": "guest_01",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.24
+                },
+                {
+                  "type": "text",
+                  "id": "Q372wt",
+                  "name": "Role",
+                  "fill": "$text-dim",
+                  "content": "invité",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.32
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "e7ZGI",
+          "x": 1285.34,
+          "y": 16,
+          "name": "Feed 3",
+          "clip": true,
+          "width": 618.67,
+          "height": 1048,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "KbIOs",
+              "x": 20,
+              "y": 20,
+              "name": "Label — feed",
+              "fill": "$text-dim",
+              "content": "guest 02",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            },
+            {
+              "type": "frame",
+              "id": "Wge4Q",
+              "x": 20,
+              "y": 976,
+              "name": "Participant tag",
+              "width": 320,
+              "height": 52,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                0,
+                14
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "KbZJ0",
+                  "name": "Name",
+                  "fill": "$text-primary",
+                  "content": "guest_02",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.24
+                },
+                {
+                  "type": "text",
+                  "id": "bSK9m",
+                  "name": "Role",
+                  "fill": "$text-dim",
+                  "content": "invité",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.32
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "FY4t3",
+      "x": 0,
+      "y": 3600,
+      "name": "10 · Computer guest — 1920x1080",
+      "clip": true,
+      "width": 1920,
+      "height": 1080,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "B4BuKr",
+          "x": 16,
+          "y": 16,
+          "name": "Main screen",
+          "clip": true,
+          "width": 1290.67,
+          "height": 968,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "YG5Oj",
+              "x": 20,
+              "y": 18,
+              "name": "Label — screen",
+              "fill": "$accent",
+              "content": "screen",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "fyTNO",
+          "x": 16,
+          "y": 1000,
+          "name": "Title banner",
+          "width": 1290.67,
+          "height": 64,
+          "fill": "$widget-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "gap": 12,
+          "padding": [
+            0,
+            22
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "mTv1M",
+              "name": "Live state",
+              "gap": 7,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "AoPsS",
+                  "name": "Live dot",
+                  "fill": "$accent",
+                  "width": 6,
+                  "height": 6
+                },
+                {
+                  "type": "text",
+                  "id": "qx6Fu",
+                  "name": "Live label",
+                  "fill": "$accent-muted",
+                  "content": "live",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.54
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "Nkxm6",
+              "name": "Title",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "building a twitch overlay in elixir",
+              "lineHeight": 1.2,
+              "fontFamily": "$font-mono",
+              "fontSize": 16,
+              "fontWeight": "normal",
+              "letterSpacing": 0.32
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pbWkj",
+          "x": 1482.68,
+          "y": 16,
+          "name": "Host cam",
+          "clip": true,
+          "width": 421.32,
+          "height": 748.9,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "T4NgS",
+              "x": 16,
+              "y": 16,
+              "name": "Label — host",
+              "fill": "$text-dim",
+              "content": "host",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            },
+            {
+              "type": "frame",
+              "id": "LW3Ok",
+              "x": 16,
+              "y": 680.9,
+              "name": "Participant tag",
+              "width": 300,
+              "height": 52,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                0,
+                14
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "FnboC",
+                  "name": "Name",
+                  "fill": "$text-primary",
+                  "content": "llcoolchris",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.24
+                },
+                {
+                  "type": "text",
+                  "id": "aI0zU",
+                  "name": "Role",
+                  "fill": "$text-dim",
+                  "content": "software engineer",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.32
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "D7TKi",
+          "x": 1482.68,
+          "y": 780.9,
+          "name": "Guest cam",
+          "clip": true,
+          "width": 421.32,
+          "height": 237,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "X2ioon",
+              "x": 16,
+              "y": 16,
+              "name": "Label — guest",
+              "fill": "$text-dim",
+              "content": "guest 01",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            },
+            {
+              "type": "frame",
+              "id": "ghbke",
+              "x": 16,
+              "y": 169,
+              "name": "Participant tag",
+              "width": 300,
+              "height": 52,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                0,
+                14
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "OTdxm",
+                  "name": "Name",
+                  "fill": "$text-primary",
+                  "content": "guest_01",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.24
+                },
+                {
+                  "type": "text",
+                  "id": "rgW1W",
+                  "name": "Role",
+                  "fill": "$text-dim",
+                  "content": "invité",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.32
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "CsB3A",
+          "x": 1482.68,
+          "y": 1033.9,
+          "name": "Recent event ticker",
+          "width": 421.32,
+          "height": 30,
+          "gap": 9,
+          "padding": [
+            0,
+            2
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "uSzL9",
+              "name": "Ticker icon",
+              "fill": "$accent",
+              "content": "+",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "Hwcq0",
+              "name": "Ticker text",
+              "fill": "$text-dim",
+              "content": "chris just followed",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 0.72
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "XfvJK",
+      "x": 2040,
+      "y": 3600,
+      "name": "11 · Alerts — 1920x1080",
+      "clip": true,
+      "width": 1920,
+      "height": 1080,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "ffNEq",
+          "x": 48,
+          "y": 48,
+          "name": "Alert stack",
+          "width": 560,
+          "layout": "vertical",
+          "gap": 8,
+          "children": [
+            {
+              "type": "frame",
+              "id": "LOjSN",
+              "name": "Alert — new follow",
+              "clip": true,
+              "width": 560,
+              "height": 78,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "qPMIX",
+                  "x": 20,
+                  "y": 26,
+                  "name": "Kind mark",
+                  "fill": "$accent",
+                  "content": "+",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "qY1in",
+                  "x": 56,
+                  "y": 20,
+                  "name": "Header",
+                  "fill": "$accent",
+                  "content": "new follow",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.76
+                },
+                {
+                  "type": "text",
+                  "id": "N5TJy",
+                  "x": 56,
+                  "y": 42,
+                  "name": "Content",
+                  "fill": "$text-primary",
+                  "content": "chris just followed",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.28
+                },
+                {
+                  "type": "text",
+                  "id": "jbrIK",
+                  "x": 460,
+                  "y": 20,
+                  "name": "Time",
+                  "fill": "$text-dim",
+                  "textGrowth": "fixed-width",
+                  "width": 80,
+                  "content": "00:12",
+                  "lineHeight": 1,
+                  "textAlign": "right",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.76
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wBsQ6",
+              "name": "Alert — raid",
+              "clip": true,
+              "width": 560,
+              "height": 78,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "hENU5",
+                  "x": 20,
+                  "y": 26,
+                  "name": "Kind mark",
+                  "fill": "$accent",
+                  "content": ">",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "s4Q8Z4",
+                  "x": 56,
+                  "y": 20,
+                  "name": "Header",
+                  "fill": "$accent",
+                  "content": "raid",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.76
+                },
+                {
+                  "type": "text",
+                  "id": "hwvsh",
+                  "x": 56,
+                  "y": 42,
+                  "name": "Content",
+                  "fill": "$text-primary",
+                  "content": "incoming: 42 viewers",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.28
+                },
+                {
+                  "type": "text",
+                  "id": "qMTwD",
+                  "x": 460,
+                  "y": 20,
+                  "name": "Time",
+                  "fill": "$text-dim",
+                  "textGrowth": "fixed-width",
+                  "width": 80,
+                  "content": "00:12",
+                  "lineHeight": 1,
+                  "textAlign": "right",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.76
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "GK8fa",
+              "name": "Alert — sub",
+              "clip": true,
+              "width": 560,
+              "height": 78,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lRA47",
+                  "x": 20,
+                  "y": 26,
+                  "name": "Kind mark",
+                  "fill": "$accent",
+                  "content": "$",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "YRvxn",
+                  "x": 56,
+                  "y": 20,
+                  "name": "Header",
+                  "fill": "$accent",
+                  "content": "sub",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.76
+                },
+                {
+                  "type": "text",
+                  "id": "YpVDF",
+                  "x": 56,
+                  "y": 42,
+                  "name": "Content",
+                  "fill": "$text-primary",
+                  "content": "tier 1 · 3 months",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.28
+                },
+                {
+                  "type": "text",
+                  "id": "yEfbn",
+                  "x": 460,
+                  "y": 20,
+                  "name": "Time",
+                  "fill": "$text-dim",
+                  "textGrowth": "fixed-width",
+                  "width": 80,
+                  "content": "00:12",
+                  "lineHeight": 1,
+                  "textAlign": "right",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.76
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "D7Mx5Z",
+      "x": 3600,
+      "y": 4920,
+      "name": "15 · Computer — 1080x1920",
+      "clip": true,
+      "width": 1080,
+      "height": 1920,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "edXlQ",
+          "x": 16,
+          "y": 16,
+          "name": "Main screen",
+          "clip": true,
+          "width": 1048,
+          "height": 786,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "HnHoB",
+              "x": 20,
+              "y": 18,
+              "name": "Label — screen",
+              "fill": "$accent",
+              "content": "screen",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            },
+            {
+              "type": "text",
+              "id": "poyeC",
+              "x": 948,
+              "y": 18,
+              "name": "Label — ratio",
+              "fill": "$text-dim",
+              "textGrowth": "fixed-width",
+              "width": 80,
+              "content": "4:3",
+              "lineHeight": 1,
+              "textAlign": "right",
+              "fontFamily": "$font-mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1.76
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LAtZD",
+          "x": 16,
+          "y": 818,
+          "name": "Title banner",
+          "width": 1048,
+          "height": 64,
+          "fill": "$widget-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "gap": 12,
+          "padding": [
+            0,
+            22
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "CoqSR",
+              "name": "Live state",
+              "gap": 7,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "AjbXC",
+                  "name": "Live dot",
+                  "fill": "$accent",
+                  "width": 6,
+                  "height": 6
+                },
+                {
+                  "type": "text",
+                  "id": "wo3uI",
+                  "name": "Live label",
+                  "fill": "$accent-muted",
+                  "content": "live",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.54
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "OcZPL",
+              "name": "Title",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "building a twitch overlay in elixir",
+              "lineHeight": 1.2,
+              "fontFamily": "$font-mono",
+              "fontSize": 16,
+              "fontWeight": "normal",
+              "letterSpacing": 0.32
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "P6SC2f",
+          "x": 270,
+          "y": 898,
+          "name": "Head cam",
+          "clip": true,
+          "width": 540,
+          "height": 960,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "pECJO",
+              "x": 16,
+              "y": 16,
+              "name": "Label — cam",
+              "fill": "$text-dim",
+              "content": "cam · 9:16",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            },
+            {
+              "type": "frame",
+              "id": "fUnSn",
+              "x": 16,
+              "y": 874,
+              "name": "Now playing",
+              "width": 508,
+              "height": 70,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "gap": 14,
+              "padding": [
+                0,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "rPydg",
+                  "name": "Artwork",
+                  "width": 38,
+                  "height": 38,
+                  "fill": "$region-fill",
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "layout": "none"
+                },
+                {
+                  "type": "frame",
+                  "id": "H9jcnP",
+                  "name": "Track",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GTgD3",
+                      "name": "Now playing label",
+                      "fill": "$text-dim",
+                      "content": "now playing",
+                      "lineHeight": 1,
+                      "fontFamily": "$font-mono",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1.2
+                    },
+                    {
+                      "type": "text",
+                      "id": "i3wE2W",
+                      "name": "Now playing track",
+                      "fill": "$text-primary",
+                      "content": "boards of canada — roygbiv",
+                      "lineHeight": 1.2,
+                      "fontFamily": "$font-mono",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.26
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "qi1mr",
+          "x": 270,
+          "y": 1874,
+          "name": "Recent event ticker",
+          "width": 540,
+          "height": 30,
+          "gap": 9,
+          "padding": [
+            0,
+            2
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "j4JEI",
+              "name": "Ticker icon",
+              "fill": "$accent",
+              "content": "+",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "JuzVI",
+              "name": "Ticker text",
+              "fill": "$text-dim",
+              "content": "chris just followed",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 0.72
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Z56Do",
+      "x": 4800,
+      "y": 4920,
+      "name": "16 · Talk — 1080x1920",
+      "clip": true,
+      "width": 1080,
+      "height": 1920,
+      "fill": "$preview-bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "wAXlg",
+          "x": 16,
+          "y": 16,
+          "name": "Frame",
+          "clip": true,
+          "width": 1048,
+          "height": 1888,
+          "fill": "$region-fill",
+          "stroke": "$line",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "c2OwHj",
+              "x": 32,
+              "y": 30,
+              "name": "Label — frame",
+              "fill": "$text-dim",
+              "content": "frame",
+              "lineHeight": 1,
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.92
+            },
+            {
+              "type": "frame",
+              "id": "yTgex",
+              "x": 48,
+              "y": 1776,
+              "name": "Title banner",
+              "width": 952,
+              "height": 64,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "gap": 12,
+              "padding": [
+                0,
+                22
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "EU2rs",
+                  "name": "Live state",
+                  "gap": 7,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "k7AEj",
+                      "name": "Live dot",
+                      "fill": "$accent",
+                      "width": 6,
+                      "height": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "Fr1eR",
+                      "name": "Live label",
+                      "fill": "$accent-muted",
+                      "content": "live",
+                      "lineHeight": 1,
+                      "fontFamily": "$font-mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1.54
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "rF7Ui",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "building a twitch overlay in elixir",
+                  "lineHeight": 1.2,
+                  "fontFamily": "$font-mono",
+                  "fontSize": 16,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.32
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Qmper",
+              "x": 48,
+              "y": 1690,
+              "name": "Now playing",
+              "width": 520,
+              "height": 70,
+              "fill": "$widget-fill",
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "gap": 14,
+              "padding": [
+                0,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "lvRUc",
+                  "name": "Artwork",
+                  "width": 38,
+                  "height": 38,
+                  "fill": "$region-fill",
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "layout": "none"
+                },
+                {
+                  "type": "frame",
+                  "id": "bXdvh",
+                  "name": "Track",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "V6tvU",
+                      "name": "Now playing label",
+                      "fill": "$text-dim",
+                      "content": "now playing",
+                      "lineHeight": 1,
+                      "fontFamily": "$font-mono",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1.2
+                    },
+                    {
+                      "type": "text",
+                      "id": "fqOLA",
+                      "name": "Now playing track",
+                      "fill": "$text-primary",
+                      "content": "boards of canada — roygbiv",
+                      "lineHeight": 1.2,
+                      "fontFamily": "$font-mono",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.26
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "accent": {
+      "type": "color",
+      "value": "#FF6A3D"
+    },
+    "accent-muted": {
+      "type": "color",
+      "value": "#B96A4E"
+    },
+    "surface": {
+      "type": "color",
+      "value": "#0A0A0C"
+    },
+    "text-primary": {
+      "type": "color",
+      "value": "#ECECF1"
+    },
+    "text-dim": {
+      "type": "color",
+      "value": "#74747F"
+    },
+    "line": {
+      "type": "color",
+      "value": "#ECECF124"
+    },
+    "region-fill": {
+      "type": "color",
+      "value": "#0A0A0C9E"
+    },
+    "widget-fill": {
+      "type": "color",
+      "value": "#0A0A0CE6"
+    },
+    "preview-bg": {
+      "type": "color",
+      "value": "#121216"
+    },
+    "font-mono": {
+      "type": "string",
+      "value": "JetBrains Mono"
+    }
+  },
+  "fileToken": "0749ef04-7e7f-47bd-9cc2-3f35ead210b6"
+}
