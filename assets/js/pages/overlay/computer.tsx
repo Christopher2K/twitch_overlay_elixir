@@ -34,10 +34,10 @@ export default function Computer({ globalData: initialGlobalData }: Props) {
       <OverlayRegion
         x={16}
         y={16}
-        width={1290.67}
-        height={968}
+        width={1450.68}
+        height={816}
         label="screen"
-        ratio="4:3"
+        ratio="16:9"
         labelX={20}
         labelY={18}
         focus={focus}
@@ -46,7 +46,7 @@ export default function Computer({ globalData: initialGlobalData }: Props) {
       <OverlayBanner
         x={16}
         y={1000}
-        width={1290.67}
+        width={1450.68}
         title={globalData?.data.title}
         tag={globalData?.data.banner}
       />
