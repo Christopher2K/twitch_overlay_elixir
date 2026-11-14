@@ -44,7 +44,8 @@ defmodule TwitchOverlaysWeb.OverlayController do
         props: [globalData: Store.get(:global), guestData: Store.get(:guests)]
       )
 
-  def alerts_overlay(conn, _), do: render_overlay(conn, "overlay/alerts")
+  def alerts_overlay(conn, _),
+    do: render_overlay(conn, "overlay/alerts", layout: :transparent_overlay)
 
   def chat_overlay(conn, _),
     do: render_overlay(conn, "overlay/chat", layout: :full_transparent_overlay)

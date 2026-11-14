@@ -50,6 +50,14 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
     refute Map.has_key?(inertia_props(conn), "layout")
   end
 
+  test "renders the alerts overlay with a transparent background", %{conn: conn} do
+    conn = get(conn, ~p"/overlay/alerts")
+    html = html_response(conn, 200)
+
+    assert html =~ "fixed top-0 left-0 h-[1080px] w-[1920px] overflow-hidden"
+    refute html =~ "ov-canvas"
+  end
+
   test "renders the chat overlay at the browser source size", %{conn: conn} do
     conn = get(conn, ~p"/overlay/chat")
     html = html_response(conn, 200)
