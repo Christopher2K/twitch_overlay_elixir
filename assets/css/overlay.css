@@ -4,9 +4,10 @@
  * Bordered boxes use inset shadows for their 1px rules so Pencil child and
  * padding coordinates map 1:1 (CSS borders would shift the content by 1px).
  *
- * Every scene paints --ov-canvas as a chroma-key green: OBS masks the
+ * Content scenes paint --ov-canvas as a chroma-key green: OBS masks the
  * background with a Chroma Key filter instead of relying on source
- * transparency, so the overlays composite over anything.
+ * transparency. Transition scenes (start/brb/end) keep a transparent
+ * canvas so they composite over whatever sits below in the scene.
  */
 
 :root {
