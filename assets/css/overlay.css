@@ -463,8 +463,11 @@
 
 /* Chat ---------------------------------------------------------------- */
 
+/* Fills its browser source; OBS sets the source size per scene. */
+
 .ov-chat {
   position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   box-shadow: inset 0 0 0 1px var(--ov-line);
@@ -508,10 +511,14 @@
   flex: 1 1 auto;
   min-height: 0;
   flex-direction: column;
-  justify-content: flex-end;
   gap: 12px;
   padding: 16px;
-  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.ov-chat__list::-webkit-scrollbar {
+  display: none;
 }
 
 .ov-chat__row {

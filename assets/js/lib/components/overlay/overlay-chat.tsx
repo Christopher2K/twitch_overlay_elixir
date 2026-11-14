@@ -1,16 +1,26 @@
+import { useEffect, useRef } from "react";
+
 import type { ChatMessage } from "$lib/features/chat/chat.types";
 
 type Props = {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
   messages: ChatMessage[];
 };
 
-export default function OverlayChat({ x, y, width, height, messages }: Props) {
+/**
+ * Fills whatever box it is placed in. The overlay page hands sizing to OBS,
+ * so the browser source dimensions decide the panel size.
+ */
+export default function OverlayChat({ messages }: Props) {
+  const list = useRef<HTMLDivElement>(null);
+
+  // Keep the newest message in view once the list outgrows the panel.
+  useEffect(() => {
+    const element = list.current;
+    if (element) element.scrollTop = element.scrollHeight;
+  }, [messages]);
+
   return (
-    <div className="ov-chat" style={{ left: x, top: y, width, height }}>
+    <div className="ov-chat">
       <div className="ov-chat__head">
         <span className="ov-chat__live">
           <span className="ov-dot"></span>
@@ -22,7 +32,7 @@ export default function OverlayChat({ x, y, width, height, messages }: Props) {
         </span>
       </div>
 
-      <div className="ov-chat__list">
+      <div ref={list} className="ov-chat__list">
         {messages.length ? (
           messages.map((message) => (
             <div key={message.id} className="ov-chat__row">
