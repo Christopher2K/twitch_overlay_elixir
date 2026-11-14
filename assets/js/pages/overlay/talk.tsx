@@ -49,6 +49,15 @@ export default function Talk({ globalData: initialGlobalData }: Props) {
           tag={globalData?.data.banner}
         />
 
+        <OverlayRegion
+          x={912.68}
+          y={251.1}
+          width={421.32}
+          height={748.9}
+          label="cam · 9:16"
+          focus={focus}
+        />
+
         <LiveTicker x={1434.68} y={970} width={421.32} />
 
         <NowPlayingPill
