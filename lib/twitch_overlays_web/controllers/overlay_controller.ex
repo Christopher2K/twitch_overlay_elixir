@@ -5,11 +5,14 @@ defmodule TwitchOverlaysWeb.OverlayController do
 
   def index(conn, _), do: render(conn, :index)
 
-  def start_overlay(conn, _), do: render_overlay(conn, "overlay/start")
+  def start_overlay(conn, _),
+    do: render_overlay(conn, "overlay/start", layout: :transparent_overlay)
 
-  def end_overlay(conn, _), do: render_overlay(conn, "overlay/end")
+  def end_overlay(conn, _),
+    do: render_overlay(conn, "overlay/end", layout: :transparent_overlay)
 
-  def brb_overlay(conn, _), do: render_overlay(conn, "overlay/brb")
+  def brb_overlay(conn, _),
+    do: render_overlay(conn, "overlay/brb", layout: :transparent_overlay)
 
   def computer_overlay(conn, _),
     do: render_overlay(conn, "overlay/computer", props: [globalData: Store.get(:global)])
@@ -44,13 +47,13 @@ defmodule TwitchOverlaysWeb.OverlayController do
   def alerts_overlay(conn, _), do: render_overlay(conn, "overlay/alerts")
 
   def vertical_start_overlay(conn, _),
-    do: render_overlay(conn, "overlay/vertical/start", layout: :vertical_overlay)
+    do: render_overlay(conn, "overlay/vertical/start", layout: :vertical_transparent_overlay)
 
   def vertical_end_overlay(conn, _),
-    do: render_overlay(conn, "overlay/vertical/end", layout: :vertical_overlay)
+    do: render_overlay(conn, "overlay/vertical/end", layout: :vertical_transparent_overlay)
 
   def vertical_brb_overlay(conn, _),
-    do: render_overlay(conn, "overlay/vertical/brb", layout: :vertical_overlay)
+    do: render_overlay(conn, "overlay/vertical/brb", layout: :vertical_transparent_overlay)
 
   def vertical_computer_overlay(conn, _),
     do:
@@ -72,9 +75,16 @@ defmodule TwitchOverlaysWeb.OverlayController do
 
     conn
     |> assign_overlay_props(props)
+    |> assign(:body_class, layout_body_class(layout))
     |> put_layout(html: {TwitchOverlaysWeb.Layouts, layout})
     |> render_inertia(page)
   end
+
+  # Opaque scenes paint the page too, so a browser window larger than the
+  # canvas does not show white bands around it. Transparent scenes leave the
+  # page untouched.
+  defp layout_body_class(layout) when layout in [:overlay, :vertical_overlay], do: "ov-canvas"
+  defp layout_body_class(_layout), do: nil
 
   defp assign_overlay_props(conn, props) do
     Enum.reduce(props, conn, fn {key, value}, conn -> assign_prop(conn, key, value) end)

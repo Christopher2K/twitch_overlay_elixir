@@ -9,7 +9,7 @@ language itself).
 
 | token | value |
 |---|---|
-| canvas | 1920×1080 / 1080×1920, transparent in OBS, `$preview-bg` only for preview |
+| canvas | 1920×1080 / 1080×1920, opaque `$preview-bg` on content scenes, transparent on transitions |
 | frame | 16px inset, 1px `$line` border |
 | gaps | 16px everywhere; leftover width becomes the 176px gutter |
 | radii | none |

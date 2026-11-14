@@ -41,8 +41,10 @@ Five consequences, and they are the whole design:
 | leftover width | 176 (gutter) | spent as side air |
 | radii | 0 | 0 |
 
-- Production canvas is **transparent**. `$preview-bg` is only the artboard fill so the design
-  is readable while editing — never ship it.
+- The canvas is **opaque `$preview-bg` (`#121216`)** on content scenes (computer, laptop, talk,
+  guests, alerts), shipped as `--ov-canvas`, so what renders matches the artboard exactly.
+  Transition scenes (start / brb / end, landscape and vertical) keep a **transparent** canvas so
+  OBS composites them over the scene below.
 - The frame is a hard 16px: every scene's outer edge, every gap between blocks, every inset
   from a region border. One number, no exceptions.
 - Ratios are law: **4:3** screen, **9:16** head cam, **16:9** overhead/guest, **16:10** laptop.
@@ -54,7 +56,7 @@ Five consequences, and they are the whole design:
 
 | token | value | use |
 |---|---|---|
-| `$preview-bg` | `#121216` | artboard preview only |
+| `$preview-bg` | `#121216` | artboard fill; opaque canvas on content scenes |
 | `$surface` | `#0A0A0C` | base near-black |
 | `$region-fill` | `#0A0A0C9E` | 62% black behind video regions |
 | `$widget-fill` | `#0A0A0CE6` | 90% black behind text blocks |
@@ -181,7 +183,8 @@ no scales, no easing curves that draw attention to the overlay instead of the co
 - Uppercase a label, add a logo lock-up, or re-introduce `[ MAIN_FEED ]` bracket tags.
 - Break a ratio to fill the canvas, or stretch a region.
 - Let a widget overlap the outer 16px frame.
-- Ship `$preview-bg` to production.
+- Paint a canvas background only on a transition scene (start / brb / end); content scenes are
+  always opaque.
 
 ## 11. Working with the file
 
