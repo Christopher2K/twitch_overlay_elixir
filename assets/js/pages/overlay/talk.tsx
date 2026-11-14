@@ -40,10 +40,10 @@ export default function Talk({ globalData: initialGlobalData }: Props) {
       />
 
       <OverlayRegion
-        x={928.68}
-        y={267.1}
-        width={421.32}
-        height={748.9}
+        x={690}
+        y={60}
+        width={540}
+        height={960}
         label="cam · 9:16"
         focus={focus}
       />
