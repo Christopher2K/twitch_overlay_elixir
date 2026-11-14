@@ -1,46 +1,28 @@
-import type { ReactNode } from "react";
-import { createInertiaApp as createReactInertiaApp } from "@inertiajs/react";
-import { createInertiaApp as createSvelteInertiaApp } from "@inertiajs/svelte";
+import { createInertiaApp } from "@inertiajs/react";
+import type { ReactElement } from "react";
 import { renderToString } from "react-dom/server";
-import { render as renderSvelte } from "svelte/server";
 
-import AdminLayout from "./pages/admin/_layout.svelte";
+import AdminLayout from "./pages/admin/_layout";
 
 type InitialPage = {
   component: string;
 } & Record<string, unknown>;
 
-const isOverlay = (name: string) => name.startsWith("overlay/");
+// Admin pages keep the shared navigation; the login page stands alone.
+function layoutFor(name: string) {
+  return name.startsWith("admin") && name !== "admin/login"
+    ? AdminLayout
+    : undefined;
+}
 
 export function render(page: InitialPage) {
-  if (isOverlay(page.component)) {
-    // Overlays are React pages.
-    return createReactInertiaApp({
-      page: page as any,
-      resolve: (name: string) => import(`./pages/${name}.tsx`),
-      setup({ App, props }: { App: any; props: any }) {
-        return <App {...props} />;
-      },
-      render: (element: ReactNode) => renderToString(element),
-    });
-  }
-
-  // The admin stays on Svelte.
-  return createSvelteInertiaApp({
-    page: page as any,
-    resolve: async (name: string) => {
-      const page = await import(`./pages/${name}.svelte`);
-
-      return {
-        default: page.default,
-        layout:
-          name.startsWith("admin") && name !== "admin/login"
-            ? AdminLayout
-            : undefined,
-      };
+  return createInertiaApp({
+    page: page as never,
+    resolve: (name: string) => import(`./pages/${name}.tsx`),
+    layout: (name: string) => layoutFor(name),
+    setup({ App, props }: { App: any; props: any }): ReactElement {
+      return <App {...props} />;
     },
-    setup({ App, props }: { App: any; props: any }) {
-      return renderSvelte(App, { props });
-    },
+    render: renderToString,
   });
 }

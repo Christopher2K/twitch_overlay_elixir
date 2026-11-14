@@ -1,6 +1,4 @@
 import esbuild from "esbuild";
-import sveltePlugin from "esbuild-svelte";
-import { sveltePreprocess } from "svelte-preprocess";
 
 const args = process.argv.slice(2);
 const watch = args.includes("--watch");
@@ -18,17 +16,6 @@ const clientOpts = {
   outdir: "../priv/static/assets",
   external: ["*.css", "fonts/*", "images/*", "sounds/*"],
   nodePaths: ["../deps"],
-  conditions: ["svelte"],
-  plugins: [
-    sveltePlugin({
-      preprocess: sveltePreprocess(),
-      compilerOptions: {
-        dev: watch,
-        generate: "client",
-        css: "external",
-      },
-    }),
-  ],
 };
 
 const serverOpts = {
@@ -43,17 +30,6 @@ const serverOpts = {
   outdir: "../priv",
   external: ["*.css", "fonts/*", "images/*"],
   nodePaths: ["../deps"],
-  conditions: ["svelte"],
-  plugins: [
-    sveltePlugin({
-      preprocess: sveltePreprocess(),
-      compilerOptions: {
-        dev: watch,
-        generate: "server",
-        css: "external",
-      },
-    }),
-  ],
 };
 
 const opts = ssr ? serverOpts : clientOpts;

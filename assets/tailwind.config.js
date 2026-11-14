@@ -6,7 +6,7 @@ const path = require("path");
 
 module.exports = {
   content: [
-    "./js/**/*.{js,svelte,ts,tsx}",
+    "./js/**/*.{js,ts,tsx}",
     "../lib/twitch_overlays_web.ex",
     "../lib/twitch_overlays_web/**/*.*ex",
   ],
