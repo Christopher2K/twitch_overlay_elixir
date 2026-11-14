@@ -45,7 +45,7 @@ export default function Computer({ globalData: initialGlobalData }: Props) {
 
       <OverlayBanner
         x={16}
-        y={1000}
+        y={953.9}
         width={1450.68}
         title={globalData?.data.title}
         tag={globalData?.data.banner}
