@@ -30,7 +30,13 @@ export default function Login() {
     <div className="flex h-full w-full flex-col items-center justify-center gap-4">
       <h1 className="text-2xl">Login</h1>
 
-      {error ? <Alert kind="error" message={error} /> : null}
+      {error ? (
+        <Alert
+          kind="error"
+          message={error}
+          onClose={() => setDismissed(flash)}
+        />
+      ) : null}
 
       <form
         onSubmit={handleSubmit}
