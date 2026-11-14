@@ -45,16 +45,14 @@ defmodule TwitchOverlaysWeb.Endpoint do
   plug Plug.RequestId
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 
-  defp copy_req_body(conn, _) do
-    {:ok, body, _} = Plug.Conn.read_body(conn)
-    Plug.Conn.put_private(conn, :raw_body, body)
-  end
-
-  plug :copy_req_body
-
+  # Reads the body once and keeps the raw bytes for the Twitch webhook
+  # signature check. Parsers use the same bytes instead of reading the socket
+  # again, which breaks for clients that wait for `100 Continue` (see
+  # TwitchOverlaysWeb.Plugs.RawBody).
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
+    body_reader: {TwitchOverlaysWeb.Plugs.RawBody, :read_body, []},
     json_decoder: Phoenix.json_library()
 
   plug Plug.MethodOverride
