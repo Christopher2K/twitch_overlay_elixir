@@ -12,9 +12,9 @@
 
 ## Architecture
 
-- Phoenix controllers render Svelte pages through Inertia with SSR enabled. `render_inertia("overlay/start")` resolves `assets/js/pages/overlay/start.svelte`; page resolution and admin layout selection are duplicated in `assets/js/app.js` and `assets/js/ssr.js`, so change both together. Guard browser-only APIs during SSR.
+- Phoenix controllers render Inertia pages with SSR enabled. Overlay pages are React (`assets/js/pages/overlay/**/*.tsx` with components in `assets/js/lib/components/overlay/`); admin pages are still Svelte. `assets/js/app.tsx` and `assets/js/ssr.tsx` dispatch on `page.component.startsWith("overlay/")`, and page resolution plus admin layout selection are duplicated between them, so change both together. Guard browser-only APIs during SSR; overlays render through `renderToString`.
 - Domain code uses schemas, `*Repo` modules, and single-purpose `Services.*` modules called directly by controllers; there are no `Accounts`, `Configuration`, or `Integration` context facade modules despite legacy tests referencing them.
-- Twitch EventSub POSTs flow through `WebhookController` and `Webhooks.Services.HandleWebhookEvent`, then broadcast `"alert"` on `alerts_room:lobby`. Svelte's `use-alerts.ts` consumes that topic through `/socket/events`.
+- Twitch EventSub POSTs flow through `WebhookController` and `Webhooks.Services.HandleWebhookEvent`, then broadcast `"alert"` on `alerts_room:lobby`. `use-alerts.ts` consumes that topic through `/socket/events`.
 - Webhook signature verification uses the raw request body saved by `Endpoint.copy_req_body/2`; preserve its position before `Plug.Parsers` when changing request parsing.
 
 ## Current test baseline

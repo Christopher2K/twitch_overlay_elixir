@@ -1,28 +1,29 @@
-import { onDestroy, onMount } from "svelte";
+import { useEffect, useRef } from "react";
+import { Socket } from "phoenix";
 import type { Metadata } from "$lib/features/metadata";
-import { Socket, Channel } from "phoenix";
 
 export function useConfigurationUpdate(
   onMetadataUpdate?: (data: Metadata[number]) => void,
 ) {
-  let socket: Socket;
-  let channel: Channel;
+  const callback = useRef(onMetadataUpdate);
+  callback.current = onMetadataUpdate;
 
-  onMount(() => {
+  useEffect(() => {
     if (typeof window === "undefined") return;
 
-    socket = new Socket("/socket/events");
-    channel = socket.channel("overlay_room:lobby");
+    const socket = new Socket("/socket/events");
+    const channel = socket.channel("overlay_room:lobby");
+
     channel.on("update_metadata", (data) => {
-      onMetadataUpdate?.(data);
+      callback.current?.(data);
     });
 
     socket.connect();
     channel.join();
-  });
 
-  onDestroy(() => {
-    socket?.disconnect();
-    channel?.leave();
-  });
+    return () => {
+      channel.leave();
+      socket.disconnect();
+    };
+  }, []);
 }

@@ -8,11 +8,12 @@ const deploy = args.includes("--deploy");
 const ssr = args.includes("--ssr");
 
 const clientOpts = {
-  entryPoints: ["js/app.js"],
+  entryPoints: ["js/app.tsx"],
   bundle: true,
   minify: deploy,
   sourcemap: watch && "inline",
   logLevel: "info",
+  jsx: "automatic",
   target: "es2017",
   outdir: "../priv/static/assets",
   external: ["*.css", "fonts/*", "images/*", "sounds/*"],
@@ -31,11 +32,12 @@ const clientOpts = {
 };
 
 const serverOpts = {
-  entryPoints: ["js/ssr.js"],
+  entryPoints: ["js/ssr.tsx"],
   bundle: true,
   minify: false,
   sourcemap: watch && "inline",
   logLevel: "info",
+  jsx: "automatic",
   platform: "node",
   format: "cjs",
   outdir: "../priv",

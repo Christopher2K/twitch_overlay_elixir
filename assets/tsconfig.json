@@ -12,15 +12,11 @@
     "moduleDetection": "force",
     "noEmit": true,
     "verbatimModuleSyntax": true,
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "$lib/*": [
-        "js/lib/*"
-      ]
+      "$lib/*": ["js/lib/*"]
     }
   },
-  "include": [
-    "js/**/*.ts",
-    "js/**/*.svelte"
-  ]
+  "include": ["js/**/*.ts", "js/**/*.tsx", "js/**/*.svelte"]
 }

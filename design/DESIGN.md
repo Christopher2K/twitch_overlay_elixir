@@ -1,8 +1,8 @@
 # Design
 
 The visual language for every twitch overlay in this repo. This is a design document, not an
-implementation: the `.pen` file is the source of truth, the app still renders the old Svelte
-overlays. See [overlay-audit.md](overlay-audit.md) for the route-by-route inventory.
+implementation: the `.pen` file is the source of truth, and the app renders it with React.
+See [overlay-audit.md](overlay-audit.md) for the route-by-route inventory.
 
 - Source: [`computer-overlay.pen`](computer-overlay.pen) — 16 artboards, one per routed overlay
 - Previews: [`exports/`](exports/) — 1× PNG per artboard, plus `_contact-sheet.png`

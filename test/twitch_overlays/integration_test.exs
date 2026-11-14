@@ -21,7 +21,11 @@ defmodule TwitchOverlays.IntegrationTest do
     end
 
     test "create_platform/1 with valid data creates a platform" do
-      valid_attrs = %{name: "some name", access_token: "some access_token", refresh_token: "some refresh_token"}
+      valid_attrs = %{
+        name: "some name",
+        access_token: "some access_token",
+        refresh_token: "some refresh_token"
+      }
 
       assert {:ok, %Platform{} = platform} = Integration.create_platform(valid_attrs)
       assert platform.name == "some name"
@@ -35,7 +39,12 @@ defmodule TwitchOverlays.IntegrationTest do
 
     test "update_platform/2 with valid data updates the platform" do
       platform = platform_fixture()
-      update_attrs = %{name: "some updated name", access_token: "some updated access_token", refresh_token: "some updated refresh_token"}
+
+      update_attrs = %{
+        name: "some updated name",
+        access_token: "some updated access_token",
+        refresh_token: "some updated refresh_token"
+      }
 
       assert {:ok, %Platform{} = platform} = Integration.update_platform(platform, update_attrs)
       assert platform.name == "some updated name"

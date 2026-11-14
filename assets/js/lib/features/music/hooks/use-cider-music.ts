@@ -1,80 +1,81 @@
+import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
-import { onDestroy, onMount } from "svelte";
 import type { NowPlayingItemEvent, PlaybackTimeEvent } from "../music.types";
-import { writable } from "svelte/store";
 
 const CIDER_MUSIC_URL = "http://localhost:10767";
 const CIDER_MUSIC_REST_URL = "http://localhost:10767";
 
+export type Music = Partial<{
+  name: string;
+  artist: string;
+  album: string;
+  year: string;
+  artwork: string;
+  position: number;
+  isPlaying: boolean;
+}>;
+
 export function useCiderMusic() {
-  let socket: ReturnType<typeof io>;
-  const music = writable<
-    Partial<{
-      name: string;
-      artist: string;
-      album: string;
-      year: string;
-      artwork: string;
-      position: number;
-      isPlaying: boolean;
-    }>
-  >({});
+  const [music, setMusic] = useState<Music>({});
 
-  function handleAPIPlaybackEvents({
-    type,
-    data,
-  }: {
-    type: string;
-    data: any;
-  }) {
-    switch (type) {
-      case "playbackStatus.nowPlayingItemDidChange":
-        const item = data as NowPlayingItemEvent;
-        music.update((old) => ({
-          ...(old ?? {}),
-          name: item.name,
-          artist: item.artistName,
-          album: item.albumName,
-          year: item.releaseDate?.slice(0, 4),
-          artwork: item.artwork.url,
-          position: +(
-            item.currentPlaybackTime / Math.round(item.durationInMillis / 1000)
-          ).toFixed(2),
-        }));
-        break;
-
-      case "playbackStatus.playbackStateDidChange":
-        music.update((old) => ({
-          ...(old ?? {}),
-          isPlaying: data.playbackState === "playing",
-        }));
-        break;
-
-      case "playbackStatus.playbackTimeDidChange":
-        const update = data as PlaybackTimeEvent;
-        music.update((old) => ({
-          ...(old ?? {}),
-          isPlaying: update.isPlaying,
-          position: +(
-            update.currentPlaybackTime / update.currentPlaybackDuration
-          ).toFixed(2),
-        }));
-        break;
-
-      default:
-        console.log("Unknown API Playback Event", type);
-    }
-  }
-
-  onMount(() => {
+  useEffect(() => {
     if (typeof window === "undefined") return;
+
+    let socket: ReturnType<typeof io> | undefined;
+
+    function handleAPIPlaybackEvents({
+      type,
+      data,
+    }: {
+      type: string;
+      data: any;
+    }) {
+      switch (type) {
+        case "playbackStatus.nowPlayingItemDidChange":
+          const item = data as NowPlayingItemEvent;
+          setMusic((old) => ({
+            ...old,
+            name: item.name,
+            artist: item.artistName,
+            album: item.albumName,
+            year: item.releaseDate?.slice(0, 4),
+            artwork: item.artwork.url,
+            position: +(
+              item.currentPlaybackTime /
+              Math.round(item.durationInMillis / 1000)
+            ).toFixed(2),
+          }));
+          break;
+
+        case "playbackStatus.playbackStateDidChange":
+          setMusic((old) => ({
+            ...old,
+            isPlaying: data.playbackState === "playing",
+          }));
+          break;
+
+        case "playbackStatus.playbackTimeDidChange":
+          const update = data as PlaybackTimeEvent;
+          setMusic((old) => ({
+            ...old,
+            isPlaying: update.isPlaying,
+            position: +(
+              update.currentPlaybackTime / update.currentPlaybackDuration
+            ).toFixed(2),
+          }));
+          break;
+
+        default:
+          console.log("Unknown API Playback Event", type);
+      }
+    }
 
     fetch(`${CIDER_MUSIC_REST_URL}/api/v1/playback/now-playing`)
       .then((res) => res.json())
       .then(({ info }: { info: NowPlayingItemEvent }) => {
         if (!info?.name) return;
-        music.update((old) => ({
-          ...(old ?? {}),
+        setMusic((old) => ({
+          ...old,
           name: info.name,
           artist: info.artistName,
           album: info.albumName,
@@ -97,17 +98,15 @@ export function useCiderMusic() {
 
     socket.on("API:Playback", handleAPIPlaybackEvents);
 
-    socket.io.on("error", (_) => {
-      music.set({});
+    socket.io.on("error", () => {
+      setMusic({});
     });
-  });
 
-  onDestroy(() => {
-    if (socket) {
-      socket.disconnect();
-      socket.off("API:Playback", handleAPIPlaybackEvents);
-    }
-  });
+    return () => {
+      socket?.off("API:Playback", handleAPIPlaybackEvents);
+      socket?.disconnect();
+    };
+  }, []);
 
   return { music };
 }

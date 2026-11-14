@@ -1,26 +1,27 @@
-import { onDestroy, onMount } from "svelte";
-import { Socket, Channel } from "phoenix";
+import { useEffect, useRef } from "react";
+import { Socket } from "phoenix";
 import type { NotificationData } from "$lib/features/notification";
 
 export function useAlerts(onNewAlert?: (data: NotificationData) => void) {
-  let socket: Socket;
-  let channel: Channel;
+  const callback = useRef(onNewAlert);
+  callback.current = onNewAlert;
 
-  onMount(() => {
+  useEffect(() => {
     if (typeof window === "undefined") return;
 
-    socket = new Socket("/socket/events");
-    channel = socket.channel("alerts_room:lobby");
+    const socket = new Socket("/socket/events");
+    const channel = socket.channel("alerts_room:lobby");
+
     channel.on("alert", (data) => {
-      onNewAlert?.(data);
+      callback.current?.(data);
     });
 
     socket.connect();
     channel.join();
-  });
 
-  onDestroy(() => {
-    socket?.disconnect();
-    channel?.leave();
-  });
+    return () => {
+      channel.leave();
+      socket.disconnect();
+    };
+  }, []);
 }
