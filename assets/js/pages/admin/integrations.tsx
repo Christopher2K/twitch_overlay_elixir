@@ -12,12 +12,17 @@ type Props = {
   integrations?: string[];
   subscriptions?: Subscription[];
   twitch_sub_types?: AvailableSubscriptionType[];
+  lastfm?: {
+    configured: boolean;
+    username?: string | null;
+  };
 };
 
 export default function Integrations({
   integrations = [],
   subscriptions = [],
   twitch_sub_types = [],
+  lastfm = { configured: false, username: null },
 }: Props) {
   const [loading, setLoading] = useState(false);
 
@@ -108,6 +113,19 @@ export default function Integrations({
             )}
           </div>
         </div>
+      </section>
+
+      <section className="flex w-full flex-col gap-4">
+        <div className="flex-start flex w-full flex-row items-center gap-4">
+          <h3 className="text-2xl underline">Last.fm</h3>
+          <IntegrationStatus isConnected={lastfm.configured} />
+        </div>
+
+        <p>
+          {lastfm.configured
+            ? `Showing recent scrobbles for ${lastfm.username}.`
+            : "Add a Last.fm username and API key in Configuration to show tracks on the overlays."}
+        </p>
       </section>
     </div>
   );

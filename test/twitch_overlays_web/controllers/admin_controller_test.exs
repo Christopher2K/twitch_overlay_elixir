@@ -9,6 +9,7 @@ defmodule TwitchOverlaysWeb.AdminControllerTest do
     test "renders the stored settings", %{conn: conn} do
       assert {:ok, _} = Store.put(:global, %{"title" => "Live"})
       assert {:ok, _} = Store.put(:guests, %{"members" => [%{"name" => "Ana"}]})
+      assert {:ok, _} = Store.put(:lastfm, %{"api_key" => "key", "username" => "listener"})
 
       conn = conn |> signed_in_conn() |> get(~p"/admin")
 
@@ -18,6 +19,9 @@ defmodule TwitchOverlaysWeb.AdminControllerTest do
                Enum.find(metadata, &(&1["name"] == "global"))
 
       assert %{"name" => "guests"} = Enum.find(metadata, &(&1["name"] == "guests"))
+
+      assert %{"name" => "lastfm", "data" => %{"username" => "listener"}} =
+               Enum.find(metadata, &(&1["name"] == "lastfm"))
     end
 
     test "redirects to the login page when signed out", %{conn: conn} do
@@ -52,6 +56,21 @@ defmodule TwitchOverlaysWeb.AdminControllerTest do
       assert Phoenix.Flash.get(conn.assigns.flash, :success) == "Guests information updated"
 
       assert %{data: %{"members" => [%{"name" => "Ana"}]}} = Store.get(:guests)
+    end
+
+    test "saves the Last.fm settings", %{conn: conn} do
+      conn =
+        conn
+        |> signed_in_conn()
+        |> post(~p"/admin", %{
+          "lastfm" => %{"api_key" => "api-key", "username" => "listener"}
+        })
+
+      assert redirected_to(conn) == ~p"/admin"
+      assert Phoenix.Flash.get(conn.assigns.flash, :success) == "Last.fm information updated"
+
+      assert %{data: %{"api_key" => "api-key", "username" => "listener"}} =
+               Store.get(:lastfm)
     end
 
     test "keeps a single row per setting when saved twice", %{conn: conn} do

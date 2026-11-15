@@ -73,6 +73,12 @@ defmodule TwitchOverlaysWeb.Router do
     post "/twitch-event", WebhookController, :twitch_event
   end
 
+  scope "/api", TwitchOverlaysWeb do
+    pipe_through :api
+
+    get "/lastfm/now-playing", LastfmController, :now_playing
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", TwitchOverlaysWeb do
   #   pipe_through :api

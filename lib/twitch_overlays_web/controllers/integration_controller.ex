@@ -4,6 +4,7 @@ defmodule TwitchOverlaysWeb.IntegrationController do
   use TwitchOverlaysWeb, :controller
 
   alias TwitchOverlays.Integration.Services, as: IntegrationServices
+  alias TwitchOverlays.Lastfm.Config, as: LastfmConfig
   alias TwitchOverlays.Webhooks.Services, as: WebhookServices
   alias TwitchOverlays.Webhooks.Meta
 
@@ -23,6 +24,10 @@ defmodule TwitchOverlaysWeb.IntegrationController do
     |> assign_prop(
       :twitch_sub_types,
       Meta.get_available_subscriptions_type("twitch")
+    )
+    |> assign_prop(
+      :lastfm,
+      %{configured: LastfmConfig.configured?(), username: LastfmConfig.username()}
     )
     |> render_inertia("admin/integrations")
   end

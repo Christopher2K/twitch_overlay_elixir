@@ -13,4 +13,9 @@ export type GuestMetadata = {
   data: { members: Participant[] };
 };
 
-export type Metadata = Array<GlobalMetadata | GuestMetadata>;
+export type LastfmMetadata = {
+  name: "lastfm";
+  data: { api_key: string; username: string };
+};
+
+export type Metadata = Array<GlobalMetadata | GuestMetadata | LastfmMetadata>;

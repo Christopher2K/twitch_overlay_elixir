@@ -49,6 +49,9 @@ defmodule TwitchOverlaysWeb.AdminController do
   def configuration_submission(conn, %{"guests" => data}),
     do: save_setting(conn, "guests", data, "Guests information updated")
 
+  def configuration_submission(conn, %{"lastfm" => data}),
+    do: save_setting(conn, "lastfm", data, "Last.fm information updated")
+
   defp save_setting(conn, name, data, success_message) do
     case Store.put(name, data) do
       {:ok, _metadata} ->

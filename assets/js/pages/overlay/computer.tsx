@@ -3,7 +3,10 @@ import { useState } from "react";
 import OverlayBanner from "$lib/components/overlay/overlay-banner";
 import OverlayRegion from "$lib/components/overlay/overlay-region";
 import LiveTicker from "$lib/components/overlay/live-ticker";
+import NowPlayingPill from "$lib/components/overlay/now-playing-pill";
 import { useConfigurationUpdate } from "$lib/features/configuration/hooks/use-configuration-update";
+import { useLastfmMusic } from "$lib/features/music/hooks/use-lastfm-music";
+import { trackLabel, trackTitle } from "$lib/features/music/track";
 import type { GlobalMetadata } from "$lib/features/metadata";
 
 type Props = {
@@ -23,6 +26,9 @@ export default function Computer({ globalData: initialGlobalData }: Props) {
 
   const globalData = liveGlobalData ?? initialGlobalData;
   const focus = globalData?.data.focusMode ?? false;
+  const { track } = useLastfmMusic();
+  const nowPlaying = trackTitle(track);
+  const nowPlayingLabel = trackLabel(track);
 
   return (
     <div className="ov-root">
@@ -53,7 +59,16 @@ export default function Computer({ globalData: initialGlobalData }: Props) {
         height={748.9}
         label="cam · 9:16"
         focus={focus}
-      />
+      >
+        <NowPlayingPill
+          x={16}
+          y={662.9}
+          width={389.32}
+          artwork={track?.artwork}
+          track={nowPlaying}
+          label={nowPlayingLabel}
+        />
+      </OverlayRegion>
 
       <OverlayRegion
         x={1482.68}
