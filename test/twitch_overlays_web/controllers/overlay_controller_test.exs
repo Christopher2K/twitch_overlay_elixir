@@ -12,7 +12,6 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
                "focusMode" => false
              })
 
-    assert {:ok, _} = Store.put(:guests, %{"members" => [%{"name" => "Ana"}]})
     :ok
   end
 
@@ -25,9 +24,6 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
           "/overlay/brb",
           "/overlay/computer",
           "/overlay/talk",
-          "/overlay/audio-guest",
-          "/overlay/video-guest",
-          "/overlay/computer-guest",
           "/overlay/alerts",
           "/overlay/chat",
           "/overlay/vertical/start",
@@ -40,8 +36,15 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
       assert html =~ ~s(href="#{path}")
     end
 
-    refute html =~ "/overlay/computer-small"
-    refute html =~ "/overlay/computer-built-in"
+    for path <- [
+          "/overlay/computer-small",
+          "/overlay/computer-built-in",
+          "/overlay/audio-guest",
+          "/overlay/video-guest",
+          "/overlay/computer-guest"
+        ] do
+      refute html =~ path
+    end
   end
 
   test "passes the global settings to the computer overlay", %{conn: conn} do
@@ -57,21 +60,6 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
 
     refute Map.has_key?(inertia_props(conn), "layout")
     assert html =~ "h-[1080px] w-[1920px]"
-  end
-
-  test "passes global and guest settings to guest overlays", %{conn: conn} do
-    for path <- ["/overlay/audio-guest", "/overlay/video-guest", "/overlay/computer-guest"] do
-      conn = get(conn, path)
-      assert html_response(conn, 200)
-
-      assert %{
-               "globalData" => %{"name" => "global"},
-               "guestData" => %{
-                 "name" => "guests",
-                 "data" => %{"members" => [%{"name" => "Ana"}]}
-               }
-             } = inertia_props(conn)
-    end
   end
 
   test "renders global settings with the vertical layout", %{conn: conn} do

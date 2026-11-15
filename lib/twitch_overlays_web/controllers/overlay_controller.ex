@@ -20,24 +20,6 @@ defmodule TwitchOverlaysWeb.OverlayController do
   def talk_overlay(conn, _),
     do: render_overlay(conn, "overlay/talk", props: [globalData: Store.get(:global)])
 
-  def audio_guest_overlay(conn, _),
-    do:
-      render_overlay(conn, "overlay/audio-guest",
-        props: [globalData: Store.get(:global), guestData: Store.get(:guests)]
-      )
-
-  def video_guest_overlay(conn, _),
-    do:
-      render_overlay(conn, "overlay/video-guest",
-        props: [globalData: Store.get(:global), guestData: Store.get(:guests)]
-      )
-
-  def computer_guest_overlay(conn, _),
-    do:
-      render_overlay(conn, "overlay/computer-guest",
-        props: [globalData: Store.get(:global), guestData: Store.get(:guests)]
-      )
-
   def alerts_overlay(conn, _),
     do: render_overlay(conn, "overlay/alerts", layout: :transparent_overlay)
 
