@@ -4,6 +4,7 @@ type Props = {
   width: number;
   artwork?: string;
   track?: string;
+  artist?: string;
   label?: string;
 };
 
@@ -13,6 +14,7 @@ export default function NowPlayingPill({
   width,
   artwork,
   track,
+  artist,
   label = "now playing",
 }: Props) {
   if (!track) return null;
@@ -28,6 +30,7 @@ export default function NowPlayingPill({
       <span className="ov-pill__col">
         <span className="ov-pill__label">{label}</span>
         <span className="ov-pill__track">{track}</span>
+        {artist ? <span className="ov-pill__artist">{artist}</span> : null}
       </span>
     </div>
   );

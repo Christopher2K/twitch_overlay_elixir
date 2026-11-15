@@ -232,6 +232,16 @@
   white-space: nowrap;
 }
 
+.ov-pill__artist {
+  overflow: hidden;
+  font-size: 11px;
+  letter-spacing: 0.44px;
+  line-height: 1;
+  color: var(--ov-dim);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* Alerts -------------------------------------------------------------- */
 
 .ov-alert-stack {

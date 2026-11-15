@@ -5,7 +5,7 @@ import OverlayRegion from "$lib/components/overlay/overlay-region";
 import NowPlayingPill from "$lib/components/overlay/now-playing-pill";
 import { useConfigurationUpdate } from "$lib/features/configuration/hooks/use-configuration-update";
 import { useLastfmMusic } from "$lib/features/music/hooks/use-lastfm-music";
-import { trackLabel, trackTitle } from "$lib/features/music/track";
+import { trackArtist, trackLabel, trackTitle } from "$lib/features/music/track";
 import type { GlobalMetadata } from "$lib/features/metadata";
 
 type Props = {
@@ -27,6 +27,7 @@ export default function VerticalTalk({ globalData: initialGlobalData }: Props) {
   const focus = globalData?.data.focusMode ?? false;
   const { track } = useLastfmMusic();
   const nowPlaying = trackTitle(track);
+  const nowPlayingArtist = trackArtist(track);
   const nowPlayingLabel = trackLabel(track);
 
   return (
@@ -47,6 +48,7 @@ export default function VerticalTalk({ globalData: initialGlobalData }: Props) {
           width={520}
           artwork={track?.artwork}
           track={nowPlaying}
+          artist={nowPlayingArtist}
           label={nowPlayingLabel}
         />
 

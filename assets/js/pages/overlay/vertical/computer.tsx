@@ -6,7 +6,7 @@ import LiveTicker from "$lib/components/overlay/live-ticker";
 import NowPlayingPill from "$lib/components/overlay/now-playing-pill";
 import { useConfigurationUpdate } from "$lib/features/configuration/hooks/use-configuration-update";
 import { useLastfmMusic } from "$lib/features/music/hooks/use-lastfm-music";
-import { trackLabel, trackTitle } from "$lib/features/music/track";
+import { trackArtist, trackLabel, trackTitle } from "$lib/features/music/track";
 import type { GlobalMetadata } from "$lib/features/metadata";
 
 type Props = {
@@ -30,6 +30,7 @@ export default function VerticalComputer({
   const focus = globalData?.data.focusMode ?? false;
   const { track } = useLastfmMusic();
   const nowPlaying = trackTitle(track);
+  const nowPlayingArtist = trackArtist(track);
   const nowPlayingLabel = trackLabel(track);
 
   return (
@@ -68,6 +69,7 @@ export default function VerticalComputer({
           width={508}
           artwork={track?.artwork}
           track={nowPlaying}
+          artist={nowPlayingArtist}
           label={nowPlayingLabel}
         />
       </OverlayRegion>
