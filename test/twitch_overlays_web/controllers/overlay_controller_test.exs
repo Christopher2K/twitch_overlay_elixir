@@ -16,6 +16,34 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
     :ok
   end
 
+  test "lists every available overlay in the registry", %{conn: conn} do
+    html = conn |> get(~p"/") |> html_response(200)
+
+    for path <- [
+          "/overlay/start",
+          "/overlay/end",
+          "/overlay/brb",
+          "/overlay/computer",
+          "/overlay/talk",
+          "/overlay/audio-guest",
+          "/overlay/video-guest",
+          "/overlay/computer-guest",
+          "/overlay/alerts",
+          "/overlay/chat",
+          "/overlay/vertical/start",
+          "/overlay/vertical/end",
+          "/overlay/vertical/brb",
+          "/overlay/vertical/computer",
+          "/overlay/vertical/talk",
+          "/overlay/vertical/alerts"
+        ] do
+      assert html =~ ~s(href="#{path}")
+    end
+
+    refute html =~ "/overlay/computer-small"
+    refute html =~ "/overlay/computer-built-in"
+  end
+
   test "passes the global settings to the computer overlay", %{conn: conn} do
     conn = get(conn, ~p"/overlay/computer")
     html = html_response(conn, 200)
@@ -32,13 +60,18 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
   end
 
   test "passes global and guest settings to guest overlays", %{conn: conn} do
-    conn = get(conn, ~p"/overlay/audio-guest")
-    assert html_response(conn, 200)
+    for path <- ["/overlay/audio-guest", "/overlay/video-guest", "/overlay/computer-guest"] do
+      conn = get(conn, path)
+      assert html_response(conn, 200)
 
-    assert %{
-             "globalData" => %{"name" => "global"},
-             "guestData" => %{"name" => "guests", "data" => %{"members" => [%{"name" => "Ana"}]}}
-           } = inertia_props(conn)
+      assert %{
+               "globalData" => %{"name" => "global"},
+               "guestData" => %{
+                 "name" => "guests",
+                 "data" => %{"members" => [%{"name" => "Ana"}]}
+               }
+             } = inertia_props(conn)
+    end
   end
 
   test "renders global settings with the vertical layout", %{conn: conn} do

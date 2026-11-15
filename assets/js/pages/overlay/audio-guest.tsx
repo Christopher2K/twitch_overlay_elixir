@@ -1,17 +1,12 @@
-import { useState } from "react";
-
 import OverlayAudioStack, {
   type AudioParticipant,
 } from "$lib/components/overlay/overlay-audio-stack";
 import OverlayBanner from "$lib/components/overlay/overlay-banner";
 import OverlayRegion from "$lib/components/overlay/overlay-region";
-import { useConfigurationUpdate } from "$lib/features/configuration/hooks/use-configuration-update";
-import type { GuestMetadata, GlobalMetadata } from "$lib/features/metadata";
-
-type Props = {
-  globalData: GlobalMetadata | null;
-  guestData: GuestMetadata | null;
-};
+import {
+  type GuestOverlayProps,
+  useGuestOverlayData,
+} from "$lib/features/configuration/hooks/use-guest-overlay-data";
 
 const HOST: AudioParticipant = {
   name: "llcoolchris",
@@ -19,31 +14,8 @@ const HOST: AudioParticipant = {
   onAir: true,
 };
 
-export default function AudioGuest({
-  globalData: initialGlobalData,
-  guestData: initialGuestData,
-}: Props) {
-  const [liveGlobalData, setLiveGlobalData] = useState<GlobalMetadata | null>(
-    null,
-  );
-  const [liveGuestData, setLiveGuestData] = useState<GuestMetadata | null>(
-    null,
-  );
-
-  useConfigurationUpdate((data) => {
-    if (data.name === "global") {
-      setLiveGlobalData(data);
-    }
-
-    if (data.name === "guests") {
-      setLiveGuestData(data);
-    }
-  });
-
-  const globalData = liveGlobalData ?? initialGlobalData;
-  const guestData = liveGuestData ?? initialGuestData;
-
-  const participants = guestData?.data.members ?? [];
+export default function AudioGuest(props: GuestOverlayProps) {
+  const { globalData, participants } = useGuestOverlayData(props);
   const rows: AudioParticipant[] = [
     HOST,
     ...participants.map((participant) => ({

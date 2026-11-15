@@ -17,12 +17,6 @@ defmodule TwitchOverlaysWeb.OverlayController do
   def computer_overlay(conn, _),
     do: render_overlay(conn, "overlay/computer", props: [globalData: Store.get(:global)])
 
-  def computer_small_overlay(conn, _),
-    do: render_overlay(conn, "overlay/computer-small", props: [globalData: Store.get(:global)])
-
-  def computer_built_in_overlay(conn, _),
-    do: render_overlay(conn, "overlay/computer-built-in", props: [globalData: Store.get(:global)])
-
   def talk_overlay(conn, _),
     do: render_overlay(conn, "overlay/talk", props: [globalData: Store.get(:global)])
 

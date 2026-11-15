@@ -1,42 +1,14 @@
-import { useState } from "react";
-
 import OverlayBanner from "$lib/components/overlay/overlay-banner";
 import OverlayRegion from "$lib/components/overlay/overlay-region";
 import OverlayTag from "$lib/components/overlay/overlay-tag";
 import LiveTicker from "$lib/components/overlay/live-ticker";
-import { useConfigurationUpdate } from "$lib/features/configuration/hooks/use-configuration-update";
-import type { GuestMetadata, GlobalMetadata } from "$lib/features/metadata";
+import {
+  type GuestOverlayProps,
+  useGuestOverlayData,
+} from "$lib/features/configuration/hooks/use-guest-overlay-data";
 
-type Props = {
-  globalData: GlobalMetadata | null;
-  guestData: GuestMetadata | null;
-};
-
-export default function ComputerGuest({
-  globalData: initialGlobalData,
-  guestData: initialGuestData,
-}: Props) {
-  const [liveGlobalData, setLiveGlobalData] = useState<GlobalMetadata | null>(
-    null,
-  );
-  const [liveGuestData, setLiveGuestData] = useState<GuestMetadata | null>(
-    null,
-  );
-
-  useConfigurationUpdate((data) => {
-    if (data.name === "global") {
-      setLiveGlobalData(data);
-    }
-
-    if (data.name === "guests") {
-      setLiveGuestData(data);
-    }
-  });
-
-  const globalData = liveGlobalData ?? initialGlobalData;
-  const guestData = liveGuestData ?? initialGuestData;
-
-  const participants = guestData?.data.members ?? [];
+export default function ComputerGuest(props: GuestOverlayProps) {
+  const { globalData, participants } = useGuestOverlayData(props);
   const guest = participants[0];
   const focus = globalData?.data.focusMode ?? false;
 
