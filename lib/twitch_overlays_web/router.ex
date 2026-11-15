@@ -28,6 +28,7 @@ defmodule TwitchOverlaysWeb.Router do
     get "/overlay/brb", OverlayController, :brb_overlay
     get "/overlay/computer", OverlayController, :computer_overlay
     get "/overlay/talk", OverlayController, :talk_overlay
+    get "/overlay/overhead", OverlayController, :overhead_overlay
     get "/overlay/alerts", OverlayController, :alerts_overlay
     get "/overlay/chat", OverlayController, :chat_overlay
     get "/overlay/vertical/start", OverlayController, :vertical_start_overlay

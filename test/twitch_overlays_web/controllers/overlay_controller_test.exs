@@ -24,6 +24,7 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
           "/overlay/brb",
           "/overlay/computer",
           "/overlay/talk",
+          "/overlay/overhead",
           "/overlay/alerts",
           "/overlay/chat",
           "/overlay/vertical/start",
@@ -60,6 +61,16 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
 
     refute Map.has_key?(inertia_props(conn), "layout")
     assert html =~ "h-[1080px] w-[1920px]"
+  end
+
+  test "renders the overhead overlay full-bleed with the global banner", %{conn: conn} do
+    conn = get(conn, ~p"/overlay/overhead")
+    html = html_response(conn, 200)
+
+    assert html =~ ~s(left:0;top:0;width:1920px;height:1080px)
+    assert html =~ "overhead"
+    assert html =~ "Live coding"
+    assert %{"globalData" => %{"name" => "global"}} = inertia_props(conn)
   end
 
   test "renders global settings with the vertical layout", %{conn: conn} do

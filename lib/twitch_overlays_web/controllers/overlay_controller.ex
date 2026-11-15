@@ -20,6 +20,9 @@ defmodule TwitchOverlaysWeb.OverlayController do
   def talk_overlay(conn, _),
     do: render_overlay(conn, "overlay/talk", props: [globalData: Store.get(:global)])
 
+  def overhead_overlay(conn, _),
+    do: render_overlay(conn, "overlay/overhead", props: [globalData: Store.get(:global)])
+
   def alerts_overlay(conn, _),
     do: render_overlay(conn, "overlay/alerts", layout: :transparent_overlay)
 
