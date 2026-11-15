@@ -32,6 +32,7 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
           "/overlay/vertical/brb",
           "/overlay/vertical/computer",
           "/overlay/vertical/talk",
+          "/overlay/vertical/overhead",
           "/overlay/vertical/alerts"
         ] do
       assert html =~ ~s(href="#{path}")
@@ -70,6 +71,15 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
     assert html =~ ~s(left:0;top:0;width:1920px;height:1080px)
     assert html =~ "overhead"
     assert html =~ "Live coding"
+    assert %{"globalData" => %{"name" => "global"}} = inertia_props(conn)
+  end
+
+  test "renders the vertical overhead overlay full-bleed", %{conn: conn} do
+    conn = get(conn, ~p"/overlay/vertical/overhead")
+    html = html_response(conn, 200)
+
+    assert html =~ ~s(left:0;top:0;width:1080px;height:1920px)
+    assert html =~ "ov-root--vertical"
     assert %{"globalData" => %{"name" => "global"}} = inertia_props(conn)
   end
 
