@@ -3,10 +3,7 @@ import { useState } from "react";
 import OverlayBanner from "$lib/components/overlay/overlay-banner";
 import OverlayRegion from "$lib/components/overlay/overlay-region";
 import LiveTicker from "$lib/components/overlay/live-ticker";
-import NowPlayingPill from "$lib/components/overlay/now-playing-pill";
 import { useConfigurationUpdate } from "$lib/features/configuration/hooks/use-configuration-update";
-import { useCiderMusic } from "$lib/features/music/hooks/use-cider-music";
-import { trackTitle } from "$lib/features/music/track";
 import type { GlobalMetadata } from "$lib/features/metadata";
 
 type Props = {
@@ -17,7 +14,6 @@ export default function Talk({ globalData: initialGlobalData }: Props) {
   const [liveGlobalData, setLiveGlobalData] = useState<GlobalMetadata | null>(
     null,
   );
-  const { music } = useCiderMusic();
 
   useConfigurationUpdate((data) => {
     if (data.name === "global") {
@@ -26,7 +22,6 @@ export default function Talk({ globalData: initialGlobalData }: Props) {
   });
 
   const globalData = liveGlobalData ?? initialGlobalData;
-  const track = trackTitle(music);
   const focus = globalData?.data.focusMode ?? false;
 
   return (
@@ -49,14 +44,6 @@ export default function Talk({ globalData: initialGlobalData }: Props) {
       />
 
       <LiveTicker x={1450.68} y={986} width={421.32} />
-
-      <NowPlayingPill
-        x={48}
-        y={866}
-        width={520}
-        artwork={music.artwork}
-        track={track}
-      />
     </div>
   );
 }
