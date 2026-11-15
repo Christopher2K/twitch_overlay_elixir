@@ -2,7 +2,7 @@ import OverlayTransition from "$lib/components/overlay/overlay-transition";
 
 export default function VerticalBrb() {
   return (
-    <div className="ov-root">
+    <div className="ov-root ov-root--vertical">
       <OverlayTransition
         variant="vertical"
         status="away"

@@ -27,7 +27,7 @@ export default function VerticalComputer({
   const focus = globalData?.data.focusMode ?? false;
 
   return (
-    <div className="ov-root">
+    <div className="ov-root ov-root--vertical">
       <OverlayRegion
         x={16}
         y={16}

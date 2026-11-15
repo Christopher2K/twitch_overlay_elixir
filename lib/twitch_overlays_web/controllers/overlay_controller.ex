@@ -73,6 +73,13 @@ defmodule TwitchOverlaysWeb.OverlayController do
         props: [globalData: Store.get(:global)]
       )
 
+  def vertical_alerts_overlay(conn, _),
+    do:
+      render_overlay(conn, "overlay/alerts",
+        layout: :vertical_transparent_overlay,
+        props: [variant: "vertical"]
+      )
+
   defp render_overlay(conn, page, opts \\ []) do
     layout = Keyword.get(opts, :layout, :overlay)
     props = Keyword.get(opts, :props, [])

@@ -12,6 +12,10 @@ type Alert = {
   time: string;
 };
 
+type Props = {
+  variant?: "landscape" | "vertical";
+};
+
 function pad(value: number) {
   return String(value).padStart(2, "0");
 }
@@ -28,7 +32,7 @@ function kindFor(header: string) {
   return "+";
 }
 
-export default function Alerts() {
+export default function Alerts({ variant = "landscape" }: Props) {
   const [notifications, setNotifications] = useState<Alert[]>([]);
   const timers = useRef<Array<ReturnType<typeof setTimeout>>>([]);
 
@@ -75,7 +79,11 @@ export default function Alerts() {
   }, []);
 
   return (
-    <div className="ov-root">
+    <div
+      className={
+        variant === "vertical" ? "ov-root ov-root--vertical" : "ov-root"
+      }
+    >
       <div className="ov-alert-stack" style={{ left: 48, top: 48 }}>
         {notifications.map((notification) => (
           <OverlayAlert

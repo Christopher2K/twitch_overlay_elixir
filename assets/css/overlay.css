@@ -551,10 +551,6 @@
   text-align: center;
 }
 
-.ov-stage--vertical .ov-stage__headline {
-  font-size: 44px;
-}
-
 .ov-stage__rule {
   width: 360px;
   height: 1px;
@@ -595,4 +591,73 @@
   line-height: 1;
   color: var(--ov-accent);
   font-variant-numeric: tabular-nums;
+}
+
+/* Vertical alerts ----------------------------------------------------- */
+
+.ov-root--vertical .ov-alert-stack {
+  gap: 16px;
+}
+
+.ov-root--vertical .ov-alert {
+  width: 984px;
+  height: 156px;
+}
+
+.ov-root--vertical .ov-alert__mark {
+  top: 52px;
+  left: 32px;
+  font-size: 30px;
+}
+
+.ov-root--vertical .ov-alert__header {
+  top: 32px;
+  left: 88px;
+  max-width: 680px;
+  font-size: 22px;
+}
+
+.ov-root--vertical .ov-alert__content {
+  top: 80px;
+  left: 88px;
+  width: 864px;
+  font-size: 28px;
+}
+
+.ov-root--vertical .ov-alert__time {
+  top: 32px;
+  right: 32px;
+  left: auto;
+  width: 100px;
+  font-size: 22px;
+}
+
+/* Vertical typography ------------------------------------------------- */
+
+.ov-root--vertical .ov-label,
+.ov-root--vertical .ov-ticker__mark,
+.ov-root--vertical .ov-ticker__text {
+  font-size: 24px;
+}
+
+.ov-root--vertical .ov-ratio,
+.ov-root--vertical .ov-region__state,
+.ov-root--vertical .ov-banner__word,
+.ov-root--vertical .ov-banner__tag,
+.ov-root--vertical .ov-stage__corner {
+  font-size: 22px;
+}
+
+.ov-root--vertical .ov-banner__title {
+  font-size: 32px;
+}
+
+.ov-root--vertical .ov-stage__headline {
+  font-size: 88px;
+}
+
+.ov-root--vertical .ov-stage__sub,
+.ov-root--vertical .ov-stage__action,
+.ov-root--vertical .ov-countdown__value {
+  font-size: 26px;
 }

@@ -58,6 +58,15 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
     refute html =~ "ov-canvas"
   end
 
+  test "renders the vertical alerts overlay with a transparent background", %{conn: conn} do
+    conn = get(conn, ~p"/overlay/vertical/alerts")
+    html = html_response(conn, 200)
+
+    assert html =~ "fixed top-0 left-0 h-[1920px] w-[1080px] overflow-hidden"
+    refute html =~ "ov-canvas"
+    assert %{"variant" => "vertical"} = inertia_props(conn)
+  end
+
   test "renders the chat overlay at the browser source size", %{conn: conn} do
     conn = get(conn, ~p"/overlay/chat")
     html = html_response(conn, 200)

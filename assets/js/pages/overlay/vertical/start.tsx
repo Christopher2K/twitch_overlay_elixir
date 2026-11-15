@@ -2,7 +2,7 @@ import OverlayTransition from "$lib/components/overlay/overlay-transition";
 
 export default function VerticalStart() {
   return (
-    <div className="ov-root">
+    <div className="ov-root ov-root--vertical">
       <OverlayTransition
         variant="vertical"
         status="starting"
