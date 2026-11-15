@@ -52,6 +52,15 @@ export default function Computer({ globalData: initialGlobalData }: Props) {
         tag={globalData?.data.banner}
       />
 
+      <NowPlayingPill
+        x={1045.36}
+        y={867.9}
+        width={421.32}
+        artwork={track?.artwork}
+        track={nowPlaying}
+        label={nowPlayingLabel}
+      />
+
       <OverlayRegion
         x={1482.68}
         y={16}
@@ -59,16 +68,7 @@ export default function Computer({ globalData: initialGlobalData }: Props) {
         height={748.9}
         label="cam · 9:16"
         focus={focus}
-      >
-        <NowPlayingPill
-          x={16}
-          y={662.9}
-          width={389.32}
-          artwork={track?.artwork}
-          track={nowPlaying}
-          label={nowPlayingLabel}
-        />
-      </OverlayRegion>
+      />
 
       <OverlayRegion
         x={1482.68}
