@@ -38,6 +38,9 @@ export default function AdminLayout({ children }: Props) {
             <Link href="/admin/integrations" className="hover:underline">
               Integrations
             </Link>
+            <Link href="/admin/captions" className="hover:underline">
+              Captions
+            </Link>
             <Button isLink href="/admin/logout">
               Logout
             </Button>

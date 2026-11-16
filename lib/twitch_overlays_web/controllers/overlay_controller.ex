@@ -29,6 +29,9 @@ defmodule TwitchOverlaysWeb.OverlayController do
   def chat_overlay(conn, _),
     do: render_overlay(conn, "overlay/chat", layout: :full_transparent_overlay)
 
+  def captions_overlay(conn, _),
+    do: render_overlay(conn, "overlay/captions", layout: :full_transparent_overlay)
+
   def vertical_start_overlay(conn, _),
     do: render_overlay(conn, "overlay/vertical/start", layout: :vertical_transparent_overlay)
 

@@ -31,6 +31,7 @@ defmodule TwitchOverlaysWeb.Router do
     get "/overlay/overhead", OverlayController, :overhead_overlay
     get "/overlay/alerts", OverlayController, :alerts_overlay
     get "/overlay/chat", OverlayController, :chat_overlay
+    get "/overlay/captions", OverlayController, :captions_overlay
     get "/overlay/vertical/start", OverlayController, :vertical_start_overlay
     get "/overlay/vertical/end", OverlayController, :vertical_end_overlay
     get "/overlay/vertical/brb", OverlayController, :vertical_brb_overlay
@@ -52,6 +53,9 @@ defmodule TwitchOverlaysWeb.Router do
 
       get "/", AdminController, :index
       post "/", AdminController, :configuration_submission
+      get "/captions", CaptionsController, :index
+      post "/captions/temporary-key", CaptionsController, :temporary_key
+      post "/captions/publish", CaptionsController, :publish
 
       scope "/integrations" do
         get "/", IntegrationController, :index

@@ -27,6 +27,7 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
           "/overlay/overhead",
           "/overlay/alerts",
           "/overlay/chat",
+          "/overlay/captions",
           "/overlay/vertical/start",
           "/overlay/vertical/end",
           "/overlay/vertical/brb",
@@ -115,6 +116,15 @@ defmodule TwitchOverlaysWeb.OverlayControllerTest do
 
     assert html =~ "fixed inset-0 overflow-hidden"
     assert html =~ "ov-chat"
+    assert %{} = inertia_props(conn)
+  end
+
+  test "renders the captions overlay at the browser source size", %{conn: conn} do
+    conn = get(conn, ~p"/overlay/captions")
+    html = html_response(conn, 200)
+
+    assert html =~ "fixed inset-0 overflow-hidden"
+    assert html =~ "ov-root"
     assert %{} = inertia_props(conn)
   end
 

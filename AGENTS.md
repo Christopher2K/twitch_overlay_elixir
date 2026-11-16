@@ -3,7 +3,7 @@
 ## Setup and commands
 
 - Toolchain: Elixir 1.18.4 / Erlang OTP 28 (`.tool-versions`), Node 22 (Docker build), and pnpm 10.15.0 (`assets/package.json`; newer pnpm versions can fail the package-manager check).
-- Create `.env` from `.env.example` and fill the Twitch values. Run `mix setup`, then `mix phx.server` for the dev server on port 4000; its watchers build client JS, SSR JS, and Tailwind CSS.
+- Create `.env` from `.env.example` and fill the Twitch values. `SONIOX_API_KEY` is optional unless using translated captions; the key needs Soniox's temporary-key and speech-to-text permissions. Run `mix setup`, then `mix phx.server` for the dev server on port 4000; its watchers build client JS, SSR JS, and Tailwind CSS.
 - `mix test` creates and migrates the SQLite test database automatically. Focus with `mix test path/to/test.exs` or `mix test path/to/test.exs:LINE`.
 - `.env` is loaded automatically only in dev. For tests, export it first: `set -a; source .env; set +a; mix test`.
 - Application boot requires all five `TWITCH_*` variables and `TwitchAppTokenWorker` immediately requests a real Twitch app token—even in tests. Tests therefore need valid Twitch client credentials and network access.
@@ -16,6 +16,7 @@
 - Inertia 3 embeds the page in `<script data-page="app" type="application/json">` and renders into `<div id="app" data-server-rendered>`; the v3 adapter reads that script and self-mounts/hydrates (no custom `setup` for CSR). Flash is a top-level `usePage().flash` key, not a prop; dismissal is tracked by flash object identity so a new page re-shows the alert. CSRF uses the axios client from `@inertiajs/core` via `http: { xsrfHeaderName: "x-csrf-token" }`.
 - Domain code uses schemas, `*Repo` modules, and single-purpose `Services.*` modules called directly by controllers; there are no `Accounts`, `Configuration`, or `Integration` context facade modules despite legacy tests referencing them. Overlay configuration is the exception: controllers read and write it through `Configuration.Store` (`get/1`, `put/2`, `all/0`), which upserts the `metadata` row and broadcasts `"update_metadata"` on `overlay_room:lobby`.
 - Twitch EventSub POSTs flow through `WebhookController` and `Webhooks.Services.HandleWebhookEvent`, then broadcast `"alert"` on `alerts_room:lobby`. `use-alerts.ts` consumes that topic through `/socket/events`.
+- `/admin/captions` streams microphone audio directly from the browser to Soniox (`stt-rt-v6`, French to English) with a temporary key issued by `CaptionsController`; the permanent `SONIOX_API_KEY` stays server-side. Caption windows and clear events are published on `overlay_room:lobby` for `/overlay/captions`. Keep the admin page open while translating, use HTTPS or localhost for microphone access, and do not add transcript persistence.
 - Webhook signature verification uses the raw request body saved by `Endpoint.copy_req_body/2`; preserve its position before `Plug.Parsers` when changing request parsing.
 
 ## Current test baseline
