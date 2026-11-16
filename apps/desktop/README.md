@@ -12,7 +12,7 @@ Requires Node 22 (the repo's mise/asdf toolchain) and the Phoenix server
 running (see the root `AGENTS.md`).
 
 ```sh
-cd desktop
+cd apps/desktop
 corepack pnpm install
 corepack pnpm start
 ```

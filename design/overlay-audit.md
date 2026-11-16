@@ -1,7 +1,7 @@
 # Overlay audit → design port
 
-Source of truth for layout: `lib/twitch_overlays_web/router.ex` (17 overlay routes) and
-`assets/js/pages/overlay/**`. Every routed overlay has one artboard in
+Source of truth for layout: `apps/web/lib/twitch_overlays_web/router.ex` (17 overlay routes) and
+`apps/web/assets/js/pages/overlay/**`. Every routed overlay has one artboard in
 `design/computer-overlay.pen`; previews in `design/exports/` (see [DESIGN.md](DESIGN.md) for the
 language itself).
 
