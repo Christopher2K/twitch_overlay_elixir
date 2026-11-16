@@ -18,9 +18,27 @@ function isCaptionPayload(data: unknown): data is CaptionPayload {
   );
 }
 
+function withoutStaleFinalized(finalized: string[], stale: string[]) {
+  for (
+    let length = Math.min(finalized.length, stale.length);
+    length > 0;
+    length -= 1
+  ) {
+    const matches = stale
+      .slice(-length)
+      .every((text, index) => text === finalized[index]);
+
+    if (matches) return finalized.slice(length);
+  }
+
+  return finalized;
+}
+
 export function useCaptions() {
   const [caption, setCaption] = useState<CaptionPayload>(EMPTY_CAPTION);
   const [fading, setFading] = useState(false);
+  const lastPayload = useRef<CaptionPayload>(EMPTY_CAPTION);
+  const staleFinalized = useRef<string[]>([]);
   const fadeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
   );
@@ -39,8 +57,13 @@ export function useCaptions() {
       if (clearTimer.current) clearTimeout(clearTimer.current);
     };
 
+    const rememberFinalized = () => {
+      staleFinalized.current = lastPayload.current.finalized;
+    };
+
     const clear = () => {
       clearTimers();
+      rememberFinalized();
       setFading(false);
       setCaption(EMPTY_CAPTION);
     };
@@ -48,15 +71,25 @@ export function useCaptions() {
     channel.on("captions", (data: unknown) => {
       if (!isCaptionPayload(data)) return;
 
+      lastPayload.current = data;
       clearTimers();
-      setCaption(data);
+      setCaption({
+        partial: data.partial,
+        finalized: withoutStaleFinalized(
+          data.finalized,
+          staleFinalized.current,
+        ),
+      });
       setFading(false);
 
-      fadeTimer.current = setTimeout(() => setFading(true), FADE_AFTER_MS);
-      clearTimer.current = setTimeout(
-        () => setCaption(EMPTY_CAPTION),
-        CLEAR_AFTER_MS,
-      );
+      fadeTimer.current = setTimeout(() => {
+        rememberFinalized();
+        setFading(true);
+      }, FADE_AFTER_MS);
+      clearTimer.current = setTimeout(() => {
+        rememberFinalized();
+        setCaption(EMPTY_CAPTION);
+      }, CLEAR_AFTER_MS);
     });
     channel.on("captions_clear", clear);
 

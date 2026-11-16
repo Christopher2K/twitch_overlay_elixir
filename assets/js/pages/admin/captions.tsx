@@ -1,17 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   SonioxProvider,
   useMicrophonePermission,
   useRecording,
 } from "@soniox/react";
+import { MicrophoneSource } from "@soniox/client";
 
 import Alert from "$lib/components/alert";
 import Button from "$lib/components/button";
+import Field from "$lib/components/field";
 import {
   clearPublishedCaptions,
   getTemporarySonioxKey,
 } from "$lib/features/captions/api";
 import { useCaptionPublisher } from "$lib/features/captions/hooks/use-caption-publisher";
+import { useMicrophoneDevices } from "$lib/features/captions/hooks/use-microphone-devices";
 
 async function sonioxConfig() {
   const key = await getTemporarySonioxKey();
@@ -32,8 +35,24 @@ function CaptionControls({ sonioxConfigured }: { sonioxConfigured: boolean }) {
   const [session, setSession] = useState(0);
   const [actionError, setActionError] = useState<string | null>(null);
   const permission = useMicrophonePermission({ autoCheck: true });
+  const microphone = useMicrophoneDevices(permission.status);
+  const microphoneSource = useMemo(() => {
+    if (!microphone.selectedDeviceId) return undefined;
+
+    return new MicrophoneSource({
+      constraints: {
+        deviceId: { exact: microphone.selectedDeviceId },
+        echoCancellation: false,
+        noiseSuppression: false,
+        autoGainControl: false,
+        channelCount: 1,
+        sampleRate: 16000,
+      },
+    });
+  }, [microphone.selectedDeviceId]);
 
   const recording = useRecording({
+    source: microphoneSource,
     model: "stt-rt-v6",
     language_hints: ["fr"],
     translation: { type: "one_way", target_language: "en" },
@@ -54,6 +73,10 @@ function CaptionControls({ sonioxConfigured }: { sonioxConfigured: boolean }) {
     recording.groups.translation?.finalText ?? "",
     recording.groups.translation?.partialText ?? "",
   );
+
+  useEffect(() => {
+    void permission.check();
+  }, [recording.state]);
 
   useEffect(() => {
     if (recording.state === "error" && publishing) {
@@ -101,7 +124,11 @@ function CaptionControls({ sonioxConfigured }: { sonioxConfigured: boolean }) {
     });
   }
 
-  const error = actionError ?? publisher.error ?? recording.error?.message;
+  const error =
+    actionError ??
+    publisher.error ??
+    microphone.error ??
+    recording.error?.message;
   const status = statusLabel(recording.state, publishing);
 
   return (
@@ -133,6 +160,30 @@ function CaptionControls({ sonioxConfigured }: { sonioxConfigured: boolean }) {
             {status}
           </span>
         </div>
+
+        <Field label="Microphone input" htmlFor="caption-microphone">
+          <select
+            id="caption-microphone"
+            className="block w-full rounded-lg border-0 bg-white py-2 text-zinc-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 disabled:opacity-50 sm:text-sm"
+            value={microphone.selectedDeviceId}
+            onChange={(event) =>
+              microphone.setSelectedDeviceId(event.target.value)
+            }
+            disabled={recording.isActive || publishing}
+          >
+            <option value="">System default microphone</option>
+            {microphone.devices.map((device) => (
+              <option key={device.deviceId} value={device.deviceId}>
+                {device.label}
+              </option>
+            ))}
+          </select>
+          {recording.isActive || publishing ? (
+            <p className="text-xs text-zinc-500">
+              Stop captions to change the microphone input.
+            </p>
+          ) : null}
+        </Field>
 
         <div className="flex flex-wrap gap-3">
           <Button
