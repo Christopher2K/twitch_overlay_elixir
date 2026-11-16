@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Stream Captions — Connection error</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f4f4f5;
+        color: #18181b;
+        font:
+          15px/1.5 -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+      .card {
+        width: min(440px, calc(100vw - 48px));
+        background: #fff;
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow:
+          0 1px 2px rgb(0 0 0 / 0.06),
+          0 12px 32px rgb(0 0 0 / 0.08);
+      }
+      h1 {
+        margin: 0 0 4px;
+        font-size: 20px;
+      }
+      p.sub {
+        margin: 0 0 16px;
+        color: #52525b;
+        font-size: 14px;
+      }
+      .detail {
+        background: #fafafa;
+        border: 1px solid #e4e4e7;
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-family: ui-monospace, Menlo, monospace;
+        font-size: 12px;
+        color: #71717a;
+        overflow-wrap: anywhere;
+        margin-bottom: 20px;
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+      }
+      button {
+        flex: 1;
+        padding: 10px 12px;
+        border: 0;
+        border-radius: 10px;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .primary {
+        background: #4f46e5;
+        color: #fff;
+      }
+      .primary:hover {
+        background: #4338ca;
+      }
+      .secondary {
+        background: #f4f4f5;
+        color: #3f3f46;
+        border: 1px solid #e4e4e7;
+      }
+      .secondary:hover {
+        background: #e4e4e7;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Can’t reach the server</h1>
+      <p class="sub">
+        Make sure the Phoenix server is running, then try again.
+      </p>
+      <div class="detail" id="detail"></div>
+      <div class="row">
+        <button class="primary" id="retry">Retry</button>
+        <button class="secondary" id="change">Change server</button>
+      </div>
+    </div>
+    <script>
+      const params = new URLSearchParams(location.search);
+      const url = params.get("url") || "";
+      const message = params.get("message") || "Unknown error";
+      document.getElementById("detail").textContent = url
+        ? `${url}\n${message}`
+        : message;
+      document.getElementById("retry").addEventListener("click", () => {
+        window.captionsDesktop.retry();
+      });
+      document.getElementById("change").addEventListener("click", () => {
+        window.captionsDesktop.changeServer();
+      });
+    </script>
+  </body>
+</html>

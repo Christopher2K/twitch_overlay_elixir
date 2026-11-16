@@ -8,6 +8,7 @@
 - `.env` is loaded automatically only in dev. For tests, export it first: `set -a; source .env; set +a; mix test`.
 - Application boot requires all five `TWITCH_*` variables and `TwitchAppTokenWorker` immediately requests a real Twitch app token—even in tests. Tests therefore need valid Twitch client credentials and network access.
 - Frontend checks: `pnpm --dir assets check` (TypeScript) and `pnpm --dir assets lint` (Prettier). Format with `mix format` and `pnpm --dir assets format` as applicable.
+- `desktop/` is a standalone Electron wrapper around `/admin/captions` (no server changes) with its own pnpm project and `.tool-versions` (Node 22, pnpm 10.15.0). From `desktop/`: `pnpm start` runs it, `pnpm dist` builds `dist/mac-arm64/Stream Captions.app` plus a DMG, `pnpm icon` regenerates the icon. It stores the server URL in Electron's userData `config.json`, grants microphone access only to that origin, disables background throttling so captions keep publishing while minimized, and needs `NSMicrophoneUsageDescription`/`audio-input` entitlement kept in `electron-builder.yml` and `build/entitlements.mac.plist`.
 - Build both client and SSR bundles with `mix assets.build`; use `mix assets.deploy` for minified/digested production assets. Do not edit generated `priv/ssr.js` or `priv/static/assets/`.
 
 ## Architecture

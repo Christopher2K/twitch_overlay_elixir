@@ -1,0 +1,23 @@
+{
+  "name": "stream-captions-desktop",
+  "productName": "Stream Captions",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Desktop app for the Twitch overlay live translated captions page.",
+  "main": "main.js",
+  "packageManager": "pnpm@10.15.0",
+  "scripts": {
+    "start": "electron .",
+    "icon": "node scripts/make-icon.mjs",
+    "dist": "electron-builder --mac --arm64"
+  },
+  "devDependencies": {
+    "electron": "^45.3.3",
+    "electron-builder": "^26.18.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "electron"
+    ]
+  }
+}

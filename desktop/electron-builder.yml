@@ -1,0 +1,25 @@
+appId: com.twitchoverlays.stream-captions
+productName: Stream Captions
+publish: null
+directories:
+  output: dist
+  buildResources: build
+files:
+  - main.js
+  - preload.js
+  - pages/**/*
+  - package.json
+mac:
+  category: public.app-category.utilities
+  icon: build/icon.icns
+  target:
+    - target: dir
+      arch: arm64
+    - target: dmg
+      arch: arm64
+  extendInfo:
+    NSMicrophoneUsageDescription: >-
+      Stream Captions uses the microphone to translate your voice into live
+      captions for the stream overlay.
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
